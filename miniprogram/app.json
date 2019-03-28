@@ -19,31 +19,29 @@
     "selectedColor": "#39b54a",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/diary/diary",
-        "iconPath": "/images/tabbar/basics.png",
-        "selectedIconPath": "/images/tabbar/basics_cur.png",
-        "text": "日记"
-      },
-      {
-        "pagePath": "pages/chart/chart",
-        "iconPath": "/images/tabbar/component.png",
-        "selectedIconPath": "/images/tabbar/component_cur.png",
-        "text": "统计"
-      },
-      {
-        "pagePath": "pages/calendar/calendar",
-        "iconPath": "/images/tabbar/plugin.png",
-        "selectedIconPath": "/images/tabbar/plugin_cur.png",
-        "text": "扩展"
-      },
-      {
-        "pagePath": "pages/about/about",
-        "iconPath": "/images/tabbar/about.png",
-        "selectedIconPath": "/images/tabbar/about_cur.png",
-        "text": "关于"
-      }
-    ]
+    "list": [{
+      "pagePath": "pages/diary/diary",
+      "text": "日记",
+      "action": "switchTab"
+    },
+    {
+      "pagePath": "pages/chart/chart",
+      "text": "统计",
+      "icon": "icon-similar",
+      "action": "switchTab"
+    },
+    {
+      "pagePath": "pages/new-diary/new-diary",
+      "text": "发布 "
+    },
+    {
+      "pagePath": "pages/calendar/calendar",
+      "text": "日历"
+    },
+    {
+      "pagePath": "pages/about/about",
+      "text": "我的"
+    }
+  ]
   }
 }

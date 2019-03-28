@@ -1,8 +1,9 @@
  <view class="cu-bar tabbar bg-white">
   <view wx:for="{{ list }}" 
-    wx:key="{{ index }}"
+    wx:key="index"
     data-url="{{item.pagePath}}" 
     data-index="{{ index }}"
+    data-selected="{{ selected }}"
     bindtap="{{item.action}}" 
     class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
     <view wx:if="{{item.type !== 'button'}}" class="{{item.icon}}"></view>

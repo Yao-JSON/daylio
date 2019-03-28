@@ -19,6 +19,7 @@ Component({
       {
         
         "type": "button",
+        "pagePath": "/pages/new-diary/new-diary",
         "text": "发布 ",
         "className": "shadow",
         "action": "switchTab",
@@ -40,17 +41,13 @@ Component({
   },
   methods: {
     switchTab(e) {      
-      const { url, index } = e.currentTarget.dataset;
+      const { url } = e.currentTarget.dataset;
       if(url) {
         wx.switchTab({
           url
         })
       }
-      if(index !== 2) {
-        this.setData({
-          selected: index
-        });
-      }
+      console.log(this.data);
     }
   },
   pageLifetimes: {
