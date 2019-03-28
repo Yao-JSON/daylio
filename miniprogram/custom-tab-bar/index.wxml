@@ -1,20 +1,12 @@
  <view class="cu-bar tabbar bg-white">
-    <view class="action text-green">
-      <view class='icon-homefill'></view> 首页
-    </view>
-    <view class="action text-gray">
-      <view class='icon-similar'></view> 分类
-    </view>
-    <view class="action text-gray add-action">
-      <button class='cu-btn icon-add bg-green shadow'></button>
-      发布
-    </view>
-    <view class="action text-gray">
-      <view class='icon-cart'></view>
-      购物车
-    </view>
-    <view class="action text-gray">
-      <view class='icon-my'></view>
-      我的
-    </view>
+  <view wx:for="{{ list }}" 
+    wx:key="{{ index }}"
+    data-url="{{item.pagePath}}" 
+    data-index="{{ index }}"
+    bindtap="{{item.action}}" 
+    class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
+    <view wx:if="{{item.type !== 'button'}}" class="{{item.icon}}"></view>
+    <button wx:else class="cu-btn {{ item.icon }} bg-green shadow"></button>
+      {{item.text}}
   </view>
+</view>

@@ -5,37 +5,51 @@ Component({
   data: {
     selected: 0,
     list: [{
-        "pagePath": "pages/diary/diary",
-        "iconPath": "/images/tabbar/basics.png",
-        "selectedIconPath": "/images/tabbar/basics_cur.png",
-        "text": "日记"
+        "pagePath": "/pages/diary/diary",
+        "text": "日记",
+        "icon": 'icon-homefill',
+        "action": "switchTab"
       },
       {
-        "pagePath": "pages/chart/chart",
-        "iconPath": "/images/tabbar/component.png",
-        "selectedIconPath": "/images/tabbar/component_cur.png",
-        "text": "统计"
+        "pagePath": "/pages/chart/chart",
+        "text": "统计",
+        "icon": "icon-similar",
+        "action": "switchTab"
       },
       {
-        "pagePath": "pages/calendar/calendar",
-        "iconPath": "/images/tabbar/plugin.png",
-        "selectedIconPath": "/images/tabbar/plugin_cur.png",
-        "text": "扩展"
+        
+        "type": "button",
+        "text": "发布 ",
+        "className": "shadow",
+        "action": "switchTab",
+        "icon": "icon-add "
       },
       {
-        "pagePath": "pages/about/about",
-        "iconPath": "/images/tabbar/about.png",
-        "selectedIconPath": "/images/tabbar/about_cur.png",
-        "text": "关于"
+        "pagePath": "/pages/calendar/calendar",
+        "text": "日历",
+        "icon": 'icon-cart',
+        "action": "switchTab"
+      },
+      {
+        "pagePath": "/pages/about/about",
+        "text": "我的",
+        "action": "switchTab",
+        "icon": "icon-my"
       }
     ]
   },
   methods: {
     switchTab(e) {      
-      const url = e.currentTarget.dataset.path
-      wx.switchTab({
-        url
-      })
+      console.log(e);
+      const { url, index } = e.currentTarget.dataset;
+      if(url) {
+        wx.switchTab({
+          url
+        })
+      }
+      this.setData({
+        selected: index
+      });
     }
   },
   pageLifetimes: {
