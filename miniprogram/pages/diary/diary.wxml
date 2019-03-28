@@ -5,9 +5,16 @@
   label="不要在你的日记里留下空白">
   </wux-media>
   <scroll-view class="" scroll-y="true" upper-threshold="50" lower-threshold="50"  scroll-with-animation="true" >
-    <view class="" ws:for="{{ list }}" >
-      
-    </view>
+  <diary-card        
+    wx:for="{{ list }}"
+    wx:key="index"
+    moodText="{{ item.moodText }}"
+    time="{{ item.time }}"
+    activity="{{ item.activity }}"
+    icon="{{ item.moodIcon }}"
+    content="{{ item.content }}"
+    date="{{ item.date }}">
+  </diary-card>
       
   </scroll-view>
     

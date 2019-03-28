@@ -2,14 +2,21 @@
 Component({
   externalClasses: ['wux-class'],
   properties: {
-    type: {
+    moodText: {
         type: String,
         value: '',
     },
-    size: {
-        type: [String, Number],
-        value: 32,
-        observer: 'updated',
+    date: {
+        type: String,
+        value: '',
+    },
+    time: {
+        type: String,
+        value: '',
+    },
+    activity: {
+        type: Array,
+        value: [],
     },
     icon: {
         type: String,

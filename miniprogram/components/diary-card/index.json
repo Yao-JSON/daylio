@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-      "wux-icon": "./../icon/index"
+      "wux-icon": "./../icon/index",
+      "wux-tag": "./../tag/index"
   }
 }
