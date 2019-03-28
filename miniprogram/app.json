@@ -8,8 +8,6 @@
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
-    "navigationBarTitleText": "Color UI",
-    "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
   },
   "usingComponents": {},
@@ -19,29 +17,30 @@
     "selectedColor": "#39b54a",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "pages/diary/diary",
-      "text": "日记",
-      "action": "switchTab"
-    },
-    {
-      "pagePath": "pages/chart/chart",
-      "text": "统计",
-      "icon": "icon-similar",
-      "action": "switchTab"
-    },
-    {
-      "pagePath": "pages/new-diary/new-diary",
-      "text": "发布 "
-    },
-    {
-      "pagePath": "pages/calendar/calendar",
-      "text": "日历"
-    },
-    {
-      "pagePath": "pages/about/about",
-      "text": "我的"
-    }
-  ]
+    "list": [
+      {
+        "pagePath": "pages/diary/diary",
+        "text": "日记",
+        "action": "switchTab"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "统计",
+        "icon": "icon-similar",
+        "action": "switchTab"
+      },
+      {
+        "pagePath": "pages/new-diary/new-diary",
+        "text": "发布 "
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的"
+      }
+    ]
   }
 }

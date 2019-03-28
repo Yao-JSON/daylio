@@ -2,15 +2,24 @@ import { $wuxCalendar } from './../../components/index'
 
 Page({
   data: {
-    titmeValue: []
+    titmeValue: [],
+    list: [{
+      // 心情: 狂喜
+      mood: 5,
+      activity: [{
+        id: 0,
+        text: '打扫'
+      }]
+    }]
   },
-
   onShow() {
-    if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-        this.getTabBar().setData({
-          selected: 0
-        })
+    if (typeof this.getTabBar === 'function') {
+        const tabBarCtx = this.getTabBar();
+        if(tabBarCtx) {
+          tabBarCtx.setData({
+            selected: 0
+          })
+        }
       }
   }
 })
