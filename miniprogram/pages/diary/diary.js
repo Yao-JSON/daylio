@@ -4,7 +4,7 @@ Page({
   data: {
     titmeValue: []
   },
-  
+
   onShow() {
     if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {

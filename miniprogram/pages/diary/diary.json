@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "日记",
   "usingComponents": {
     "wux-icon": "./../../components/icon/index",
     "wux-card": "./../../components/card/index",
