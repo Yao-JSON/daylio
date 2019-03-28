@@ -1,12 +1,12 @@
  <view class="cu-bar tabbar bg-white">
-    <view class="action text-blue">
+    <view class="action text-green">
       <view class='icon-homefill'></view> 首页
     </view>
     <view class="action text-gray">
       <view class='icon-similar'></view> 分类
     </view>
     <view class="action text-gray add-action">
-      <button class='cu-btn icon-add bg-blue shadow'></button>
+      <button class='cu-btn icon-add bg-green shadow'></button>
       发布
     </view>
     <view class="action text-gray">
