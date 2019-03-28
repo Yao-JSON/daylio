@@ -40,16 +40,17 @@ Component({
   },
   methods: {
     switchTab(e) {      
-      console.log(e);
       const { url, index } = e.currentTarget.dataset;
       if(url) {
         wx.switchTab({
           url
         })
       }
-      this.setData({
-        selected: index
-      });
+      if(index !== 2) {
+        this.setData({
+          selected: index
+        });
+      }
     }
   },
   pageLifetimes: {
