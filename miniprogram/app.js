@@ -8,15 +8,6 @@ App({
         traceUser: true,
       })
     }
-
-    wx.getSystemInfo({
-      success: (res) => {
-        const { system } = res;
-      }
-    })
-
   },
-  globalData: {
-    system: null, // ios
-  }
+  globalData: {}
 })

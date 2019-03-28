@@ -1,4 +1,8 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
-  日记
+<view class="" hover-class="none">
+  <wux-media 
+  icon="ios-add-circle" 
+  title="新建今天的笔记 - 现在立刻!" 
+  label="不要在你的日记里留下空白">
+  </wux-media>
 </view>
   

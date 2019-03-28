@@ -1,1 +1,8 @@
-{}
+{
+  "usingComponents": {
+    "wux-icon": "./../../components/icon/index",
+    "wux-card": "./../../components/card/index",
+    "wux-media": "./../../components/media/index",
+    "wux-calendar": "./../../components/calendar/index"
+  }
+}

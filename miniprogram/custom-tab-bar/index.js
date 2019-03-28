@@ -47,7 +47,6 @@ Component({
           url
         })
       }
-      console.log(this.data);
     }
   },
   pageLifetimes: {
