@@ -1,0 +1,17 @@
+<view class="wux-class wux-diary-card">
+  <view class="">
+    <wux-icon type={{ icon }}></wux-icon>
+  </view>
+  <view class="">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      
+    </view>
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      
+    </view>
+    <view ws:if="{{ !!content }}" class="wux-diary-content" hover-class="none" hover-stop-propagation="false">
+      {{ content }}
+    </view>
+  </view>
+</view>
+  
