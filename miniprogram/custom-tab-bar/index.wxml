@@ -1,0 +1,20 @@
+ <view class="cu-bar tabbar bg-white">
+    <view class="action text-blue">
+      <view class='icon-homefill'></view> 首页
+    </view>
+    <view class="action text-gray">
+      <view class='icon-similar'></view> 分类
+    </view>
+    <view class="action text-gray add-action">
+      <button class='cu-btn icon-add bg-blue shadow'></button>
+      发布
+    </view>
+    <view class="action text-gray">
+      <view class='icon-cart'></view>
+      购物车
+    </view>
+    <view class="action text-gray">
+      <view class='icon-my'></view>
+      我的
+    </view>
+  </view>
