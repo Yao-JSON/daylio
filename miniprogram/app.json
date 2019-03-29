@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/edit-active/edit-active",
     "pages/diary/diary",
     "pages/new-diary/new-diary",
     "pages/chart/chart",
