@@ -1,4 +1,13 @@
 <wux-cell-group class="">
+   <wux-cell 
+      wx:for="{{ activeList }}"
+      wx:key="index" 
+      title="{{ item.title }}" 
+      label="{{ item.remark || '' }}"
+      isLink="true"
+      url="/pages/edit-active/edit-active?id={{ item.id }}">
+      <active-icon class="active-title-icon" size="16" slot="header" type="{{ item.icon }}"></active-icon>
+  </wux-cell>
   <wux-swipe-action-group>
     <wux-swipe-action 
       wx:key="index" 
