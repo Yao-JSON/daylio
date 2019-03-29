@@ -1,1 +1,9 @@
-Page({})
+Page({
+  data: {
+    activeList: [
+      {
+        "icon": ""
+      }
+    ]
+  }
+})
