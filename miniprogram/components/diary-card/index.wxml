@@ -2,6 +2,7 @@
   <view class="wux-diary-mood">
     <wux-icon type="{{ icon }}"></wux-icon>
   </view>
+
   <view class="wux-diary-content-container">
     <view class="wux-diary-date">
       {{ date }}
@@ -14,9 +15,9 @@
         {{ time }}
       </view>   
     </view>
-    <view wx:if="{{ activity && activity.length }}" class="wux-diary-activeity-container">
-      <wux-tag wx:for="{{ activity }}" wx:key="index" color="color">
-        <wux-icon type="{{ item.activityIcon }}"></wux-icon>
+    <view class="wux-diary-activeity-container" wx:if="{{ activity && activity.length }}">
+      <wux-tag wx:for="{{ activity }}" wx:key="index" color="red">
+        <wux-icon class="active-icon" size="12" type="{{ item.activityIcon }}"></wux-icon>
         {{ item.title }}
       </wux-tag>
     </view>
@@ -24,8 +25,6 @@
       {{ content }}
     </view>
   </view>
-  <view class="wux-diary-edit" >
-    <wux-icon type="ios-arrow-dropdown-circle"></wux-icon>
-  </view>
+  <wux-icon class="wux-diary-edit" size="26" type="ios-arrow-dropdown-circle"></wux-icon>
 </view>
   

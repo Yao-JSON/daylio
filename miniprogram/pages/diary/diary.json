@@ -5,6 +5,7 @@
     "wux-card": "./../../components/card/index",
     "wux-media": "./../../components/media/index",
     "wux-calendar": "./../../components/calendar/index",
-    "diary-card": "./../../components/diary-card/index"
+    "diary-card": "./../../components/diary-card/index",
+    "wux-prompt": "./../../components/prompt/index"
   }
 }

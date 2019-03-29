@@ -9,11 +9,23 @@ Page({
         moodValue: 5,
         moodIcon: "ios-body",
         moodText: "狂喜",
-        activity: [{
-          id: 1,
-          title: '打扫',
-          activityIcon: 'ios-body'
-        }],
+        activity: [
+          {
+            id: 1,
+            title: '打扫',
+            activityIcon: 'ios-body'
+          },
+          {
+            id: 1,
+            title: '打扫',
+            activityIcon: 'ios-body'
+          },
+          {
+            id: 1,
+            title: '打扫',
+            activityIcon: 'ios-body'
+          }
+        ],
         date: "3月24日 星期日",
         time: "下午 10:04",
         createTime: 1553782664805,
@@ -22,7 +34,7 @@ Page({
         // 心情: 狂喜
         moodValue: 5,
         moodIcon: "ios-body",
-        moodText: "狂喜",
+        moodText: "还行",
         activity: [{
           id: 1,
           title: '打扫',
@@ -37,7 +49,7 @@ Page({
         // 心情: 狂喜
         moodValue: 5,
         moodIcon: "ios-body",
-        moodText: "狂喜",
+        moodText: "超烂",
         activity: [],
         date: "3月24日 星期日",
         time: "下午 10:04",
