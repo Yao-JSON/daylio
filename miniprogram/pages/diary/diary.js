@@ -1,4 +1,4 @@
-import { $wuxCalendar } from './../../components/index'
+import { $wuxCalendar } from './../../wux/index'
 
 Page({
   data: {

@@ -6,8 +6,8 @@
     data-selected="{{ selected }}"
     bindtap="{{item.action}}" 
     class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
-    <view wx:if="{{item.type !== 'button'}}" class="{{item.icon}}"></view>
-    <button wx:else class="cu-btn {{ item.icon }} bg-green shadow"></button>
+    <view wx:if="{{item.type !== 'button'}}" class="cu-icon {{item.icon}}"></view>
+    <button wx:else class="cu-btn cu-icon {{ item.icon }} bg-green shadow"></button>
       {{item.text}}
   </view>
 </view>
