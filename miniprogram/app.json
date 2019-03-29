@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/active-list/active-list",
     "pages/edit-active/edit-active",
+    "pages/mood-list/mood-list",
+    "pages/edit-mood/edit-mood",
     "pages/diary/diary",
     "pages/new-diary/new-diary",
     "pages/chart/chart",

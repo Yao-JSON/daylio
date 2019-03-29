@@ -1,4 +1,4 @@
-import { $wuxToptips } from './../../wux/index'
+import { $wuxToptips } from '../../wux/index'
 
 Page({
   data: {
