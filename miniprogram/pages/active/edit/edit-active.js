@@ -9,13 +9,24 @@ Page({
     iconList
   },
   // 编辑活动
-  handlerEditActive() {
-    const { id, iconType, title } = this.data;
-    
+  handlerChange(e) {
+    this.setData({
+      title: e.detail.value
+    });
+  },
+  // icon 选择
+  handlerSelectIcon(e) {
+    const { iconType } = this.data;
+    const { dataset } = e.currentTarget;
+    this.setData({
+      iconType: dataset ? dataset.iconType : iconType
+    });
   },
   // 确定
   handlerConfirm() {
     const { id, iconType, title } = this.data;
+    console.log(id, iconType, title);
+
   },
   onLoad(query) {
     const { id, iconType, title } = query;

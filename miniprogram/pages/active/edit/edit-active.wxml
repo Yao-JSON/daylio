@@ -3,6 +3,7 @@
     value="{{ title }}"
     controlled="true"
     wux-class="edit-input-container"
+    bind:change="handlerChange"
     bind:confirm="handlerConfirm"
     placeholder="请输入活动名称">
     <active-icon 
@@ -21,6 +22,8 @@
       wx:for="{{ item.icon }}" 
       wx:key="{{ iconType }}" 
       wx:for-item="iconType"
+      data-icon-type="{{ iconType }}"
+      bind:tap="handlerSelectIcon"
       span="2">
       <active-icon
         size="32"
