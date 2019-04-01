@@ -1,19 +1,6 @@
 <view class="" hover-class="none" hover-stop-propagation="false">
-  <wux-swipe-action-group>
-    <wux-swipe-action 
-      wx:key="index" 
-      autoClose 
-      right="{{ right }}"
-      bind:click="handlerDeleteActive"
-      data-index="{{ index }}"
-      wx:for="{{ activeList }}">
-      <wux-cell title="{{ item.title }}" is-link>
-        <active-icon size="16" slot="header" type="{{ item.icon }}"></active-icon>
-      </wux-cell>
-    </wux-swipe-action>
-  </wux-swipe-action-group>
+  
 </view>
  
- <!-- 浮动按钮 -->
-<wux-fab-button actionRotate="false" controlled="true" bind:actionClick="handlerAddActive" /> 
+ <!-- top tips -->
 <wux-toptips id="wux-toptips" />

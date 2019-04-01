@@ -15,19 +15,19 @@ Page({
     ],
     activeList: [
       {
-        "icon": "dasao",
+        "icon": "business-dasao",
         "title": "打扫卫生"
       },
       {
-        "icon": "chanpin",
+        "icon": "business-chanpin",
         "title": "打扫卫生"
       },
       {
-        "icon": "chucha",
+        "icon": "business-chucha",
         "title": "打扫卫生"
       },
       {
-        "icon": "dianhua",
+        "icon": "business-dianhua",
         "title": "打扫卫生"
       },
     ]
@@ -57,5 +57,15 @@ Page({
         })
       }
     })
+  },
+  onLoad(query) {
+    console.log(query);
+    const { id } = query;
+    if(!id) {
+      wx.setNavigationBarTitle({
+        title: "新增活动"
+      })
+      return;
+    }
   }
 })

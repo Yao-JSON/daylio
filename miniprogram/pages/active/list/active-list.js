@@ -2,7 +2,7 @@ import { $wuxToptips } from './../../../wux/index'
 
 Page({
   data: {
-    url: '/pages/edit-active/edit-active',
+    url: '/pages/active/edit/edit-active',
     right: [
       {
         text: '取消',
@@ -16,23 +16,23 @@ Page({
     activeList: [
       {
         "id": "1",
-        "icon": "dasao",
+        "iconType": "business-dasao",
         "title": "打扫卫生",
         "remark": "非常客气的打扫卫生"
       },
       {
         "id": "2",
-        "icon": "chanpin",
+        "iconType": "business-chanpin",
         "title": "打扫卫生"
       },
       {
         "id": "3",
-        "icon": "chucha",
+        "iconType": "business-chucha",
         "title": "打扫卫生"
       },
       {
         "id": "4",
-        "icon": "dianhua",
+        "iconType": "business-dianhua",
         "title": "打扫卫生"
       },
     ]
