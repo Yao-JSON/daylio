@@ -37,9 +37,10 @@ Page({
       return;
     }
 
-    this.data.id = id;
-    this.data.iconType = iconType;
-    this.data.title = title;
-    console.log(this.data);
+    this.setData({
+      id,
+      iconType,
+      title 
+    })
   }
 })

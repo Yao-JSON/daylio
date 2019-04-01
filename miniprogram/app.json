@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/active/edit/edit-active",
     "pages/active/list/active-list",
+    "pages/active/edit/edit-active",
     "pages/mood/list/mood-list",
     "pages/mood/edit/edit-mood",
     "pages/diary/list/diary",
