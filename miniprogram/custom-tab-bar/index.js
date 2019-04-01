@@ -5,7 +5,7 @@ Component({
   data: {
     selected: 0,
     list: [{
-        "pagePath": "/pages/diary/diary",
+        "pagePath": "/pages/diary/list/diary",
         "text": "日记",
         "icon": 'icon-homefill',
         "action": "switchTab"
@@ -17,9 +17,8 @@ Component({
         "action": "switchTab"
       },
       {
-        
         "type": "button",
-        "pagePath": "/pages/new-diary/new-diary",
+        "pagePath": "/pages/diary/new-diary/new-diary",
         "text": "发布 ",
         "className": "shadow",
         "action": "switchTab",

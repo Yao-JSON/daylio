@@ -11,7 +11,7 @@
         title="{{ item.title }}" 
         label="{{ item.remark || '' }}"
         isLink="true"
-        url="/pages/edit-active/edit-active">
+        url="/pages/active/edit/edit-active">
         <active-icon class="active-title-icon" size="16" slot="header" type="{{ item.icon }}"></active-icon>
       </wux-cell>
     </wux-swipe-action>

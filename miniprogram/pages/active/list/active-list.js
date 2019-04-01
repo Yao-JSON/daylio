@@ -1,8 +1,8 @@
-import { $wuxToptips } from './../../wux/index'
+import { $wuxToptips } from './../../../wux/index'
 
 Page({
   data: {
-    url: '/pages/edit-mood/edit-mood',
+    url: '/pages/edit-active/edit-active',
     right: [
       {
         text: '取消',
@@ -15,18 +15,23 @@ Page({
     ],
     activeList: [
       {
+        "id": "1",
         "icon": "dasao",
-        "title": "打扫卫生"
+        "title": "打扫卫生",
+        "remark": "非常客气的打扫卫生"
       },
       {
+        "id": "2",
         "icon": "chanpin",
         "title": "打扫卫生"
       },
       {
+        "id": "3",
         "icon": "chucha",
         "title": "打扫卫生"
       },
       {
+        "id": "4",
         "icon": "dianhua",
         "title": "打扫卫生"
       },

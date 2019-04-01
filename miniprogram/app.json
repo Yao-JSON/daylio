@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/active-list/active-list",
-    "pages/edit-active/edit-active",
-    "pages/mood-list/mood-list",
-    "pages/edit-mood/edit-mood",
-    "pages/diary/diary",
-    "pages/new-diary/new-diary",
+    "pages/active/list/active-list",
+    "pages/active/edit/edit-active",
+    "pages/mood/list/mood-list",
+    "pages/mood/edit/edit-mood",
+    "pages/diary/list/diary",
+    "pages/diary/new-diary/new-diary",
     "pages/chart/chart",
     "pages/calendar/calendar",
     "pages/about/about"
@@ -23,7 +23,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/diary/diary",
+        "pagePath": "pages/diary/list/diary",
         "text": "日记",
         "action": "switchTab"
       },
@@ -34,7 +34,7 @@
         "action": "switchTab"
       },
       {
-        "pagePath": "pages/new-diary/new-diary",
+        "pagePath": "pages/diary/new-diary/new-diary",
         "text": "发布 "
       },
       {
