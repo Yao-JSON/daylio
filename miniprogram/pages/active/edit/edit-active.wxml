@@ -1,10 +1,23 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
+<view hover-class="none" hover-stop-propagation="false">
   <wux-input
     value="{{ title | '你好'}}"
     controlled
     placeholder="请输入活动名称">
     <active-icon type="{{ iconType }}" size="16"/>
   </wux-input>
+  <wux-cell-group
+    class="icon-group"
+    wx:for="{{ iconList }}"
+    wx:key="index"
+    title="{{ item.title }}">
+    <active-icon
+      class="icon-block"
+      wx:for="{{ item.icon }}" 
+      wx:key="{{ iconType }}" 
+      wx:for-item="iconType"
+      size="16"
+      type="{{ iconType }}"/>
+  </wux-cell-group>
 </view>
  
  <!-- top tips -->

@@ -1,10 +1,12 @@
-import { $wuxToptips } from './../../../wux/index'
+import { $wuxToptips } from './../../../wux/index';
+import iconList from './icon-list'
 
 Page({
   data: {
     id: 0,
     iconType: "business-dasao",
-    title: ''
+    title: '',
+    iconList
   },
   handlerDeleteActive(e){
     const { detail, target } = e;

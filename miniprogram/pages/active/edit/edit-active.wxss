@@ -1,0 +1,8 @@
+.icon-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon-group .icon-block {
+  width: 50px;
+}

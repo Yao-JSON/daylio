@@ -3,6 +3,7 @@
   "usingComponents": {
     "active-icon": "./../../../components/active-icon/index",
     "wux-toptips": "./../../../wux/toptips/index",
-    "wux-input": "./../../../wux/input/index"
+    "wux-input": "./../../../wux/input/index",
+    "wux-cell-group": "./../../../wux/cell-group/index"
   }
 }
