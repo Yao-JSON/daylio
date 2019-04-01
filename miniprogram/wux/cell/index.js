@@ -1,8 +1,18 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import { getTouchPoints, getPointsNumber, getSwipeDirection } from '../helpers/gestures'
 
 // 是否在跳转中
 let isLinkJumping = false;
+
+const restXy = {
+    x: 0,
+    y: 0
+};
+
+let start = restXy;
+
+let end = restXy;
 
 baseComponent({
     relations: {
@@ -134,13 +144,21 @@ baseComponent({
                 this.linkTo()
             }
         },
-        onTouchStart() {
-            
+        onTouchStart(e) {
+            if(getPointsNumber(e) <= 1) {
+                start = getTouchPoints(e);
+            }
         },
-        onTouchend() {
-            if (!this.data.disabled) {
-                this.triggerEvent('click')
-                this.linkTo()
+        onTouchend(e) {
+            if(getPointsNumber(e) <= 1) {    
+                end = getTouchPoints(e);
+                if (Math.abs(end.x - start.x) < 3 && !this.data.disabled) {
+                    this.triggerEvent('click')
+                    this.linkTo();
+
+                }
+                end = restXy;
+                start = restXy;
             }
         },
         bindgetuserinfo(e) {
