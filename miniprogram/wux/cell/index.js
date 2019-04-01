@@ -1,6 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 
+// 是否在跳转中
+let isLinkJumping = false;
+
 baseComponent({
     relations: {
         '../cell-group/index': {
@@ -131,6 +134,15 @@ baseComponent({
                 this.linkTo()
             }
         },
+        onTouchStart() {
+            
+        },
+        onTouchend() {
+            if (!this.data.disabled) {
+                this.triggerEvent('click')
+                this.linkTo()
+            }
+        },
         bindgetuserinfo(e) {
             this.triggerEvent('getuserinfo', e.detail)
         },
@@ -161,8 +173,11 @@ baseComponent({
                 return false
             } else if (openType === 'navigateBack') {
                 return wx[openType].call(wx, { delta })
-            } else {
-                return wx[openType].call(wx, { url })
+            } else if(!isLinkJumping) {
+                isLinkJumping = true;
+                return wx[openType].call(wx, { url, complete() {
+                    isLinkJumping = false;
+                }})
             }
         },
         updateIsLastElement(isLast) {

@@ -19,6 +19,7 @@
     binderror="onError"
     bindopensetting="bindopensetting"
     bindtap="onTap"
+    bind:touchend="onTouchend"
 >
     <view class="{{ classes.hd }}">
         <block wx:if="{{ thumb }}">
