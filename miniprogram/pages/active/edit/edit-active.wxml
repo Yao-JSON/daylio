@@ -1,24 +1,33 @@
-<view hover-class="none" hover-stop-propagation="false">
+<view class="edit-active-container" >
   <wux-input
-    value="{{ title | '你好'}}"
-    controlled
+    value="{{ title }}"
+    controlled="true"
+    wux-class="edit-input-container"
+    bind:confirm="handlerConfirm"
     placeholder="请输入活动名称">
-    <active-icon type="{{ iconType }}" size="16"/>
+    <active-icon 
+      wux-class="edit-input-icon" 
+      type="{{ iconType }}" 
+      size="32"/>
   </wux-input>
-  <wux-cell-group
-    class="icon-group"
-    wx:for="{{ iconList }}"
-    wx:key="index"
-    title="{{ item.title }}">
-    <active-icon
-      class="icon-block"
+</view>
+<wux-cell-group
+  wx:for="{{ iconList }}"
+  wx:key="index"
+  title="{{ item.title }}">
+  <wux-row>
+    <wux-col 
+      wux-class="active-icon-container"
       wx:for="{{ item.icon }}" 
       wx:key="{{ iconType }}" 
       wx:for-item="iconType"
-      size="16"
-      type="{{ iconType }}"/>
-  </wux-cell-group>
-</view>
+      span="2">
+      <active-icon
+        size="32"
+        type="{{ iconType }}"/>
+    </wux-col>
+  </wux-row>
+</wux-cell-group>
  
  <!-- top tips -->
 <wux-toptips id="wux-toptips" />

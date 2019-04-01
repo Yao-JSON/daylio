@@ -27,6 +27,28 @@ const activeIconList = [
       "business-zhaopian",
       "business-zuzhijiagou",
     ]
+  },
+  {
+    title: "旅游",
+    icon: [
+      "lvyou-fenzux",
+      "lvyou-house",
+      "lvyou-youji",
+      "lvyou-route",
+      "lvyou-hotel",
+      "lvyou-canyin",
+      "lvyou-gouwu",
+      "lvyou-jingdian",
+      "lvyou-zhangdan",
+      "lvyou-youhuiqaun",
+      "lvyou-collect",
+      "lvyou-record",
+      "lvyou-service",
+      "lvyou-invoice",
+      "lvyou-store",
+      "lvyou-information",
+      "lvyou-history"
+    ]
   }
 ];
 

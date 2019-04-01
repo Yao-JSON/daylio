@@ -32,6 +32,11 @@ baseComponent({
             if(type && /^business/.test(type)) {
                 return 'active-business-icon'
             }
+
+            // lvyou
+            if(type && /^lvyou/.test(type)) {
+                return 'active-lvyou-icon'
+            }
             
             return ''
         }

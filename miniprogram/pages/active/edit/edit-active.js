@@ -8,31 +8,14 @@ Page({
     title: '',
     iconList
   },
-  handlerDeleteActive(e){
-    const { detail, target } = e;
-    const { index } = target.dataset;
-    const { activeList } = this.data;
-    if(detail.index === 1) {
-      const newActiveList = [...activeList];
-      newActiveList.splice(index, 1)
-      this.setData({
-        activeList: newActiveList
-      });
-    }
+  // 编辑活动
+  handlerEditActive() {
+    const { id, iconType, title } = this.data;
+    
   },
-  // 新建活动
-  handlerAddActive() {
-    const { url } = this.data;
-    wx.navigateTo({
-      url,
-      fail() {
-        $wuxToptips().error({
-          hidden: false,
-          text: '跳转失败，请稍后重试',
-          duration: 3000,
-        })
-      }
-    })
+  // 确定
+  handlerConfirm() {
+    const { id, iconType, title } = this.data;
   },
   onLoad(query) {
     const { id, iconType, title } = query;
