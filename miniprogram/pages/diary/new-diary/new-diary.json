@@ -1,1 +1,12 @@
-{}
+{
+  "navigationBarTitleText": "新建日记",
+  "usingComponents": {
+    "wux-icon": "./../../../wux/icon/index",
+    "wux-card": "./../../../wux/card/index",
+    "wux-media": "./../../../wux/media/index",
+    "wux-calendar": "./../../../wux/calendar/index",
+    "diary-card": "./../../../components/diary-card/index",
+    "comon-view": "./../../../components/comon-view/index",
+    "wux-prompt": "./../../../wux/prompt/index"
+  }
+}

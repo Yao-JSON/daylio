@@ -1,0 +1,4 @@
+<view class="wux-class ">
+  <slot></slot>
+</view>
+  

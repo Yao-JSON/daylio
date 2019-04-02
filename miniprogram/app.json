@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/diary/list/diary",
     "pages/mood/list/mood-list",
     "pages/active/list/active-list",
     "pages/mood/edit/edit-mood",
     "pages/active/edit/edit-active",
-    "pages/diary/list/diary",
     "pages/diary/new-diary/new-diary",
     "pages/chart/chart",
     "pages/calendar/calendar",
