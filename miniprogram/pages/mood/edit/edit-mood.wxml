@@ -7,7 +7,7 @@
     bind:confirm="handlerConfirm"
     placeholder="请输入活动名称">
     <mood-icon 
-      wux-class="edit-input-icon edit-mood-color-{{ moodLevelColorType }}"
+      wux-class="edit-input-icon mood-color-{{ moodLevelColorType }}"
       type="{{ iconType }}" 
       size="32"/>
   </wux-input>
@@ -34,7 +34,7 @@
         span="2">
         <mood-icon
           size="32"
-          wux-class="edit-mood-color-{{ colorLevel[item.level].levelColorType }}"
+          wux-class="mood-color-{{ colorLevel[item.level].levelColorType }}"
           type="{{ iconType }}"/>
       </wux-col>
     </wux-row>

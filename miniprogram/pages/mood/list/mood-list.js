@@ -1,5 +1,7 @@
 import { $wuxToptips } from './../../../wux/index'
 
+import { colorLevel } from './../utils'
+
 Page({
   data: {
     url: '/pages/mood/edit/edit-mood',
@@ -13,25 +15,26 @@ Page({
         style: 'background-color: #F4333C; color: white',
       }
     ],
+    colorLevel,
     moodList:[
       {
         label: '狂喜',
         level: 5,
         list: [
           {
-            iconType: 'business-dasao',
+            iconType: 'happy-daxiao',
             title: '傻笑',
             remark: 'remark',
             id: 1
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'happy-wink',
             title: '傻笑',
             remark: '备注',
             id: 2
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'happy-layer',
             title: '傻笑',
             id: 3
           }
@@ -42,17 +45,17 @@ Page({
         level: 4,
         list: [
           {
-            iconType: 'business-dasao',
+            iconType: 'kaixin-ufo',
             title: '傻笑',
             id: 4
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'kaixin-quiet',
             title: '傻笑',
             id: 5
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'kaixin-shy',
             title: '傻笑',
             id: 6
           }
@@ -63,17 +66,17 @@ Page({
         level: 3,
         list: [
           {
-            iconType: 'business-dasao',
+            iconType: 'yiban-headache',
             title: '傻笑',
             id: 7
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'yiban-hypnotized',
             title: '傻笑',
             id: 8
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'yiban-big-eye',
             title: '傻笑',
             id: 9
           }
@@ -84,17 +87,17 @@ Page({
         level: 2,
         list: [
           {
-            iconType: 'business-dasao',
+            iconType: 'bushuang-karate',
             title: '傻笑',
             id: 10
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'bushuang-sweating',
             title: '傻笑',
             id: 11
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'bushuang-layer',
             title: '傻笑',
             id: 12
           }
@@ -105,17 +108,17 @@ Page({
         level: 1,
         list: [
           {
-            iconType: 'business-dasao',
+            iconType: 'chaolan-kulian',
             title: '傻笑',
             id: 13
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'chaolan-kulian-one',
             title: '傻笑',
             id: 14
           },
           {
-            iconType: 'business-dasao',
+            iconType: 'chaolan-vomiting',
             title: '傻笑',
             id: 15
           }

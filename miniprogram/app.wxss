@@ -30,3 +30,27 @@
     transform: translateY(0px);
   }
 }
+
+.mood-color-happy, 
+.mood-text-happy {
+  color: #d81e06;
+}
+.mood-color-kaixin,
+.mood-text-kaixin {
+  color: #f37b1d;
+}
+
+.mood-color-yiban,
+.mood-text-yiban {
+  color: #fbbd08;
+}
+
+.mood-text-bushuang,
+.mood-color-bushuang {
+  color: #13227a;
+}
+
+.mood-text-chaolan,
+.mood-color-chaolan {
+  color: #8799a3;
+}
