@@ -12,7 +12,6 @@ App({
     wx.getSystemInfo({
       success: e => {
         const navRect = wx.getMenuButtonBoundingClientRect();
-        console.log(navRect);
         this.globalData.SystemInfo = e;
         this.globalData.navRect = navRect;
       }

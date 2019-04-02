@@ -2,7 +2,7 @@ import baseComponent from './../../wux/helpers/baseComponent';
 
 const app = getApp();
 
-const { SystemInfo } = app.globalData;
+const { SystemInfo, navRect } = app.globalData;
 
 const backgroundKey = 'diary-global-background-image';
 
@@ -13,7 +13,11 @@ try {
 } catch (e) {
   // Do something when catch error
 }
-console.log(SystemInfo);
+
+console.log(SystemInfo, navRect);
+
+const screenHeight = SystemInfo.screenHeight - (navRect.height + navRect.bottom + navRect.top)
+
 baseComponent({
   properties:{
     isHasCustomBar: {
@@ -26,7 +30,7 @@ baseComponent({
     },
     screenHeight: {
       type: Number,
-      value: SystemInfo.screenHeight
+      value: screenHeight
     }
   },
   data: {
@@ -49,6 +53,12 @@ baseComponent({
           }
         })
       }
+    }
+  },
+  lifetimes: {
+    attached() {
+      const currentPage = getCurrentPages();
+      console.log('currentPage', currentPage);
     }
   }
 })

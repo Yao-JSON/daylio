@@ -1,4 +1,4 @@
- <view class="cu-bar tabbar bg-white">
+ <view class="cu-bar tabbar">
   <view wx:for="{{ list }}" 
     wx:key="index"
     data-url="{{item.pagePath}}" 
@@ -26,10 +26,10 @@
         <view
           class="image-parent"
           wx:for="{{ imageList }}"
-          wx:key="index"
+          wx:for-item="imageSrc"
+          wx:key="{{ imageSrc }}"
           data-src="{{ imageSrc }}"
-          bind:tap="onImageSelect"
-          wx:for-item="imageSrc">
+          bind:tap="onImageSelect">
           <image
             class="picture"
             wx:if="{{ !!imageSrc }}"

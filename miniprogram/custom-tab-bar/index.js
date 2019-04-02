@@ -2,7 +2,6 @@ import { imageList } from './utils'
 
 import baseComponent from './../wux/helpers/baseComponent'
 
-
 baseComponent({
   useFunc: true,
   options: {
@@ -78,5 +77,5 @@ baseComponent({
     onImageLoadError(err) {
       console.log(err);
     }
-  }
+  },
 })
