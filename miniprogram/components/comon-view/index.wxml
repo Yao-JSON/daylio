@@ -6,11 +6,15 @@
   <wux-popup 
     position="bottom"
     maskClosable
-    wux-class="popup-footer-container"
+    wux-content-class="popup-content-container"
     wux-footer-class="popup-footer-container"
-    contentStyle=" padding-bottom: {{ popupPaddingBottom }}px;"
+    bind:close="onClose"
     visible="{{ visible }}">
-    popup
+    <scroll-view 
+      class="background-image"
+      scroll-x>
+
+    </scroll-view>
   </wux-popup>
   <slot></slot>
 </scroll-view>

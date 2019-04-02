@@ -90,7 +90,7 @@ baseComponent({
             const extra = `${prefixCls}__extra`
             const close = `${prefixCls}__close`
             const x = `${prefixCls}__close-x`
-            console.log(extra);
+
             return {
                 wrap,
                 content,

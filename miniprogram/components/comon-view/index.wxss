@@ -1,5 +1,6 @@
 .popup-content-container {
   background: transparent;
+  padding-bottom: 65px;
 }
 
 .popup-footer-container.wux-popup__ft:after{

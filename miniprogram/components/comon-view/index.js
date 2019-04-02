@@ -26,9 +26,13 @@ baseComponent({
   },
   methods: {
     onLongPress(e) {
-      console.log('onLongPress', e);
       this.setData({
         visible: true
+      });
+    },
+    onClose() {
+      this.setData({
+        visible: false
       });
     }
   }
