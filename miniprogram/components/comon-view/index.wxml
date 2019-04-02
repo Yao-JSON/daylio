@@ -11,9 +11,23 @@
     bind:close="onClose"
     visible="{{ visible }}">
     <scroll-view 
-      class="background-image"
+      class="background-image-scroll-container"
       scroll-x>
-
+      <view class="background-image-container" style="width: {{ imageList.length * 80 }}px">
+        <view
+          class="image-parent"
+          wx:for="{{ imageList }}"
+          wx:key="index"
+          data-src="{{ imageSrc }}"
+          bind:tap="onSelectImage"
+          wx:for-item="imageSrc">
+          <image
+            class="image"
+            src="./../../images/background-image/{{ imageSrc }}"
+            mode="widthFix"
+          />
+        </view>
+      </view>
     </scroll-view>
   </wux-popup>
   <slot></slot>

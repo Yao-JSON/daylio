@@ -4,7 +4,8 @@ const app = getApp();
 
 const { SystemInfo } = app.globalData;
 
-console.log(JSON.stringify(app.globalData.SystemInfo, null , 2));
+import { imageList } from './utils'
+
 
 baseComponent({
   properties:{
@@ -15,14 +16,11 @@ baseComponent({
     windowHeight: {
       type: Number,
       value: SystemInfo.windowHeight
-    },
-    popupPaddingBottom: {
-      type: Number,
-      value: SystemInfo.screenHeight - SystemInfo.windowWidth,
     }
   },
   data: {
-    visible: false
+    visible: false,
+    imageList
   },
   methods: {
     onLongPress(e) {
@@ -34,6 +32,9 @@ baseComponent({
       this.setData({
         visible: false
       });
+    },
+    onSelectImage() {
+
     }
   }
 })
