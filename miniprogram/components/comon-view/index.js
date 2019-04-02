@@ -13,7 +13,7 @@ try {
 } catch (e) {
   // Do something when catch error
 }
-
+console.log(SystemInfo);
 baseComponent({
   properties:{
     isHasCustomBar: {
@@ -23,6 +23,10 @@ baseComponent({
     windowHeight: {
       type: Number,
       value: SystemInfo.windowHeight
+    },
+    screenHeight: {
+      type: Number,
+      value: SystemInfo.screenHeight
     }
   },
   data: {

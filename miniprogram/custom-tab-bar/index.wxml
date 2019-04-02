@@ -31,10 +31,13 @@
           bind:tap="onImageSelect"
           wx:for-item="imageSrc">
           <image
-            class="image"
+            class="picture"
+            wx:if="{{ !!imageSrc }}"
             src="{{ imageSrc }}"
             mode="widthFix"
+            binderror="onImageLoadError"
           />
+          <!-- <view class="image" style="background-image:url({{ imageSrc }})"/> -->
         </view>
       </view>
     </scroll-view>

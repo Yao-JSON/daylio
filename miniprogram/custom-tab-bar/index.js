@@ -74,6 +74,9 @@ baseComponent({
       if(this.fns.onChange && typeof this.fns.onChange === 'function') {
         this.fns.onChange.call(this, dataset.src);
       }
+    },
+    onImageLoadError(err) {
+      console.log(err);
     }
   }
 })

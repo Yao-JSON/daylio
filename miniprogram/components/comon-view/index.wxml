@@ -1,6 +1,6 @@
 <scroll-view
   scroll-y
-  style="height: {{ windowHeight }}px;"
+  style="height: {{ screenHeight }}px;"
   class="wux-class"
   class="comon-view-conatiner"
   catch:longpress="onLongPress">
