@@ -6,7 +6,8 @@
   <wux-popup 
     position="bottom"
     maskClosable
-    wux-class="popup-content-container"
+    wux-class="popup-footer-container"
+    wux-footer-class="popup-footer-container"
     contentStyle=" padding-bottom: {{ popupPaddingBottom }}px;"
     visible="{{ visible }}">
     popup

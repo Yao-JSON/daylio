@@ -2,6 +2,14 @@
   background: transparent;
 }
 
-.popup-content-container .wux-popup__ft:after {
-  display: none;
+.popup-footer-container.wux-popup__ft:after{
+  content:" ";
+  position:absolute;
+  left:0;top:0;
+  right:0;
+  height:0;
+  border-top:0;
+  color:#d5d5d6;
+  transform-origin:0 0;
+  transform:scaleY(.5);
 }
