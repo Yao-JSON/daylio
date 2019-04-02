@@ -1,4 +1,34 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
-  编辑心情
+<view class="edit-active-container" >
+  <wux-input
+    value="{{ title }}"
+    controlled="true"
+    wux-class="edit-input-container"
+    bind:change="handlerChange"
+    bind:confirm="handlerConfirm"
+    placeholder="请输入活动名称">
+    <active-icon 
+      wux-class="edit-input-icon" 
+      type="{{ iconType }}" 
+      size="32"/>
+  </wux-input>
 </view>
-  
+<wux-cell-group
+  wx:for="{{ iconList }}"
+  wx:key="index"
+  title="{{ item.title }}">
+  <wux-row>
+    <wux-col 
+      wux-class="active-icon-container"
+      wx:for="{{ item.icon }}" 
+      wx:key="{{ iconType }}" 
+      wx:for-item="iconType"
+      data-icon-type="{{ iconType }}"
+      bind:tap="handlerSelectIcon"
+      span="2">
+      <active-icon
+        size="32"
+        type="{{ iconType }}"/>
+    </wux-col>
+  </wux-row>
+</wux-cell-group>
+ 

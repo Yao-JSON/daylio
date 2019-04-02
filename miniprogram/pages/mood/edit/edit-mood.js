@@ -8,7 +8,7 @@ Page({
     title: '',
     iconList
   },
-  // 编辑活动
+  // 编辑心情
   handlerChange(e) {
     this.setData({
       title: e.detail.value
@@ -32,7 +32,7 @@ Page({
     const { id, iconType, title } = query;
     if(!id) {
       wx.setNavigationBarTitle({
-        title: "新增活动"
+        title: "新增心情"
       })
       return;
     }

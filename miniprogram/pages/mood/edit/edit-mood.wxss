@@ -1,0 +1,23 @@
+.active-icon-container {
+  padding: 5px 0px;
+  text-align: center;
+}
+
+.edit-active-container {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.edit-active-container .wux-input__control  {
+  display: flex;
+  align-items: center;
+}
+
+.edit-active-container .wux-input__control input {
+  height: 32px;
+}
+
+.edit-input-icon {
+  margin-right: 3px;
+  vertical-align: baseline;
+}
