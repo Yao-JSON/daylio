@@ -1,34 +1,42 @@
-<view class="edit-active-container" >
+<view class="edit-mood-container fixed">
   <wux-input
     value="{{ title }}"
     controlled="true"
-    wux-class="edit-input-container"
+    focus="true"
     bind:change="handlerChange"
     bind:confirm="handlerConfirm"
     placeholder="请输入活动名称">
-    <active-icon 
-      wux-class="edit-input-icon" 
+    <mood-icon 
+      wux-class="edit-input-icon edit-mood-color-{{ moodLevelColorType }}"
       type="{{ iconType }}" 
       size="32"/>
   </wux-input>
 </view>
-<wux-cell-group
-  wx:for="{{ iconList }}"
-  wx:key="index"
-  title="{{ item.title }}">
-  <wux-row>
-    <wux-col 
-      wux-class="active-icon-container"
-      wx:for="{{ item.icon }}" 
-      wx:key="{{ iconType }}" 
-      wx:for-item="iconType"
-      data-icon-type="{{ iconType }}"
-      bind:tap="handlerSelectIcon"
-      span="2">
-      <active-icon
-        size="32"
-        type="{{ iconType }}"/>
-    </wux-col>
-  </wux-row>
-</wux-cell-group>
- 
+<scroll-view
+  scroll-y
+  class="edit-mood-scroll-container"
+  scroll-with-animation="true"
+  enable-back-to-top="true">
+  <wux-cell-group
+    wx:for="{{ iconList }}"
+    wx:key="index"
+    title="{{ item.title }}">
+    <wux-row>
+      <wux-col 
+        wux-class="mood-icon-container"
+        wx:for="{{ item.icon }}" 
+        wx:key="{{ iconType }}" 
+        wx:for-item="iconType"
+        data-icon-type="{{ iconType }}"
+        data-mood-level="{{ item.level }}"
+        data-mood-level-color-type="{{ colorLevel[item.level].levelColorType }}"
+        bind:tap="handlerSelectIcon"
+        span="2">
+        <mood-icon
+          size="32"
+          wux-class="edit-mood-color-{{ colorLevel[item.level].levelColorType }}"
+          type="{{ iconType }}"/>
+      </wux-col>
+    </wux-row>
+  </wux-cell-group>
+</scroll-view>

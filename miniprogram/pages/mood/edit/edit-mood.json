@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "编辑心情",
   "usingComponents": {
-    "active-icon": "./../../../components/active-icon/index",
+    "mood-icon": "./../../../components/mood-icon/index",
     "wux-input": "./../../../wux/input/index",
     "wux-row": "./../../../wux/row/index",
     "wux-col": "./../../../wux/col/index",

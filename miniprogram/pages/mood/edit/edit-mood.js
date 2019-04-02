@@ -1,12 +1,40 @@
 // import { $wuxToptips } from './../../../wux/index';
 import iconList from './icon-list'
 
+const colorLevel = {
+  5:{
+    level: 5,
+    levelColorType: 'happy'
+  },
+  4: {
+    level: 4,
+    levelColorType: 'kaixin'
+  },
+  3:{
+    level: 3,
+    levelColorType: 'yiban'
+  },
+  2: {
+    level: 2,
+    levelColorType: 'bushuang'
+  },
+  1:{
+    level: 1,
+    levelColorType: 'chaolan'
+  }
+};
+
 Page({
   data: {
+    // StatusBar: app.globalData.StatusBar,
+    // CustomBar: app.globalData.CustomBar,
     id: 0,
-    iconType: "business-dasao",
+    iconType: "happy-daxiao",
     title: '',
-    iconList
+    iconList,
+    moodLevel: 5,
+    moodLevelColorType: 'happy',
+    colorLevel
   },
   // 编辑心情
   handlerChange(e) {
@@ -16,10 +44,12 @@ Page({
   },
   // icon 选择
   handlerSelectIcon(e) {
-    const { iconType } = this.data;
+    const { iconType, moodLevelColorType, moodLevel } = this.data;
     const { dataset } = e.currentTarget;
     this.setData({
-      iconType: dataset ? dataset.iconType : iconType
+      iconType: dataset && dataset.iconType ? dataset.iconType : iconType,
+      moodLevelColorType: dataset && dataset.moodLevelColorType ? dataset.moodLevelColorType : moodLevelColorType,
+      moodLevel: dataset && dataset.moodLevel ? dataset.moodLevel : moodLevel
     });
   },
   // 确定
@@ -29,7 +59,7 @@ Page({
 
   },
   onLoad(query) {
-    const { id, iconType, title } = query;
+    const { id, iconType, title, level } = query;
     if(!id) {
       wx.setNavigationBarTitle({
         title: "新增心情"
@@ -40,7 +70,8 @@ Page({
     this.setData({
       id,
       iconType,
-      title 
+      title,
+      levelColorType: level ? colorLevel[level].levelColorType : 'happy'
     })
   }
 })

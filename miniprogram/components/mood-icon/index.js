@@ -43,12 +43,12 @@ baseComponent({
                 return 'mood-yiban'
             }
             
-            // yiban
+            // bushuang
             if(type && /^bushuang/.test(type)) {
                 return 'mood-bushuang'
             }
             
-            // yiban
+            // chaolan
             if(type && /^chaolan/.test(type)) {
                 return 'mood-chaolan'
             }

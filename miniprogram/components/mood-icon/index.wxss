@@ -19,11 +19,11 @@
   content: "\e6ab";
 }
 
-.icon-happy-Wink:before {
+.icon-happy-wink:before {
   content: "\e93d";
 }
 
-.icon-happy-Love:before {
+.icon-happy-love:before {
   content: "\e93f";
 }
 
@@ -176,7 +176,7 @@
   content: "\e944";
 }
 
-.icon-bushuang-layer-:before {
+.icon-bushuang-layer:before {
   content: "\e947";
 }
 
@@ -211,7 +211,7 @@
   url('iconfont.svg?t=1554175429072#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.chaolan-iconfont {
+.mood-chaolan {
   font-family: "chaolan-iconfont" !important;
   font-size: 16px;
   font-style: normal;
@@ -227,7 +227,7 @@
   content: "\e657";
 }
 
-.icon-chaolan-kulian1:before {
+.icon-chaolan-kulian-one:before {
   content: "\e63a";
 }
 

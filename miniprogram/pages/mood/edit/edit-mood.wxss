@@ -1,23 +1,53 @@
-.active-icon-container {
+.mood-icon-container {
   padding: 5px 0px;
   text-align: center;
 }
 
-.edit-active-container {
+.edit-mood-container {
   padding: 5px;
   border-bottom: 1px solid #ddd;
 }
 
-.edit-active-container .wux-input__control  {
+.edit-mood-container.fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1024;
+  background-color: #fff;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.edit-mood-container .wux-input__control  {
   display: flex;
   align-items: center;
 }
 
-.edit-active-container .wux-input__control input {
+.edit-mood-container .wux-input__control input {
   height: 32px;
+}
+
+.edit-mood-scroll-container {
+  margin-top: 50px;
 }
 
 .edit-input-icon {
   margin-right: 3px;
   vertical-align: baseline;
+}
+
+
+.edit-mood-color-happy {
+  color: #d81e06;
+}
+.edit-mood-color-kaixin {
+  color: #f37b1d;
+}
+.edit-mood-color-yiban {
+  color: #fbbd08;
+}
+.edit-mood-color-bushuang {
+  color: #13227a;
+}
+.edit-mood-color-chaolan {
+  color: #8799a3;
 }
