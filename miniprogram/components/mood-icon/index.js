@@ -28,14 +28,29 @@ baseComponent({
         groupType() {
             const { type } = this.data;
 
-            // business
-            if(type && /^business/.test(type)) {
-                return 'active-business-icon'
+            // happy
+            if(type && /^happy/.test(type)) {
+                return 'mood-happy'
             }
 
-            // lvyou
-            if(type && /^lvyou/.test(type)) {
-                return 'active-lvyou-icon'
+            // kaixin
+            if(type && /^kaixin/.test(type)) {
+                return 'mood-kaixin'
+            }
+            
+            // yiban
+            if(type && /^yiban/.test(type)) {
+                return 'mood-yiban'
+            }
+            
+            // yiban
+            if(type && /^bushuang/.test(type)) {
+                return 'mood-bushuang'
+            }
+            
+            // yiban
+            if(type && /^chaolan/.test(type)) {
+                return 'mood-chaolan'
             }
             
             return ''
