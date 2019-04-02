@@ -1,4 +1,4 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
+<comon-view >
   统计
-</view>
+</comon-view>
   

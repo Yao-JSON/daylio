@@ -32,7 +32,7 @@
           wx:for-item="imageSrc">
           <image
             class="image"
-            src="./../images/background-image/{{ imageSrc }}"
+            src="{{ imageSrc }}"
             mode="widthFix"
           />
         </view>

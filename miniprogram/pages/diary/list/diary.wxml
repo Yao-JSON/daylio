@@ -1,4 +1,4 @@
-<comon-view is-has-custom-bar>
+<comon-view>
   <wux-media 
   icon="ios-add-circle" 
   title="新建今天的笔记 - 现在立刻!" 

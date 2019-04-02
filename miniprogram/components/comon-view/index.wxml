@@ -1,7 +1,8 @@
 <scroll-view
   scroll-y
-  style="height: {{ windowHeight }}px"
-  class="wux-class "
+  style="height: {{ windowHeight }}px;"
+  class="wux-class"
+  class="comon-view-conatiner"
   catch:longpress="onLongPress">
   <slot></slot>
 </scroll-view>
