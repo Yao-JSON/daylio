@@ -2,7 +2,6 @@
   "navigationBarTitleText": "编辑活动",
   "usingComponents": {
     "active-icon": "./../../../components/active-icon/index",
-    "wux-toptips": "./../../../wux/toptips/index",
     "wux-input": "./../../../wux/input/index",
     "wux-row": "./../../../wux/row/index",
     "wux-col": "./../../../wux/col/index",

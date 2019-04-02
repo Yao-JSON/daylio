@@ -1,26 +1,24 @@
-<wux-cell-group class="">
-  <wux-swipe-action-group>
-    <wux-swipe-action 
-      wx:key="index" 
-      autoClose 
-      right="{{ right }}"
-      bind:click="handlerDeleteActive"
-      data-index="{{ index }}"
-      wx:for="{{ activeList }}">
-      <wux-cell 
-        title="{{ item.title }}" 
-        label="{{ item.remark || '' }}"
-        isLink="true"
-        url="/pages/active/edit/edit-active?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
-        <active-icon 
-          wux-class="active-icon-container"
-          size="16"
-          slot="header"
-          type="{{ item.iconType }}"/>
-      </wux-cell>
-    </wux-swipe-action>
-  </wux-swipe-action-group>
-</wux-cell-group>
+<wux-swipe-action-group>
+  <wux-swipe-action 
+    wx:key="index" 
+    autoClose 
+    right="{{ right }}"
+    bind:click="handlerDeleteActive"
+    data-index="{{ index }}"
+    wx:for="{{ activeList }}">
+    <wux-cell 
+      title="{{ item.title }}" 
+      label="{{ item.remark || '' }}"
+      isLink="true"
+      url="/pages/active/edit/edit-active?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
+      <active-icon 
+        wux-class="active-icon-container"
+        size="16"
+        slot="header"
+        type="{{ item.iconType }}"/>
+    </wux-cell>
+  </wux-swipe-action>
+</wux-swipe-action-group>
  
  <!-- 浮动按钮 -->
 <wux-fab-button actionRotate="false" controlled="true" bind:actionClick="handlerAddActive" /> 

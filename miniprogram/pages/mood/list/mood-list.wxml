@@ -1,32 +1,32 @@
-<wux-cell-group class="">
-  <wux-swipe-action-group>
-    <wux-cell-group
-      wx:for="{{ moodList }}"
-      wx:key="index"
-      data-level="{{ item.level }}"
-      title="{{ item.label }}">
-      <wux-swipe-action 
-        wx:for="{{ item.list }}"
-        wx:key="list"
-        autoClose 
-        right="{{ right }}"
-        bind:click="handlerDeleteActive"
-        data-index="{{ index }}">
-        <wux-cell 
-          title="{{ item.title }}"
-          label="{{ item.remark || '' }}"
-          isLink="true"
-          url="/pages/mood/edit/edit-mood?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
-          <active-icon
-            wux-class="mood-icon-container" 
-            size="16"
-            slot="header"
-            type="{{ item.iconType }}"/>
-        </wux-cell>
-      </wux-swipe-action>
-    </wux-cell-group>
-  </wux-swipe-action-group>
-</wux-cell-group>
+<wux-swipe-action-group>
+  <wux-cell-group
+    wx:for="{{ moodList }}"
+    wx:key="index"
+    title="{{ item.label }}">
+    <wux-swipe-action 
+      wx:for="{{ item.list }}"
+      wx:for-index="idx"
+      wx:for-item="moodInfo"
+      wx:key="{{ idx }}"
+      autoClose 
+      right="{{ right }}"
+      bind:click="handlerDeleteActive"
+      data-group-mood-index="{{ index }}"
+      data-index="{{ idx }}">
+      <wux-cell 
+        title="{{ moodInfo.title }}"
+        label="{{ moodInfo.remark || '' }}"
+        isLink="true"
+        url="/pages/mood/edit/edit-mood?id={{ moodInfo.id }}&remark={{ moodInfo.remark }}&iconType={{ moodInfo.iconType }}&title={{ moodInfo.title }}">
+        <active-icon
+          wux-class="mood-icon-container" 
+          size="16"
+          slot="header"
+          type="{{ moodInfo.iconType }}"/>
+      </wux-cell>
+    </wux-swipe-action>
+  </wux-cell-group>
+</wux-swipe-action-group>
  
  <!-- 浮动按钮 -->
 <wux-fab-button actionRotate="false" controlled="true" bind:actionClick="handlerAddActive" /> 

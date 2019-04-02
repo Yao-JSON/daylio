@@ -1,4 +1,3 @@
-import { $wuxToptips } from './../../../wux/index';
 import iconList from './icon-list'
 
 Page({

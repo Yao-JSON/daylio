@@ -5,11 +5,11 @@ Page({
     url: '/pages/mood/edit/edit-mood',
     right: [
       {
-        title: '取消',
+        text: '取消',
         style: 'background-color: #ddd; color: white',
       },
       {
-        title: '删除',
+        text: '删除',
         style: 'background-color: #F4333C; color: white',
       }
     ],
@@ -124,17 +124,18 @@ Page({
     ]
   },
   handlerDeleteActive(e){
-    const { detail, target } = e;
-    const { index } = target.dataset;
-    const { activeList } = this.data;
-    console.log(e);
-    if(detail.index === 1) {
-      const newActiveList = [...activeList];
-      newActiveList.splice(index, 1)
-      this.setData({
-        activeList: newActiveList
-      });
-    }
+    const { index, groupMoodIndex } = e.currentTarget.dataset;
+    const { moodList } = this.data;
+
+    const newMoodList = [...moodList];
+
+    const moodItem = newMoodList[groupMoodIndex];
+    moodItem.list.splice(index, 1);
+   
+    this.setData({
+      moodList: newMoodList
+    });
+   
   },
   // 新建活动
   handlerAddActive() {
