@@ -4,9 +4,6 @@ const app = getApp();
 
 const { SystemInfo } = app.globalData;
 
-import { imageList } from './utils'
-
-
 baseComponent({
   properties:{
     isHasCustomBar: {
@@ -20,21 +17,20 @@ baseComponent({
   },
   data: {
     visible: false,
-    imageList
+    backgroundSrc: ''
   },
   methods: {
     onLongPress(e) {
-      this.setData({
-        visible: true
-      });
-    },
-    onClose() {
-      this.setData({
-        visible: false
-      });
-    },
-    onSelectImage() {
-
+      if(typeof this.getTabBar === 'function') {
+        const cusTabBar = this.getTabBar();
+        cusTabBar.onShow({
+          onChange: (src) => {
+            this.setData({
+              backgroundSrc: src
+            })
+          }
+        })
+      }
     }
   }
 })

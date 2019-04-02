@@ -11,7 +11,6 @@ App({
 
     wx.getSystemInfo({
       success: e => {
-        console.log(e);
         this.globalData.SystemInfo = e;
       }
     })

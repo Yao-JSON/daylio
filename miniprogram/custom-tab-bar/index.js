@@ -1,4 +1,10 @@
-Component({
+import { imageList } from './utils'
+
+import baseComponent from './../wux/helpers/baseComponent'
+
+
+baseComponent({
+  useFunc: true,
   options: {
     addGlobalClass: true,
   },
@@ -36,7 +42,10 @@ Component({
         "action": "switchTab",
         "icon": "icon-my"
       }
-    ]
+    ],
+    visible: false,
+    imageList,
+    onChange() {}
   },
   methods: {
     switchTab(e) {      
@@ -46,8 +55,25 @@ Component({
           url
         })
       }
+    },
+    onClose() {
+      this.setData({
+        visible: false
+      })
+    },
+    onShow(opts = { }) {      
+      const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, this.data, opts));
+      this.$$setData({ ...options }).then(() => {
+        this.setData({
+          visible: true
+        })
+      })
+    },
+    onImageSelect(e) {
+      const { dataset } = e.currentTarget;
+      if(this.fns.onChange && typeof this.fns.onChange === 'function') {
+        this.fns.onChange.call(this, dataset.src);
+      }
     }
-  },
-  pageLifetimes: {
-  },
+  }
 })

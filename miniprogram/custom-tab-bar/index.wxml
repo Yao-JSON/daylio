@@ -11,3 +11,31 @@
       {{item.text}}
   </view>
 </view>
+
+ <wux-popup 
+    position="bottom"
+    maskClosable
+    wux-content-class="popup-content-container"
+    wux-footer-class="popup-footer-container"
+    bind:close="onClose"
+    visible="{{ visible }}">
+    <scroll-view 
+      class="background-image-scroll-container"
+      scroll-x>
+      <view class="background-image-container" style="width: {{ imageList.length * 80 }}px">
+        <view
+          class="image-parent"
+          wx:for="{{ imageList }}"
+          wx:key="index"
+          data-src="{{ imageSrc }}"
+          bind:tap="onImageSelect"
+          wx:for-item="imageSrc">
+          <image
+            class="image"
+            src="./../images/background-image/{{ imageSrc }}"
+            mode="widthFix"
+          />
+        </view>
+      </view>
+    </scroll-view>
+  </wux-popup>

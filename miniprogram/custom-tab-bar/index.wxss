@@ -1,0 +1,35 @@
+.popup-content-container {
+  background: transparent;
+}
+
+.popup-footer-container.wux-popup__ft:after{
+  content:" ";
+  position:absolute;
+  left:0;top:0;
+  right:0;
+  height:0;
+  border-top:0;
+  color:#d5d5d6;
+  transform-origin:0 0;
+  transform:scaleY(.5);
+}
+
+.background-image-container {
+  display: flex;
+  height: 80px;
+  overflow: hidden;
+}
+
+.background-image-container .image-parent {
+  width: 80px;
+  height: 60px;
+  overflow: hidden;
+  margin: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 0rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.background-image-scroll-container {
+  padding: 10px 0 0;
+}
