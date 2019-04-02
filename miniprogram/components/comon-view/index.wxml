@@ -1,11 +1,16 @@
-<wux-popup 
-  position="bottom"
-  visible="{{ visible }}">
-  popup
-</wux-popup>
-
-<view class="wux-class "
+<scroll-view
+  scroll-y
+  style="height: {{ windowHeight }}px"
+  class="wux-class "
   catch:longpress="onLongPress">
+  <wux-popup 
+    position="bottom"
+    maskClosable
+    wux-class="popup-content-container"
+    contentStyle=" padding-bottom: {{ popupPaddingBottom }}px;"
+    visible="{{ visible }}">
+    popup
+  </wux-popup>
   <slot></slot>
-</view>
+</scroll-view>
   

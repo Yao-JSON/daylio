@@ -1,12 +1,9 @@
-// import { $wuxToptips } from './../../../wux/index';
 import iconList from './icon-list'
 
 import { colorLevel } from './../utils'
 
 Page({
   data: {
-    // StatusBar: app.globalData.StatusBar,
-    // CustomBar: app.globalData.CustomBar,
     id: 0,
     iconType: "happy-daxiao",
     title: '',

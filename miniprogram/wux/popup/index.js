@@ -40,6 +40,15 @@ baseComponent({
                 })
             },
         },
+        contentStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.setData({
+                    extContentStyle: styleToCssString(newVal),
+                })
+            },
+        },
         closable: {
             type: Boolean,
             value: false,

@@ -1,0 +1,7 @@
+.popup-content-container {
+  background: transparent;
+}
+
+.popup-content-container .wux-popup__ft:after {
+  display: none;
+}
