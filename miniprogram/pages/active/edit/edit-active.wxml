@@ -1,4 +1,4 @@
-<view class="edit-active-container" >
+<view class="edit-active-container fixed" >
   <wux-input
     value="{{ title }}"
     controlled="true"
@@ -12,25 +12,31 @@
       size="32"/>
   </wux-input>
 </view>
-<wux-cell-group
-  wx:for="{{ iconList }}"
-  wx:key="index"
-  title="{{ item.title }}">
-  <wux-row>
-    <wux-col 
-      wux-class="active-icon-container"
-      wx:for="{{ item.icon }}" 
-      wx:key="{{ iconType }}" 
-      wx:for-item="iconType"
-      data-icon-type="{{ iconType }}"
-      bind:tap="handlerSelectIcon"
-      span="2">
-      <active-icon
-        size="32"
-        type="{{ iconType }}"/>
-    </wux-col>
-  </wux-row>
-</wux-cell-group>
+<scroll-view
+  scroll-y
+  class="edit-active-scroll-container"
+  scroll-with-animation="true"
+  enable-back-to-top="true">
+  <wux-cell-group
+    wx:for="{{ iconList }}"
+    wx:key="index"
+    title="{{ item.title }}">
+    <wux-row>
+      <wux-col 
+        wux-class="active-icon-container"
+        wx:for="{{ item.icon }}" 
+        wx:key="{{ iconType }}" 
+        wx:for-item="iconType"
+        data-icon-type="{{ iconType }}"
+        bind:tap="handlerSelectIcon"
+        span="2">
+        <active-icon
+          size="32"
+          type="{{ iconType }}"/>
+      </wux-col>
+    </wux-row>
+  </wux-cell-group>
+</scroll-view>
  
  <!-- top tips -->
 <!-- <wux-toptips id="wux-toptips" /> -->

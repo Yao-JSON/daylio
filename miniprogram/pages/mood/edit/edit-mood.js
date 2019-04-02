@@ -33,8 +33,8 @@ Page({
   },
   // 确定
   handlerConfirm() {
-    const { id, iconType, title } = this.data;
-    console.log(id, iconType, title);
+    const { id, iconType, title, moodLevel } = this.data;
+    console.log(id, iconType, title, moodLevel);
 
   },
   onLoad(query) {
