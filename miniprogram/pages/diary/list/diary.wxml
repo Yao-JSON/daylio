@@ -1,4 +1,4 @@
-<view class="" hover-class="none">
+<comon-view>
   <wux-media 
   icon="ios-add-circle" 
   title="新建今天的笔记 - 现在立刻!" 
@@ -17,5 +17,5 @@
     </diary-card>
   </scroll-view>
   <wux-prompt wx:else visible="true" title="空空如也" text="暂时没有相关数据"></wux-prompt>
-</view>
+</comon-view>
   

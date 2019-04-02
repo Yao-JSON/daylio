@@ -1,12 +1,18 @@
 import baseComponent from './../../wux/helpers/baseComponent';
 
 baseComponent({
+  properties:{
+    
+  },
+  data: {
+    visible: false
+  },
   methods: {
-    onLongTap(e) {
-      console.log('onLongTap', e);
-    },
-    onTap(e) {
-      console.log('onTap', e);
+    onLongPress(e) {
+      console.log('onLongPress', e);
+      this.setData({
+        visible: true
+      });
     }
   }
 })

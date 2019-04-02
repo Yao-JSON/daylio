@@ -1,4 +1,11 @@
-<view class="wux-class ">
+<wux-popup 
+  position="bottom"
+  visible="{{ visible }}">
+  popup
+</wux-popup>
+
+<view class="wux-class "
+  catch:longpress="onLongPress">
   <slot></slot>
 </view>
   
