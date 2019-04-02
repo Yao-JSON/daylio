@@ -7,16 +7,21 @@
       title="{{ item.label }}">
       <wux-swipe-action 
         wx:for="{{ item.list }}"
+        wx:key="list"
         autoClose 
         right="{{ right }}"
         bind:click="handlerDeleteActive"
         data-index="{{ index }}">
         <wux-cell 
-          title="{{ item.title }}" 
+          title="{{ item.title }}"
           label="{{ item.remark || '' }}"
           isLink="true"
-          url="/pages/active/edit/edit-active?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
-          <active-icon groupType="active-business-icon" class="active-title-icon" size="16" slot="header" type="{{ item.iconType }}"></active-icon>
+          url="/pages/mood/edit/edit-mood?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
+          <active-icon
+            wux-class="mood-icon-container" 
+            size="16"
+            slot="header"
+            type="{{ item.iconType }}"/>
         </wux-cell>
       </wux-swipe-action>
     </wux-cell-group>

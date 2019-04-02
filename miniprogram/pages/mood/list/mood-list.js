@@ -2,39 +2,16 @@ import { $wuxToptips } from './../../../wux/index'
 
 Page({
   data: {
-    url: '/pages/active/edit/edit-active',
+    url: '/pages/mood/edit/edit-mood',
     right: [
       {
-        text: '取消',
+        title: '取消',
         style: 'background-color: #ddd; color: white',
       },
       {
-        text: '删除',
+        title: '删除',
         style: 'background-color: #F4333C; color: white',
       }
-    ],
-    activeList: [
-      {
-        "id": "1",
-        "iconType": "business-dasao",
-        "title": "打扫卫生",
-        "remark": "非常客气的打扫卫生"
-      },
-      {
-        "id": "2",
-        "iconType": "business-chanpin",
-        "title": "打扫卫生"
-      },
-      {
-        "id": "3",
-        "iconType": "business-chucha",
-        "title": "打扫卫生"
-      },
-      {
-        "id": "4",
-        "iconType": "business-dianhua",
-        "title": "打扫卫生"
-      },
     ],
     moodList:[
       {
@@ -43,17 +20,19 @@ Page({
         list: [
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
+            remark: 'remark',
             id: 1
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
+            remark: '备注',
             id: 2
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 3
           }
         ]
@@ -64,17 +43,17 @@ Page({
         list: [
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 4
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 5
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 6
           }
         ]
@@ -85,17 +64,17 @@ Page({
         list: [
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 7
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 8
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 9
           }
         ]
@@ -106,17 +85,17 @@ Page({
         list: [
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 10
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 11
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 12
           }
         ]
@@ -127,17 +106,17 @@ Page({
         list: [
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 13
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 14
           },
           {
             iconType: 'business-dasao',
-            text: '傻笑',
+            title: '傻笑',
             id: 15
           }
         ]
@@ -148,6 +127,7 @@ Page({
     const { detail, target } = e;
     const { index } = target.dataset;
     const { activeList } = this.data;
+    console.log(e);
     if(detail.index === 1) {
       const newActiveList = [...activeList];
       newActiveList.splice(index, 1)
@@ -164,7 +144,7 @@ Page({
       fail() {
         $wuxToptips().error({
           hidden: false,
-          text: '跳转失败，请稍后重试',
+          title: '跳转失败，请稍后重试',
           duration: 3000,
         })
       }

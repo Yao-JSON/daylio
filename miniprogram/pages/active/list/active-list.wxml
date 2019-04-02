@@ -12,7 +12,11 @@
         label="{{ item.remark || '' }}"
         isLink="true"
         url="/pages/active/edit/edit-active?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
-        <active-icon groupType="active-business-icon" class="active-title-icon" size="16" slot="header" type="{{ item.iconType }}"></active-icon>
+        <active-icon 
+          wux-class="active-icon-container"
+          size="16"
+          slot="header"
+          type="{{ item.iconType }}"/>
       </wux-cell>
     </wux-swipe-action>
   </wux-swipe-action-group>
