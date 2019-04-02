@@ -16,7 +16,7 @@ try {
 
 console.log(SystemInfo, navRect);
 
-const screenHeight = SystemInfo.screenHeight - (navRect.height + navRect.bottom + navRect.top)
+const screenHeight = SystemInfo.screenHeight - navRect.bottom;
 
 baseComponent({
   properties:{
