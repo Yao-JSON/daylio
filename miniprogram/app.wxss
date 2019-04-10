@@ -1,35 +1,30 @@
-@import "icon.wxss";
-@import "colorui.wxss";
+/* ==================
+        初始化
+ ==================== */
 
-
-
-@keyframes show {
-  0% {
-    transform: translateY(-50px);
-  }
-
-  60% {
-    transform: translateY(40rpx);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+page {
+  background: #f1f1f1;
+  font-size: 28rpx;
+  color: #333;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
 }
 
-@-webkit-keyframes show {
-  0% {
-    transform: translateY(-50px);
-  }
-
-  60% {
-    transform: translateY(40rpx);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+view, text, scroll-view, swiper, button, form, input, textarea, label, navigator,
+image {
+  box-sizing: border-box;
 }
+
+.round {
+  border-radius: 5000rpx;
+}
+
+.radius {
+  border-radius: 6rpx;
+}
+
+/* ==================
+        心情
+ ==================== */
 
 .mood-color-happy, 
 .mood-text-happy {
