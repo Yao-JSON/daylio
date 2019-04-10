@@ -1,17 +1,15 @@
 import baseComponent from './../../wux/helpers/baseComponent';
 
 const app = getApp();
-
 const { SystemInfo, navRect } = app.globalData;
-
 const backgroundKey = 'diary-global-background-image';
-
-let backgroundSrc = '';
+let backgroundImage = '';
 
 try {
-  backgroundSrc = wx.getStorageSync(backgroundKey)
+  backgroundImage = wx.getStorageSync(backgroundKey)
 } catch (e) {
   // Do something when catch error
+  backgroundImage = "https://cdn.nlark.com/yuque/0/2019/jpeg/96328/1554208165500-106393e0-47be-435a-b835-861da84ce2a8.jpeg"
 }
 
 console.log(SystemInfo, navRect);
@@ -35,7 +33,7 @@ baseComponent({
   },
   data: {
     visible: false,
-    backgroundSrc
+    backgroundImage
   },
   methods: {
     onLongPress(e) {
@@ -44,7 +42,7 @@ baseComponent({
         cusTabBar.onShow({
           onChange: (src) => {
             this.setData({
-              backgroundSrc: src
+              backgroundImage: src
             });
             wx.setStorage({
               key: backgroundKey, 

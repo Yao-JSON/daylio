@@ -1,6 +1,6 @@
 <scroll-view
   scroll-y
-  style="height: {{ screenHeight }}px;"
+  style="height: {{ screenHeight }}px; background-image: url({{ backgroundImage }});"
   class="wux-class"
   class="comon-view-conatiner"
   catch:longpress="onLongPress">
