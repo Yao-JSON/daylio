@@ -7,6 +7,7 @@
     "wux-swipe-action": "./../../../wux/swipe-action/index",
     "wux-fab-button": "./../../../wux/fab-button/index",
     "wux-toptips": "./../../../wux/toptips/index",
+    "comon-view": "./../../../components/comon-view/index",
     "wux-swipe-action-group": "./../../../wux/swipe-action-group/index"
   }
 }

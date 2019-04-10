@@ -1,33 +1,34 @@
-<wux-swipe-action-group>
-  <wux-cell-group
-    wx:for="{{ moodList }}"
-    wx:key="index"
-    title="{{ item.label }}">
-    <wux-swipe-action 
-      wx:for="{{ item.list }}"
-      wx:for-index="idx"
-      wx:for-item="moodInfo"
-      wx:key="{{ idx }}"
-      autoClose 
-      right="{{ right }}"
-      bind:click="handlerDeleteActive"
-      data-group-mood-index="{{ index }}"
-      data-index="{{ idx }}">
-      <wux-cell 
-        title="{{ moodInfo.title }}"
-        label="{{ moodInfo.remark || '' }}"
-        isLink="true"
-        url="/pages/mood/edit/edit-mood?id={{ moodInfo.id }}&remark={{ moodInfo.remark }}&iconType={{ moodInfo.iconType }}&title={{ moodInfo.title }}&level={{ item.level }}">
-        <mood-icon
-          wux-class="mood-icon-container mood-color-{{ colorLevel[item.level].levelColorType }}" 
-          size="16"
-          slot="header"
-          type="{{ moodInfo.iconType }}"/>
-      </wux-cell>
-    </wux-swipe-action>
-  </wux-cell-group>
-</wux-swipe-action-group>
- 
+<comon-view>
+  <wux-swipe-action-group>
+    <wux-cell-group
+      wx:for="{{ moodList }}"
+      wx:key="index"
+      title="{{ item.label }}">
+      <wux-swipe-action 
+        wx:for="{{ item.list }}"
+        wx:for-index="idx"
+        wx:for-item="moodInfo"
+        wx:key="{{ idx }}"
+        autoClose 
+        right="{{ right }}"
+        bind:click="handlerDeleteActive"
+        data-group-mood-index="{{ index }}"
+        data-index="{{ idx }}">
+        <wux-cell 
+          title="{{ moodInfo.title }}"
+          label="{{ moodInfo.remark || '' }}"
+          isLink="true"
+          url="/pages/mood/edit/edit-mood?id={{ moodInfo.id }}&remark={{ moodInfo.remark }}&iconType={{ moodInfo.iconType }}&title={{ moodInfo.title }}&level={{ item.level }}">
+          <mood-icon
+            wux-class="mood-icon-container mood-color-{{ colorLevel[item.level].levelColorType }}" 
+            size="16"
+            slot="header"
+            type="{{ moodInfo.iconType }}"/>
+        </wux-cell>
+      </wux-swipe-action>
+    </wux-cell-group>
+  </wux-swipe-action-group>
+</comon-view> 
  <!-- 浮动按钮 -->
 <wux-fab-button actionRotate="false" controlled="true" bind:actionClick="handlerAddActive" /> 
 <wux-toptips id="wux-toptips" />
