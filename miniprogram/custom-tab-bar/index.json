@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "wux-popup": "./../wux/popup/index"
+    "wux-popup": "./../wux/popup/index",
+    "wux-fab-button": "./../wux/fab-button/index"
   }
 }
