@@ -12,17 +12,13 @@ baseComponent({
       {
         "pagePath": "/pages/diary/list/diary",
         "text": "日记",
-        "icon": "ios-alert",
-        "action": "switchTab"
-      },
-        "text": "日记",
-        "icon": 'icon-homefill',
+        "icon": "ios-business",
         "action": "switchTab"
       },
       {
         "pagePath": "/pages/chart/chart",
         "text": "统计",
-        "icon": "ios-alert",
+        "icon": "ios-business",
         "action": "switchTab"
       },
       {
@@ -31,19 +27,19 @@ baseComponent({
         "text": "发布 ",
         "className": "shadow",
         "action": "switchTab",
-        "icon": "ios-alert"
+        "icon": "ios-business"
       },
       {
         "pagePath": "/pages/calendar/calendar",
         "text": "日历",
-        "icon": 'ios-alert',
+        "icon": 'ios-business',
         "action": "switchTab"
       },
       {
         "pagePath": "/pages/about/about",
         "text": "我的",
         "action": "switchTab",
-        "icon": "ios-alert"
+        "icon": "ios-business"
       }
     ],
     visible: false,

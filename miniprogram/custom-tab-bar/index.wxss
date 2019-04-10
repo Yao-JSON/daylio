@@ -27,13 +27,16 @@
   overflow:initial;
 }
 
-.cu-bar .action:first-child {
+/* .cu-bar .action:first-child {
   margin-left:30rpx;
-  font-size:30rpx;
 }
 
 .cu-bar .action:last-child {
   margin-right:30rpx;
+} */
+
+.cu-bar .action .icon-container {
+  margin-bottom: 2px;
 }
 
 .cu-bar .action {

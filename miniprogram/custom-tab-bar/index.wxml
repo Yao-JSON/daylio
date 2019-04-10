@@ -6,7 +6,9 @@
     data-selected="{{ selected }}"
     bindtap="{{item.action}}" 
     class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
-    <wux-icon wx:if="{{item.type !== 'button'}}" type="{{item.icon}}"></wux-icon>
+    <view wx:if="{{item.type !== 'button'}}" class="icon-container" >
+      <wux-icon size="24" type="{{item.icon}}"></wux-icon>
+    </view>
     <wux-fab-button wx:else sAngle="{{ 240 }}" eAngle="{{ 120 }}" position="bottomCenter" theme="balanced" direction="circle" spaceBetween="{{ 10 }}" buttons="{{ buttons }}" />
       {{item.text}}
   </view>
