@@ -9,7 +9,16 @@
     <view wx:if="{{item.type !== 'button'}}" class="icon-container" >
       <cn-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"></cn-icon>
     </view>
-    <wux-fab-button wx:else sAngle="{{ 240 }}" eAngle="{{ 120 }}" position="bottomCenter" theme="balanced" direction="circle" spaceBetween="{{ 10 }}" buttons="{{ buttons }}" />
+    <wux-fab-button 
+      wx:else sAngle="{{ 240 }}" 
+      bind:click="onNewDiary" 
+      vibrateShort
+      eAngle="{{ 120 }}"
+      position="bottomCenter"
+      theme="balanced" 
+      direction="circle"
+      spaceBetween="{{ 10 }}" 
+      buttons="{{ buttons }}" />
       {{item.text}}
   </view>
 </view>
@@ -37,9 +46,11 @@
             wx:if="{{ !!imageSrc }}"
             src="{{ imageSrc }}"
             mode="widthFix"
-            binderror="onImageLoadError"
+            style="width:60px;"
           />
         </view>
       </view>
     </scroll-view>
   </wux-popup>
+  
+  <wux-toptips id="wux-toptips" />

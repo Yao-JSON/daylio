@@ -1,4 +1,5 @@
 import { imageList } from './utils'
+import { $wuxToptips } from './../wux/index'
 import baseComponent from './../wux/helpers/baseComponent'
 
 baseComponent({
@@ -88,8 +89,23 @@ baseComponent({
         this.fns.onChange.call(this, dataset.src);
       }
     },
-    onImageLoadError(err) {
-      console.log(err);
+    onNewDiary(e) {
+      const { index } = e.detail;
+      // 昨天 今天
+      if(index === 0 || index === 1) {
+        const today = new Date().getTime();
+        const lastDay = today - 86400000;
+        const url = '/pages/diary/new-diary/new-diary?date='+ (index === 0 ? lastDay : today);
+        wx.switchTab({
+          url,
+          fail(e) {
+            console.log(e);
+          }
+        })
+        return;
+      }
+
+      
     }
   },
 })

@@ -38,6 +38,10 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        vibrateShort: {
+            type: Boolean,
+            value: false,
+        },
         hideShadow: {
             type: Boolean,
             value: false,
@@ -198,6 +202,9 @@ baseComponent({
             }
         },
         onActionClick(e) {
+            if(this.data.vibrateShort) {
+                wx.vibrateShort();
+            }
             this.triggerEvent('actionClick', e)
         },
         /**
