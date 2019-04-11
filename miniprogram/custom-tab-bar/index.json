@@ -2,7 +2,7 @@
   "component": true,
   "usingComponents": {
     "wux-popup": "./../wux/popup/index",
-    "wux-icon": "./../wux/icon/index",
+    "cn-icon": "./../components/cu-icon/index",
     "wux-fab-button": "./../wux/fab-button/index"
   }
 }

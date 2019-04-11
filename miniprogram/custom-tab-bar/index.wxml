@@ -7,7 +7,7 @@
     bindtap="{{item.action}}" 
     class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
     <view wx:if="{{item.type !== 'button'}}" class="icon-container" >
-      <wux-icon size="24" type="{{item.icon}}"></wux-icon>
+      <cn-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"></cn-icon>
     </view>
     <wux-fab-button wx:else sAngle="{{ 240 }}" eAngle="{{ 120 }}" position="bottomCenter" theme="balanced" direction="circle" spaceBetween="{{ 10 }}" buttons="{{ buttons }}" />
       {{item.text}}
@@ -39,7 +39,6 @@
             mode="widthFix"
             binderror="onImageLoadError"
           />
-          <!-- <view class="image" style="background-image:url({{ imageSrc }})"/> -->
         </view>
       </view>
     </scroll-view>

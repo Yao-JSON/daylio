@@ -14,7 +14,7 @@
 }
 
 .cu-bar.tabbar .action {
-  font-size:22rpx;
+  font-size:24rpx;
   position:relative;
   flex:1;
   text-align:center;
@@ -27,16 +27,8 @@
   overflow:initial;
 }
 
-/* .cu-bar .action:first-child {
-  margin-left:30rpx;
-}
-
-.cu-bar .action:last-child {
-  margin-right:30rpx;
-} */
-
 .cu-bar .action .icon-container {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .cu-bar .action {
