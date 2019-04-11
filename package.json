@@ -1,0 +1,27 @@
+{
+  "name": "daylio",
+  "version": "1.0.0",
+  "description": "weapp ",
+  "main": "index.js",
+  "dependencies": {
+    "@antv/f2-canvas": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yao-JSON/daylio.git"
+  },
+  "keywords": [
+    "weapp",
+    "wx"
+  ],
+  "author": "YJSON",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yao-JSON/daylio/issues"
+  },
+  "homepage": "https://github.com/Yao-JSON/daylio#readme"
+}
