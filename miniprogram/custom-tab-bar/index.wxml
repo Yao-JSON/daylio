@@ -48,6 +48,10 @@
             mode="widthFix"
             style="width:60px;"
           />
+          <text wx:else  class="image-empty">
+            无
+          </text>
+            
         </view>
       </view>
     </scroll-view>

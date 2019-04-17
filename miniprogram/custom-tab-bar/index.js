@@ -47,7 +47,7 @@ baseComponent({
       }
     ],
     visible: false,
-    imageList,
+    imageList: imageList.concat(null),
     onChange() {},
     buttons: [
       {

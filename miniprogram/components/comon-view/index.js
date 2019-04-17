@@ -22,7 +22,7 @@ baseComponent({
   },
   data: {
     visible: false,
-    backgroundImage
+    backgroundImage,
   },
   methods: {
     onLongPress(e) {

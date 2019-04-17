@@ -1,5 +1,5 @@
 .new-diary-container {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   height: 100%;
   display: flex;
   flex-direction: column; 
@@ -36,3 +36,9 @@
   margin: 0 10px;
 }
 
+.new-diary-edit-action {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  color: #39b54a;
+}

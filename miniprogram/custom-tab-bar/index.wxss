@@ -111,3 +111,12 @@
 .background-image-scroll-container {
   padding: 10px 0 0;
 }
+
+.image-empty {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  line-height: 60px;
+}

@@ -1,3 +1,4 @@
+import { $wuxToptips } from './../../../wux/index'
 import { globalData, getDate } from './../../../utils'
 
 const app = getApp();
@@ -23,5 +24,17 @@ Page({
   },
   onHide() {
     globalData.set('date', null);
+  },
+  jumpMoodEdit() {
+    wx.navigateTo({
+      url: '/pages/mood/list/mood-list',
+      fail() {
+        $wuxToptips().error({
+          hidden: false,
+          title: '跳转失败，请稍后重试',
+          duration: 3000,
+        })
+      }
+    })
   }
 });

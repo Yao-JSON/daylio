@@ -42,6 +42,9 @@
       </view>
         
     </view>
+    <text bind:tap="jumpMoodEdit" class="new-diary-edit-action">
+      编辑心情
+    </text>
   </view>
 </comon-view>
   

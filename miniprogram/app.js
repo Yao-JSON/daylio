@@ -7,7 +7,8 @@ try {
   backgroundImage = wx.getStorageSync(backgroundKey)
 } catch (e) {
   // Do something when catch error
-  backgroundImage = "https://cdn.nlark.com/yuque/0/2019/jpeg/96328/1554208165500-106393e0-47be-435a-b835-861da84ce2a8.jpeg"
+  backgroundImage = '';
+  // backgroundImage = "https://cdn.nlark.com/yuque/0/2019/jpeg/96328/1554208165500-106393e0-47be-435a-b835-861da84ce2a8.jpeg"
 }
 
 App({
@@ -30,10 +31,12 @@ App({
   },
   onHide() {
     const { backgroundImage } = this.globalData;
-    wx.setStorage({
-      key: backgroundKey, 
-      data: backgroundImage
-    })
+    if(backgroundImage) {
+      wx.setStorage({
+        key: backgroundKey, 
+        data: backgroundImage
+      })
+    }
   },
   globalData: {
     backgroundImage,

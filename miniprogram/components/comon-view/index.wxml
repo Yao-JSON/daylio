@@ -1,6 +1,16 @@
 <scroll-view
   scroll-y
+  wx:if="{{ backgroundImage }}"
   style="height: {{ screenHeight }}px; background-image: url({{ backgroundImage }});"
+  class="wux-class"
+  class="comon-view-conatiner"
+  catch:longpress="onLongPress">
+  <slot></slot>
+</scroll-view>
+<scroll-view
+  scroll-y
+  wx:else
+  style="height: {{ screenHeight }}px;"
   class="wux-class"
   class="comon-view-conatiner"
   catch:longpress="onLongPress">
