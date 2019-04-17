@@ -2,6 +2,7 @@
   "navigationBarTitleText": "新建日记",
   "usingComponents": {
     "wux-icon": "./../../../wux/icon/index",
+    "mood-icon": "./../../../components/mood-icon/index",
     "wux-card": "./../../../wux/card/index",
     "wux-media": "./../../../wux/media/index",
     "wux-calendar": "./../../../wux/calendar/index",

@@ -1,16 +1,7 @@
 import baseComponent from './../../wux/helpers/baseComponent';
 
 const app = getApp();
-const { SystemInfo, navRect } = app.globalData;
-const backgroundKey = 'diary-global-background-image';
-let backgroundImage = '';
-
-try {
-  backgroundImage = wx.getStorageSync(backgroundKey)
-} catch (e) {
-  // Do something when catch error
-  backgroundImage = "https://cdn.nlark.com/yuque/0/2019/jpeg/96328/1554208165500-106393e0-47be-435a-b835-861da84ce2a8.jpeg"
-}
+const { SystemInfo, navRect, backgroundImage } = app.globalData;
 
 const screenHeight = SystemInfo.screenHeight - navRect.bottom;
 
@@ -42,10 +33,7 @@ baseComponent({
             this.setData({
               backgroundImage: src
             });
-            wx.setStorage({
-              key: backgroundKey, 
-              data: src
-            })
+            app.globalData.backgroundImage = src;
           }
         })
       }
@@ -53,14 +41,8 @@ baseComponent({
   },
   pageLifetimes: {
     show() {
-      let backgroundImage = '';
-      try {
-        backgroundImage = wx.getStorageSync(backgroundKey)
-      } catch (e) {
-        // Do something when catch error
-        backgroundImage = "https://cdn.nlark.com/yuque/0/2019/jpeg/96328/1554208165500-106393e0-47be-435a-b835-861da84ce2a8.jpeg"
-      }
-
+      const newApp = getApp();
+      const { backgroundImage } = newApp.globalData;
       this.setData({
         backgroundImage
       })

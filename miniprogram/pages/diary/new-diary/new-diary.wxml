@@ -1,4 +1,47 @@
 <comon-view >
-  新建日记
+  <view class="new-diary-container">
+    <text class="new-diary-title" selectable="false" space="false" decode="false">
+      此刻你感觉怎么样？
+    </text>
+    <view class="new-diary-date">
+      <wux-icon size="{{ 16 }}"  type="md-today"/>
+      <view class="new-diary-date-text" wx:if="{{ time }}">
+        {{(time.isToday ? "今天" : (time.isYestoday ? '昨天' : null)) || ( '星期' + time.week) }}，{{ time.dayMoon }}{{ time.dateFmt }}
+      </view>
+    </view>
+    <view class="mood-container">
+      <view class="" wx:if="{{ mood.happy }}">
+        <mood-icon wux-class="mood-color-happy"  type="{{ mood.happy[0] }}"/>
+        <text class="">
+          狂喜
+        </text>
+      </view>
+      <view class="" wx:if="{{ mood.kaixin }}">
+        <mood-icon wux-class="mood-color-kaixin"  type="{{ mood.kaixin[0] }}"/>
+        <text class="">
+          开心
+        </text>
+      </view>
+      <view wx:if="{{ mood.yiban }}">
+        <mood-icon wux-class="mood-color-yiban"  type="{{ mood.yiban[0] }}"/>
+        <text class="">
+          一般
+        </text>
+      </view>
+      <view class="" wx:if="{{ mood.bushuang }}">
+        <mood-icon wux-class="mood-color-bushuang" type="{{ mood.bushuang[0] }}"/>
+        <text class="">
+          不爽
+        </text>
+      </view>
+      <view class="" wx:if="{{ mood.chaolan }}">
+        <mood-icon wux-class="mood-color-chaolan" type="{{ mood.chaolan[0] }}"/>
+        <text class="">
+          超烂
+        </text>
+      </view>
+        
+    </view>
+  </view>
 </comon-view>
   

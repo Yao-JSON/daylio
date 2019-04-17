@@ -1,6 +1,7 @@
 //app.js
 
 let backgroundImage = '';
+const backgroundKey = 'diary-global-background-image';
 
 try {
   backgroundImage = wx.getStorageSync(backgroundKey)
@@ -25,6 +26,13 @@ App({
         this.globalData.SystemInfo = e;
         this.globalData.navRect = navRect;
       }
+    })
+  },
+  onHide() {
+    const { backgroundImage } = this.globalData;
+    wx.setStorage({
+      key: backgroundKey, 
+      data: backgroundImage
     })
   },
   globalData: {
