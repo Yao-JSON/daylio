@@ -26,7 +26,6 @@ baseComponent({
       },
       {
         "type": "button",
-        "pagePath": "/pages/diary/new-diary/new-diary",
         "text": "发布 ",
         "className": "shadow",
         "action": "switchTab",

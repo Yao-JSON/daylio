@@ -1,7 +1,7 @@
  <view class="cu-bar tabbar">
   <view wx:for="{{ list }}" 
     wx:key="index"
-    data-url="{{item.pagePath}}" 
+    data-url="{{item.pagePath || null}}" 
     data-index="{{ index }}"
     data-selected="{{ selected }}"
     bindtap="{{item.action}}" 
