@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/diary/new-diary/new-diary",
+    "pages/active/new/new-active",
     "pages/mood/list/mood-list",
+    "pages/diary/new-diary/new-diary",
     "pages/diary/list/diary",
     "pages/chart/chart",
     "pages/active/edit/edit-active",

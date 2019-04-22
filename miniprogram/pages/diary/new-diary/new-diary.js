@@ -8,6 +8,33 @@ console.log(globalData);
 Page({
   data: {
     time: null,
+    moods:[
+      {
+        key: 'happy',
+        mood: ['happy-daxiao', 'happy-wink'],
+        text: '狂喜'
+      },
+      {
+        key: 'kaixin',
+        mood: ['kaixin-ufo'],
+        text: '开心'
+      },
+      {
+        key: 'yiban',
+        mood: ['yiban-headache'],
+        text: '一般'
+      },
+      {
+        key: 'bushuang',
+        mood: ['bushuang-karate'],
+        text: '不爽'
+      },
+      {
+        key: 'chaolan',
+        mood: ['chaolan-kulian'],
+        text: '超烂'
+      }
+    ],
     mood: {
       happy: ['happy-daxiao', 'happy-wink'],
       kaixin: ['kaixin-ufo'],
@@ -36,5 +63,21 @@ Page({
         })
       }
     })
+  },
+  DatePickerChange(e) {
+    const val = e.detail.value;
+    const dete = new Date(val);
+    const currentDate = new Date();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+    const seconds = currentDate.getSeconds();
+    const time = +dete + hours * minutes * seconds * 1000;
+
+    this.setData({
+      time: getDate(time)
+    })
+  },
+  newDiaryActive(e) {
+    console.log(e);
   }
 });

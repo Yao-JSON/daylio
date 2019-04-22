@@ -28,14 +28,16 @@ baseComponent({
     onLongPress(e) {
       if(typeof this.getTabBar === 'function') {
         const cusTabBar = this.getTabBar();
-        cusTabBar.onShow({
-          onChange: (src) => {
-            this.setData({
-              backgroundImage: src
-            });
-            app.globalData.backgroundImage = src;
-          }
-        })
+        if(cusTabBar) {
+          cusTabBar.onShow({
+            onChange: (src) => {
+              this.setData({
+                backgroundImage: src
+              });
+              app.globalData.backgroundImage = src;
+            }
+          })
+        }
       }
     }
   },

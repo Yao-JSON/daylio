@@ -34,11 +34,17 @@
 
 .new-diary-container .mood-container > view {
   margin: 0 10px;
+  text-align: center
 }
+
 
 .new-diary-edit-action {
   position: fixed;
-  bottom: 60px;
+  bottom: 80px;
   right: 20px;
   color: #39b54a;
+}
+
+.popover-mood {
+  height: 35px;
 }

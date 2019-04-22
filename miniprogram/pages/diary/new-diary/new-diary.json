@@ -4,8 +4,8 @@
     "wux-icon": "./../../../wux/icon/index",
     "mood-icon": "./../../../components/mood-icon/index",
     "wux-card": "./../../../wux/card/index",
+    "wux-popover": "./../../../wux/popover/index",
     "wux-media": "./../../../wux/media/index",
-    "wux-calendar": "./../../../wux/calendar/index",
     "diary-card": "./../../../components/diary-card/index",
     "comon-view": "./../../../components/comon-view/index",
     "wux-prompt": "./../../../wux/prompt/index"

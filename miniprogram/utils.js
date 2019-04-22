@@ -49,6 +49,7 @@ export const getDate = (time = new Date()) => {
     dateFmt: dateFtt('yyyy-MM-dd hh:mm:ss',calcTime),
     week: calcWeeks,
     isYestoday: nowDay - 1 === calcDay,
-    isToday: nowDay === calcDay
+    isToday: nowDay === calcDay,
+    date: time
   }
 };

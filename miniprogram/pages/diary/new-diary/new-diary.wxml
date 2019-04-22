@@ -5,42 +5,40 @@
     </text>
     <view class="new-diary-date">
       <wux-icon size="{{ 16 }}"  type="md-today"/>
-      <view class="new-diary-date-text" wx:if="{{ time }}">
-        {{(time.isToday ? "今天" : (time.isYestoday ? '昨天' : null)) || ( '星期' + time.week) }}，{{ time.dayMoon }}{{ time.dateFmt }}
-      </view>
+      <picker mode="date" value="{{ time.date }}" bind:change="DatePickerChange" >
+        <view class="new-diary-date-text" wx:if="{{ time }}">
+          {{(time.isToday ? "今天" : (time.isYestoday ? '昨天' : null)) || ( '星期' + time.week) }}，{{ time.dayMoon }}{{ time.dateFmt }}
+        </view>
+      </picker>
     </view>
     <view class="mood-container">
-      <view class="" wx:if="{{ mood.happy }}">
-        <mood-icon wux-class="mood-color-happy"  type="{{ mood.happy[0] }}"/>
-        <text class="">
-          狂喜
-        </text>
-      </view>
-      <view class="" wx:if="{{ mood.kaixin }}">
-        <mood-icon wux-class="mood-color-kaixin"  type="{{ mood.kaixin[0] }}"/>
-        <text class="">
-          开心
-        </text>
-      </view>
-      <view wx:if="{{ mood.yiban }}">
-        <mood-icon wux-class="mood-color-yiban"  type="{{ mood.yiban[0] }}"/>
-        <text class="">
-          一般
-        </text>
-      </view>
-      <view class="" wx:if="{{ mood.bushuang }}">
-        <mood-icon wux-class="mood-color-bushuang" type="{{ mood.bushuang[0] }}"/>
-        <text class="">
-          不爽
-        </text>
-      </view>
-      <view class="" wx:if="{{ mood.chaolan }}">
-        <mood-icon wux-class="mood-color-chaolan" type="{{ mood.chaolan[0] }}"/>
-        <text class="">
-          超烂
-        </text>
-      </view>
-        
+      <view
+        wx:for="{{moods}}"
+        wx:key="index"
+        wx:for-item="item">
+         <mood-icon 
+          bind:tap="newDiaryActive"
+          data-key="{{ item.key }}"
+          data-mood="{{ item.mood[0] }}"
+          wux-class="mood-color-{{item.key}}"
+          type="{{ item.mood[0] }}"/>
+          <!-- <wux-popover wux-class="popover-mood" wx:else>
+            <mood-icon
+              wux-class="mood-color-{{item.key}}"
+              type="{{ item.mood[0] }}" />
+            <view slot="content">
+              <mood-icon 
+                wx:for="{{ item.mood }}" 
+                wx:for-item="mood"
+                wx:key="mood"
+                wux-class="mood-color-{{item.key}}"
+                type="{{ mood }}" />
+            </view>
+          </wux-popover> -->
+         <text class="">
+           {{ item.text }}
+         </text>
+      </view>        
     </view>
     <text bind:tap="jumpMoodEdit" class="new-diary-edit-action">
       编辑心情

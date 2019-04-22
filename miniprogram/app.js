@@ -31,12 +31,10 @@ App({
   },
   onHide() {
     const { backgroundImage } = this.globalData;
-    if(backgroundImage) {
-      wx.setStorage({
-        key: backgroundKey, 
-        data: backgroundImage
-      })
-    }
+    wx.setStorage({
+      key: backgroundKey, 
+      data: backgroundImage || ''
+    })
   },
   globalData: {
     backgroundImage,
