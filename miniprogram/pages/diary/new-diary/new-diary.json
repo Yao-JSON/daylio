@@ -7,7 +7,6 @@
     "wux-popover": "./../../../wux/popover/index",
     "wux-media": "./../../../wux/media/index",
     "diary-card": "./../../../components/diary-card/index",
-    "comon-view": "./../../../components/comon-view/index",
     "wux-prompt": "./../../../wux/prompt/index"
   }
 }

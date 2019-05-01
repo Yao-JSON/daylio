@@ -29,6 +29,7 @@ baseComponent({
         "text": "发布 ",
         "className": "shadow",
         "action": "switchTab",
+        "pagePath": "pages/diary/timeline/index"
       },
       {
         "pagePath": "/pages/calendar/calendar",

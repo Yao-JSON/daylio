@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/active/new/new-active",
-    "pages/mood/list/mood-list",
-    "pages/diary/new-diary/new-diary",
+    "pages/diary/timeline/index",
     "pages/diary/list/diary",
+    "pages/mood/list/mood-list",
+    "pages/active/new/new-active",
+    "pages/diary/new-diary/new-diary",
     "pages/chart/chart",
     "pages/active/edit/edit-active",
     "pages/active/list/active-list",
@@ -15,7 +16,6 @@
     "navigationBarBackgroundColor": "#39b54a",
     "navigationBarTextStyle": "white"
   },
-  "usingComponents": {},
   "tabBar": {
     "custom": true,
     "color": "#aaa",
@@ -35,8 +35,8 @@
         "action": "switchTab"
       },
       {
-        "pagePath": "pages/diary/new-diary/new-diary",
-        "text": "发布 "
+        "pagePath": "pages/diary/timeline/index",
+        "text": "发布"
       },
       {
         "pagePath": "pages/calendar/calendar",
@@ -48,5 +48,8 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "comon-view": "./components/comon-view/index"
+  }
 }

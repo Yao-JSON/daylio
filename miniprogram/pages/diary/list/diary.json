@@ -6,7 +6,6 @@
     "wux-media": "./../../../wux/media/index",
     "wux-calendar": "./../../../wux/calendar/index",
     "diary-card": "./../../../components/diary-card/index",
-    "comon-view": "./../../../components/comon-view/index",
     "wux-prompt": "./../../../wux/prompt/index"
   }
 }

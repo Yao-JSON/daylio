@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "统计",
   "usingComponents": {
-    "comon-view": "./../../components/comon-view/index"
   }
 }

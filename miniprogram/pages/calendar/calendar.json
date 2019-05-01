@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "日历",
   "usingComponents": {
-    "comon-view": "./../../components/comon-view/index"
   }
 }
