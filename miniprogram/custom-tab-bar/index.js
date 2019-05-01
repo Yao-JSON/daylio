@@ -8,7 +8,7 @@ baseComponent({
     addGlobalClass: true,
   },
   data: {
-    selected: 0,
+    selected: 2,
     list: [
       {
         "pagePath": "/pages/diary/list/diary",
@@ -28,8 +28,7 @@ baseComponent({
         "type": "button",
         "text": "发布 ",
         "className": "shadow",
-        "action": "switchTab",
-        "pagePath": "pages/diary/timeline/index"
+        "action": "switchTab"
       },
       {
         "pagePath": "/pages/calendar/calendar",
@@ -102,7 +101,7 @@ baseComponent({
           time: index === 0 ? lastDay : today
         });
 
-        wx.switchTab({
+        wx.navigateTo({
           url,
           fail(e) {
             console.log(e);

@@ -1,10 +1,6 @@
 import { $wuxToptips } from './../../../wux/index'
 import { globalData, getDate } from './../../../utils'
 
-const app = getApp();
-
-console.log(globalData);
-
 Page({
   data: {
     time: null,
