@@ -1,8 +1,0 @@
-<view class="wux-class cu-timeline"> 
-  <view wx:if="{{ time }}" class="wux-time cu-time">{{ time }}</view>
-  <view class="wux-item cu-item">
-    <view class="wux-content content">
-      <slot name="content"></slot>
-    </view>
-  </view>
-</view>

@@ -50,6 +50,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "comon-view": "./components/comon-view/index"
+    "comon-view": "./components/comon-view/index",
+    "wux-popover": "./wux/popover/index"
   }
 }

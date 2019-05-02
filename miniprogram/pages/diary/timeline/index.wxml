@@ -1,3 +1,24 @@
+<template name="timeline-time">
+  <view wx:if="{{ date }}" class="cu-time">{{ date }}</view>
+  <view class="cu-item icon">
+    <view class="content">
+      {{ content }}
+    </view>
+  </view>
+
+</template>
+
+
 <comon-view> 
-list
+  <view class="cu-timeline">
+    <template is="timeline-time" data="{{ date: '6-17', content: '宝宝 爱你 😄'  }}"/>
+    <template is="timeline-time" data="{{  content: '宝宝 爱你 😄'  }}"/>
+    <template is="timeline-time" data="{{  content: '宝宝 爱你 😄'  }}"/>
+    <template is="timeline-time" data="{{  content: '宝宝 爱你 😄'  }}"/>
+    <template is="timeline-time" data="{{  content: '宝宝 爱你 😄'  }}"/>
+    <template is="timeline-time" data="{{  content: '宝宝 爱你 😄'  }}"/>
+  </view>
+  <view class="">
+    
+  </view>
 </comon-view>
