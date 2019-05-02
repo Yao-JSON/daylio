@@ -15,11 +15,15 @@
     </view>
     <view class="content-container">
       <view class="active-conatiner">
-        <wux-tag wx:if="{{ activity && activity.length }}" wx:key="index" wx:for="{{ activity }}" wx:for-item="active">
-          <active-icon size="{{ 12 }}" type="{{ active.activityIcon }}"/>
-          <text>
-            {{ active.title }}
-          </text>
+        <wux-tag
+          wx:if="{{ activity && activity.length }}"
+          wx:key="index"
+          wx:for="{{ activity }}"
+          color="#f37b1d"
+          wux-class="active-container"
+          wx:for-item="active">
+          <active-icon wux-class="active-icon" size="{{ 12 }}" type="{{ active.activityIcon }}"/>
+          {{ active.title }}
         </wux-tag>
       </view>
       <view wx:if="{{ content }}" class="main-content">

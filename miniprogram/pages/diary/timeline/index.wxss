@@ -72,8 +72,18 @@
 
 .cu-timeline .title-container {
   display: flex;
+  align-items: flex-end;
+}
+
+.cu-timeline .active-conatiner{
+  margin-bottom: 5px;
 }
 
 .cu-timeline .title-container .title {
   font-size: 36rpx;
+  margin-right: 5px;
+}
+
+.cu-timeline .active-icon {
+  padding-right: 3px;
 }
