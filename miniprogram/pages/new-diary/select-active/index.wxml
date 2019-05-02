@@ -1,3 +1,24 @@
 <view class="select-active-container">
-
+  <view class="select-active-title">
+    <mood-icon size="24" wux-class="mood-color-{{moodKey}}" type="{{ moodIcon }}"/>
+    <view class="title">
+       嗨！你今天都做了什么?
+    </view>
+  </view>
+  <view class="active-list-contaienr">
+    <view 
+      wx:key="index"
+      wx:for="{{ activeList }}"
+      class="{{ selectActive.indexOf(item.id) !== -1 ? 'selected-active' : ''}}"
+      bind:tap="selectActive"
+      data-itme-id="{{ item.id }}">
+      <active-icon type="{{ itme.activeIcon }}" size="16"/>
+      <text>{{ item.title }}</text>
+    </view>
+  </view>
+  <text bind:tap="jumpActiveList" class="new-diary-edit-action">
+    编辑活动
+  </text>
 </view>
+
+<wux-toptips id="wux-toptips" />

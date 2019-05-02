@@ -1,36 +1,18 @@
-.active-icon-container {
-  padding: 5px 0px;
-  text-align: center;
-}
-
-.edit-active-container {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
-}
-
-.edit-active-container.fixed {
+.new-diary-edit-action {
   position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1024;
-  background-color: #fff;
-  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+  bottom: 80px;
+  right: 20px;
+  color: #39b54a;
 }
 
-.edit-active-container .wux-input__control  {
+.select-active-container .select-active-title {
   display: flex;
+  justify-content: center;
+  margin-top: 24px;
   align-items: center;
 }
 
-.edit-active-container .wux-input__control input {
-  height: 32px;
-}
-
-.edit-active-scroll-container {
-  margin-top: 50px;
-}
-
-.edit-input-icon {
-  margin-right: 3px;
-  vertical-align: baseline;
+.select-active-container .select-active-title .title {
+  margin-left: 3px;
+  font-size: 42rpx;
 }

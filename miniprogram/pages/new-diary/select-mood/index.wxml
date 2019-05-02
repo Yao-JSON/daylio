@@ -57,4 +57,5 @@
     </text>
   </view>
 </comon-view>
-  
+
+<wux-toptips id="wux-toptips" />

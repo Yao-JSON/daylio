@@ -55,6 +55,7 @@
     "mood-icon": "./components/mood-icon/index",
     "wux-popover": "./wux/popover/index",
     "wux-icon": "./wux/icon/index",
+    "wux-toptips": "./wux/toptips/index",
     "wux-tag": "./wux/tag/index"
   }
 }

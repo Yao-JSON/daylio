@@ -1,31 +1,73 @@
-import iconList from './icon-list'
+
+import { $wuxToptips } from '../../../wux/index'
 
 Page({
   data: {
-    id: 0,
-    iconType: "business-dasao",
-    title: '',
-    iconList
+    moodIcon: 'happy-wink',
+    moodKey: 'happy',
+    selectActive: [1,2],
+    activeList: [
+      {
+        activeIcon:"business-dasao",
+        title: "工作",
+        id: 1,
+      },
+      {
+        activeIcon:"business-chanpin",
+        title: "休息",
+        id: 2,
+      },
+      {
+        activeIcon:"business-chucha",
+        title: "约会",
+        id: 3,
+      },
+      {
+        activeIcon:"business-zuzhijiagou",
+        title: "工作",
+        id: 4,
+      },
+      {
+        activeIcon:"business-chanpin",
+        title: "休息",
+        id: 5,
+      },
+      {
+        activeIcon:"business-baoxiao",
+        title: "约会",
+        id: 6,
+      },
+      {
+        activeIcon:"business-dianhua",
+        title: "工作",
+        id: 7,
+      },
+      {
+        activeIcon:"business-caigou",
+        title: "休息",
+        id: 8,
+      },
+      {
+        activeIcon:"business-gongzuo",
+        title: "约会",
+        id: 9,
+      },
+    ],
   },
-  // 编辑活动
-  handlerChange(e) {
-    this.setData({
-      title: e.detail.value
-    });
+  selectActive() {
+    
   },
-  // icon 选择
-  handlerSelectIcon(e) {
-    const { iconType } = this.data;
-    const { dataset } = e.currentTarget;
-    this.setData({
-      iconType: dataset ? dataset.iconType : iconType
-    });
-  },
-  // 确定
-  handlerConfirm() {
-    const { id, iconType, title } = this.data;
-    console.log(id, iconType, title);
-
+  jumpActiveList() {
+    wx.navigateTo({
+      url: '/pages/active/list/active-list',
+      fail() {
+        $wuxToptips().error({
+          hidden: false,
+          title: '跳转失败，请稍后重试',
+          duration: 3000,
+        })
+      }
+    })
   },
   onLoad(query) {
     const { id, iconType, title } = query;
