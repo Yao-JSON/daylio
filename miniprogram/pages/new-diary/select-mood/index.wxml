@@ -5,21 +5,33 @@
     </text>
     <view class="new-diary-date">
       <wux-icon size="{{ 16 }}"  type="md-today"/>
-      <picker mode="date" value="{{ time.date }}" bind:change="DatePickerChange" >
-        <view class="new-diary-date-text" wx:if="{{ time }}">
-          {{(time.isToday ? "今天" : (time.isYestoday ? '昨天' : null)) || ( '星期' + time.week) }}，{{ time.dayMoon }}{{ time.dateFmt }}
+      <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+        {{(datedetail.isToday ? "今天" : (datedetail.isYestoday ? '昨天' : null)) || ( '星期' + datedetail.week) }}，{{ datedetail.dayMoon }}
+      </view>
+      <picker mode="date" value="{{ time.date }}" bind:change="datePickerChange">
+        <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+          {{ time.date }}
+        </view>
+      </picker>
+      <picker
+        mode="time"
+        class=""
+        value="{{ time.time }}" 
+        bind:change="timePickerChange">
+        <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+          {{  time.time }}
         </view>
       </picker>
     </view>
     <view class="mood-container">
       <view
         wx:for="{{moods}}"
+        wx:for-item="item"
         wx:key="index"
-        wx:for-item="item">
+        data-mood-key="{{ item.key }}"
+        data-mood-icon="{{ item.mood[0] }}"
+        bind:tap="newDiaryActive">
          <mood-icon 
-          bind:tap="newDiaryActive"
-          data-key="{{ item.key }}"
-          data-mood="{{ item.mood[0] }}"
           wux-class="mood-color-{{item.key}}"
           type="{{ item.mood[0] }}"/>
           <!-- <wux-popover wux-class="popover-mood" wx:else>

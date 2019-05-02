@@ -1,9 +1,18 @@
-import { $wuxToptips } from './../../../wux/index'
-import { globalData, getDate } from './../../../utils'
+import { $wuxToptips } from '../../../wux/index'
+import { globalData, getDate, dateFtt } from '../../../utils'
+
+const s = 1000;
+const m = 60 * s;
+const h = 60 * m;
 
 Page({
   data: {
-    time: null,
+    diaryTime: +new Date(),
+    time: {
+      date: dateFtt('yyyy-MM-dd'),
+      time: dateFtt('hh:mm')
+    },
+    datedetail: null,
     moods:[
       {
         key: 'happy',
@@ -42,7 +51,7 @@ Page({
   onShow() {
     const date = globalData.get('date');
     this.setData({
-      time: getDate( date && date.time || new Date()),
+      datedetail: getDate( date && date.time || new Date()),
     });
   },
   onHide() {
@@ -60,20 +69,38 @@ Page({
       }
     })
   },
-  DatePickerChange(e) {
+  datePickerChange(e) {
+    console.log(e);
     const val = e.detail.value;
+    const { time } = this.data;
+
+    const [hours, minutes] = time.time.split(':');
     const dete = new Date(val);
-    const currentDate = new Date();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
-    const time = +dete + hours * minutes * seconds * 1000;
+    const now = +dete + hours * h + minutes * s;
 
     this.setData({
-      time: getDate(time)
+      time: {...time, date: val},
+      datedetail: getDate(now),
+      diaryTime: now
     })
   },
+  timePickerChange(e) {
+    const val = e.detail.value;
+    const { time } = this.data;
+    const [hours, minutes] = val.split(':');
+    const dete = new Date(time.date);
+    const now = +dete + hours * h + minutes * s;
+    this.setData({
+      time: {...time, time: val},
+      datedetail: getDate(now),
+      diaryTime: now
+    });
+  },
   newDiaryActive(e) {
-    console.log(e);
+    const { dataset } = e.currentTarget
+    const { diaryTime } = this.data;
+    wx.navigateTo({
+      url: '/pages/new-diary/select-active/index?diaryTime='+diaryTime + '&moodKey='+ dataset.moodKey + '&moodIcon='+ dataset.moodIcon,
+    })
   }
 });

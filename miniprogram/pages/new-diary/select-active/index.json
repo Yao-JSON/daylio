@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择活动",
+  "usingComponents": {
+    "wux-input": "./../../../wux/input/index"
+  }
+}

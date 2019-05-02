@@ -16,7 +16,7 @@ class GlobalData {
 export const globalData = new GlobalData();
 
 
-export const dateFtt = (fmt,date) => {
+export const dateFtt = (fmt,date = new Date()) => {
   var o = {   
     "M+" : date.getMonth()+1,                 //月份
     "d+" : date.getDate(),                    //日
