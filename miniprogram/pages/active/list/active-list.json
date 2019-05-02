@@ -3,7 +3,6 @@
   "usingComponents": {
     "wux-cell": "./../../../wux/cell/index",
     "wux-swipe-action": "./../../../wux/swipe-action/index",
-    "wux-fab-button": "./../../../wux/fab-button/index",
     "wux-swipe-action-group": "./../../../wux/swipe-action-group/index"
   }
 }

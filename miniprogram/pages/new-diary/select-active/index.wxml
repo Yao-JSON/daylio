@@ -9,16 +9,30 @@
     <view 
       wx:key="index"
       wx:for="{{ activeList }}"
-      class="{{ selectActive.indexOf(item.id) !== -1 ? 'selected-active' : ''}}"
-      bind:tap="selectActive"
-      data-itme-id="{{ item.id }}">
-      <active-icon type="{{ itme.activeIcon }}" size="16"/>
+      class="active"
+      bind:tap="handlerSelectActive"
+      data-item-id="{{ item.id }}">
+      <view class="active-icon {{ item.selected ? 'selected-active' : '' }}">
+        <active-icon type="{{ item.activeIcon }}" size="24"/>
+      </view>
       <text>{{ item.title }}</text>
     </view>
+    <view bind:tap="jumpActiveList"  class="active new-active">
+      <view class="active-icon ">
+        <wux-icon size="32" type="ios-add"/>
+      </view>
+      <text>编辑/增加</text>
+    </view>
+  </view>
+  <view class="textarea-container">
+    <wux-textarea hasCount defaultValue="" placeholder="添加备注" bind:blur="handlerTextareaBlur"/>
   </view>
   <text bind:tap="jumpActiveList" class="new-diary-edit-action">
     编辑活动
   </text>
 </view>
 
+<wux-fab-button actionRotate="false" action=""  position="bottomCenter" controlled="true" bind:actionClick="handlerConfirmActive" >
+   <wux-icon slot="action" size="48" type="ios-checkmark" />
+</wux-fab-button> 
 <wux-toptips id="wux-toptips" />

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/new-diary/select-active/index",
     "pages/new-diary/select-mood/index",
+    "pages/new-diary/select-active/index",
     "pages/active/list/active-list",
     "pages/diary/timeline/index",
     "pages/diary/list/diary",
@@ -56,6 +56,7 @@
     "wux-popover": "./wux/popover/index",
     "wux-icon": "./wux/icon/index",
     "wux-toptips": "./wux/toptips/index",
+    "wux-fab-button": "./wux/fab-button/index",
     "wux-tag": "./wux/tag/index"
   }
 }

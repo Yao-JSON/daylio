@@ -5,7 +5,7 @@ Page({
   data: {
     moodIcon: 'happy-wink',
     moodKey: 'happy',
-    selectActive: [1,2],
+    remark: '',
     activeList: [
       {
         activeIcon:"business-dasao",
@@ -54,8 +54,22 @@ Page({
       },
     ],
   },
-  selectActive() {
-    
+  handlerSelectActive(e) {
+    const { dataset } = e.currentTarget;
+    const { activeList } = this.data;
+
+    const newActiveList =  activeList.map((item) => {
+      if(item.id === dataset.itemId) {
+        item.selected = !item.selected;
+        return item;
+      }
+      return item;
+    });
+
+    this.setData({
+      activeList: newActiveList
+    });
+
   },
   jumpActiveList() {
     wx.navigateTo({
@@ -69,19 +83,18 @@ Page({
       }
     })
   },
-  onLoad(query) {
-    const { id, iconType, title } = query;
-    if(!id) {
-      wx.setNavigationBarTitle({
-        title: "新增活动"
-      })
-      return;
-    }
-
+  handlerTextareaBlur(e) {
     this.setData({
-      id,
-      iconType,
-      title 
+      remark: e.detail.value
     })
+  },
+  handlerConfirmActive() {
+    console.log(this.data);
+  },
+  onLoad(query) {
+   const { diaryTime, moodKey, moodIcon } = query;
+   this.setData({
+    diaryTime, moodKey, moodIcon
+   })
   }
 })

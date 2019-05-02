@@ -3,7 +3,6 @@
   "usingComponents": {
     "wux-popup": "./../wux/popup/index",
     "wux-toptips": "./../wux/toptips/index",
-    "cn-icon": "./../components/cu-icon/index",
-    "wux-fab-button": "./../wux/fab-button/index"
+    "cn-icon": "./../components/cu-icon/index"
   }
 }
