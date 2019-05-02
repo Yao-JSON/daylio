@@ -38,5 +38,12 @@ App({
   },
   globalData: {
     backgroundImage,
+    moodData: {
+      1: "超烂",
+      2: "不爽",
+      3: "还行",
+      4: "开心",
+      5: "狂喜"
+    }
   }
 })

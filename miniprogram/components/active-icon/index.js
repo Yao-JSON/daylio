@@ -1,4 +1,4 @@
-import baseComponent from './../../wux/helpers/baseComponent'
+import baseComponent from '../../wux/helpers/baseComponent'
 
 baseComponent({
     externalClasses: ['wux-class'],
