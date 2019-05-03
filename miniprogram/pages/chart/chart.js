@@ -5,8 +5,47 @@ const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
 
 
-const initPickerData = () => {
+const initPickerData = (date) => {
+  const baseYear = date.getFullYear();
+  const baseMonth = date.getMonth() + 1;
+
+  const years= [];
+  const months = [];
+  const days = [];
+
+  for(let i = 0; i <= 10; i ++) {
+    years.push(baseYear - i);
+  }
+
+  for(let i = 1; i <= 12; i ++) {
+    months.push(i);
+  }
+
+  let tableDays = {
+    1: 31,
+    3: 31,
+    5: 31,
+    7: 31,
+    8: 31,
+    10: 31,
+    12: 31,
+    4: 30,
+    6: 30,
+    9: 30,
+    11: 30
+  }
+
+  let baseDays = tableDays[baseMonth];
   
+  if(baseMonth === 2) {
+    baseDays = !(baseYear % 4) & !(baseYear % 400) ? 29 : 28
+  }
+
+  for(let i = 1; i <= baseDays; i ++) {
+    days.push(i);
+  }
+
+  return [years, months, days];
 }
 
 Page({
@@ -38,12 +77,14 @@ Page({
         date: '2019-02-23'
       }
     ],
-    dateRangeQuicklySelectKey: [
+    dateRangeQuicklySelectKey: 1,
+    dateRangeQuicklySelectValues: [
       '本周',
       '本月',
       '本年'
     ],
-    pickerData: initPickerData()
+    pickerData: initPickerData(currentDate),
+    pickerValue: [2018, 3, 21]
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -115,6 +156,11 @@ Page({
   dateSelectClose() {
     this.setData({
       dateSelectVisible: false
+    })
+  },
+  dateRangeQuicklySelectChange(e) {
+    this.setData({
+      dateRangeQuicklySelectKey: e.detail.key
     })
   }
 });

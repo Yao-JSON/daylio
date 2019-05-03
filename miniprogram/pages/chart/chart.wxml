@@ -29,11 +29,23 @@
 </template>
 
 <template name="picker-date-select">
-  <wux-segmented-control values="{{ dateRangeQuicklySelectKey }}" />
+  <wux-segmented-control
+    controlled
+    bind:change="dateRangeQuicklySelectChange"
+    current="{{ dateRangeQuicklySelectKey }}"
+    values="{{ dateRangeQuicklySelectValues }}" />
   <picker-view
     indicator-style="height: 50px;"
-    value="">
-    
+    value="{{pickerValue}}">
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerData[0]}}" style="line-height: 50px">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerData[1]}}" style="line-height: 50px">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerData[2]}}" style="line-height: 50px">{{item}}日</view>
+    </picker-view-column>
   </picker-view>
     
 </template>
@@ -44,7 +56,7 @@
   bind:close="dateSelectClose"
   visible="{{ dateSelectVisible }}"
   title="时间选择">
-  <wux-segmented-control values="{{ dateRangeQuicklySelectKey }}" />
+  <template is="picker-date-select" data="{{pickerData: pickerData, years: pickerData[0], months: pickerData[1], days: pickerData[2], dateRangeQuicklySelectKey: dateRangeQuicklySelectKey, dateRangeQuicklySelectValues: dateRangeQuicklySelectValues  }}"/>
 </wux-popup >
 
 <comon-view >
@@ -57,7 +69,7 @@
       <swiper-item>
         <view class="classify-container">
           <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
-          <template is="picker-date-select"/>
+          
         </view>
       </swiper-item>
       <swiper-item>
