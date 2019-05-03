@@ -94,7 +94,7 @@ baseComponent({
       if(index === 0 || index === 1) {
         const today = new Date().getTime();
         const lastDay = today - 86400000;
-        const url = '/pages/diary/new-diary/new-diary';
+        const url = '/pages/new-diary/select-mood/index';
         
         globalData.set('date', {
           index,
