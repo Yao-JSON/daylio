@@ -4,7 +4,6 @@
   "description": "daylio-miniprogram",
   "license": "MIT",
   "dependencies": {
-    "@antv/f2-canvas": "~1.0.5",
-    "@antv/wx-f2": "~1.1.4"
+    "@antv/f2-canvas": "~1.0.5"
   }
 }

@@ -26,6 +26,9 @@ App({
         const navRect = wx.getMenuButtonBoundingClientRect();
         this.globalData.SystemInfo = e;
         this.globalData.navRect = navRect;
+        this.globalData.StatusBar = e.statusBarHeight;
+        this.globalData.Custom = navRect;  
+        this.globalData.CustomBar = navRect.bottom + navRect.top - e.statusBarHeight;
       }
     })
   },

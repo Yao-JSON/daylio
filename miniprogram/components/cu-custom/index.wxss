@@ -1,5 +1,22 @@
 /* colorui/components/cu-custom.wxss */
 
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+
+.cu-bar .action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+
+
 .cu-custom {
 	display: block;
 	position: relative;
