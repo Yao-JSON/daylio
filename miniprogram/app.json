@@ -68,6 +68,7 @@
     "wux-cell": "./wux/cell/index",
     "wux-upload": "./wux/upload/index",
     "wux-popup": "./wux/popup/index",
+    "wux-tabs": "./wux/tabs/index",
     "wux-swipe-action": "./wux/swipe-action/index",
     "wux-swipe-action-group": "./wux/swipe-action-group/index",
     "wux-icon": "./wux/icon/index",
