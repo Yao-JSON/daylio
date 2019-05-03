@@ -38,3 +38,12 @@
   line-height: 30px;
 }
 
+
+.classify-container .chart-container {
+  height: 100px;
+}
+
+.ring-dom {
+  width: 100px;
+  height: 100px;
+}

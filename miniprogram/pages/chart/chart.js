@@ -1,5 +1,15 @@
 // const app = getApp();
-import { pickerData, currentDate, getCurrentMonthPickerValue, getCurrentWeekPickerValue, getCurrentYearPickerValue, getDay, getDateByPickerData  } from './utils'
+import {
+  pickerData,
+  currentDate,
+  getCurrentMonthPickerValue, 
+  getCurrentWeekPickerValue, 
+  getCurrentYearPickerValue,
+  getDay,
+  getDateByPickerData,
+  initClassifyRingChart,
+  initChart
+} from './utils'
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
 
@@ -38,7 +48,12 @@ Page({
     pickerStartData: pickerData,
     pickerEndData: pickerData,
     pickerValueStart: pickerValue.pickerValueStart,
-    pickerValueEnd: pickerValue.pickerValueEnd
+    pickerValueEnd: pickerValue.pickerValueEnd,
+    classifyRingOptions: {
+      onInit: initChart,
+      width: '100%',
+      height: '100px'
+    }
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -50,7 +65,6 @@ Page({
   },
   onTabsChange(e) {
     const { key } = e.detail;
-    console.log(key);
     this.setData({
       tabKey: key,
       pickerStartData: pickerData,

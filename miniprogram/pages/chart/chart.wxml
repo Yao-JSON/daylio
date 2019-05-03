@@ -88,7 +88,9 @@
     <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>
         <view class="classify-container">
-          分类
+          <view class="chart-container">
+            <ff-canvas class="ring-dom" canvas-id="ring" opts="{{ classifyRingOptions }}"/>
+          </view>
         </view>
       </swiper-item>
       <swiper-item>
