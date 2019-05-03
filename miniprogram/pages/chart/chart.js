@@ -53,7 +53,8 @@ Page({
       onInit: initChart,
       width: '100%',
       height: '100px'
-    }
+    },
+    ec: {}
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -144,7 +145,6 @@ Page({
     })
   },
   dateRangeQuicklySelectChange(e) {
-
     const { pickerStartData, pickerEndData } = this.data;
     const dateRangeQuicklySelectKey = e.detail.key;
 
@@ -194,5 +194,9 @@ Page({
       pickerValueStart: val,
       pickerEndData: newPickerData
     });
+  },
+  echartInit(e) {
+    console.log(e);
+    initChart(e.detail.canvas, e.detail.width, e.detail.height)
   }
 });

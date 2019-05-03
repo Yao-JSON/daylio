@@ -39,12 +39,20 @@
 }
 
 
-.classify-container .chart-container {
+.classify-container  {
   height: 400px;
   width: 100%;
 }
 
-.ring-dom {
+.classify-container .chart-container {
+  height: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+ec-canvas {
   width: 100%;
   height: 100%;
 }
