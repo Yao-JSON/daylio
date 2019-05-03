@@ -1,4 +1,8 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">布局</view>
+</cu-custom>
 <comon-view >
-  统计
+  报表
 </comon-view>
   

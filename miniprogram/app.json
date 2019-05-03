@@ -51,6 +51,7 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "comon-view": "./components/comon-view/index",
+    "cu-custom": "./components/cu-custom/index",
     "active-icon": "./components/active-icon/index",
     "mood-icon": "./components/mood-icon/index",
     "wux-popover": "./wux/popover/index",
