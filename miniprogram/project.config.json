@@ -9,12 +9,13 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"nodeModules": true
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.5",
+	"libVersion": "2.6.6",
 	"appid": "wxe0c29764c0b1552f",
 	"projectname": "daylio-miniprogram",
 	"debugOptions": {
