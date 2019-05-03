@@ -59,7 +59,7 @@
     "wux-media": "./wux/media/index",
     "wux-backdrop": "./wux/backdrop/index",
     "wux-animation-group": "./wux/animation-group/index",
-    "wux-dialog": "./wux/dialog/index",
+    "wux-segmented-control": "./wux/segmented-control/index",
     "wux-row": "./wux/row/index",
     "wux-calendar": "./wux/calendar/index",
     "wux-prompt": "./wux/prompt/index",

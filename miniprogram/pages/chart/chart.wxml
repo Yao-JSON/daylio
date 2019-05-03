@@ -1,6 +1,51 @@
-<template name="date-picker">
-  
+<template name="month-select">
+  <view wx:if="{{ !!dateRange.length }}" class="month-select-container">
+    <view class="date-text" bind:tap="dateSelectOpen">
+      <view class="start-time">
+        {{ dateRange[0].date }}
+      </view>
+        ~
+      <view class="end-time">
+        {{ dateRange[1].date }}
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ !dateRange.length }}"  class="month-select-container">
+    <view bind:tap="dateBackMonth">
+      <wux-icon
+        type="ios-arrow-back"
+        size="24"/>
+    </view>
+    <view class="date-text" bind:tap="dateSelectOpen">
+      {{ year }}年{{ month }}月
+      <wux-icon type="md-create" size="16"/>
+    </view>
+    <view bind:tap="dateForwardMonth">
+      <wux-icon
+        type="ios-arrow-forward"
+        size="24"/>
+    </view>
+  </view>
 </template>
+
+<template name="picker-date-select">
+  <wux-segmented-control values="{{ dateRangeQuicklySelectKey }}" />
+  <picker-view
+    indicator-style="height: 50px;"
+    value="">
+    
+  </picker-view>
+    
+</template>
+
+<wux-popup
+  position="center"
+  closable
+  bind:close="dateSelectClose"
+  visible="{{ dateSelectVisible }}"
+  title="时间选择">
+  <wux-segmented-control values="{{ dateRangeQuicklySelectKey }}" />
+</wux-popup >
 
 <comon-view >
    <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
@@ -11,7 +56,8 @@
     <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>
         <view class="classify-container">
-          <picker-view></picker-view>
+          <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
+          <template is="picker-date-select"/>
         </view>
       </swiper-item>
       <swiper-item>
