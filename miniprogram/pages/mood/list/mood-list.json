@@ -1,9 +1,5 @@
 {
   "navigationBarTitleText": "心情列表",
   "usingComponents": {
-    "wux-cell": "./../../../wux/cell/index",
-    "wux-cell-group": "./../../../wux/cell-group/index",
-    "wux-swipe-action": "./../../../wux/swipe-action/index",
-    "wux-swipe-action-group": "./../../../wux/swipe-action-group/index"
   }
 }

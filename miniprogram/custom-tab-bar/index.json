@@ -1,8 +1,5 @@
 {
   "component": true,
   "usingComponents": {
-    "wux-popup": "./../wux/popup/index",
-    "wux-toptips": "./../wux/toptips/index",
-    "cn-icon": "./../components/cu-icon/index"
   }
 }

@@ -1,9 +1,5 @@
 {
   "navigationBarTitleText": "编辑活动",
   "usingComponents": {
-    "wux-input": "./../../../wux/input/index",
-    "wux-row": "./../../../wux/row/index",
-    "wux-col": "./../../../wux/col/index",
-    "wux-cell-group": "./../../../wux/cell-group/index"
   }
 }

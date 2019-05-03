@@ -1,12 +1,6 @@
 {
   "navigationBarTitleText": "新建日记",
   "usingComponents": {
-    "wux-icon": "./../../../wux/icon/index",
-    "mood-icon": "./../../../components/mood-icon/index",
-    "wux-card": "./../../../wux/card/index",
-    "wux-popover": "./../../../wux/popover/index",
-    "wux-media": "./../../../wux/media/index",
-    "diary-card": "./../../../components/diary-card/index",
-    "wux-prompt": "./../../../wux/prompt/index"
+    "diary-card": "./../../../components/diary-card/index"
   }
 }
