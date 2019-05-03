@@ -54,6 +54,9 @@ Page({
       width: '100%',
       height: '100px'
     },
+    moodPieChart: {
+      show: true
+    },
     ec: {}
   },
   onShow() {
@@ -76,7 +79,18 @@ Page({
         year: currentYear,
         month: currentMonth,
       },
-      dateRange: []
+      dateRange: [],
+      moodPieChart: {
+        show: false
+      }
+    }, () => {
+      if(key === 0) {
+        this.setData({
+          moodPieChart: {
+            show: true
+          }
+        })
+      }
     })
   },
   onSwiperChange(e) {

@@ -41,7 +41,7 @@
       <swiper-item>
         <view class="classify-container">
           分类
-          <view class="chart-container mood-pie-container {{ dateSelectPopupVisible ? 'hide' : '' }}">
+          <view class="chart-container mood-pie-container {{ dateSelectPopupVisible && !moodPieChart.show ? 'hide' : '' }}">
             <ec-canvas wx:if="{{ tabKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit" />
           </view>
         </view>
