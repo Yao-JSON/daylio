@@ -19,7 +19,7 @@ baseComponent({
       },
       {
         "pagePath": "/pages/chart/chart",
-        "text": "统计",
+        "text": "报表",
         "icon": "rank",
         "iconFill": "rankfill",
         "action": "switchTab"

@@ -4,7 +4,7 @@
 		"ignore": [
 			{
 				"type": "glob",
-				"value": "node_modules"
+				"value": "miniprogram_npm"
 			},
 			{
 				"type": "file",

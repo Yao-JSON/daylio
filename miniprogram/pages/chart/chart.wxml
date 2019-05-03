@@ -1,4 +1,29 @@
+<template name="date-picker">
+  
+</template>
+
 <comon-view >
-  报表
+   <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
+      <block wx:for="{{ tabs }}" wx:key="key">
+          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+      </block>
+    </wux-tabs>
+    <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
+      <swiper-item>
+        <view class="classify-container">
+          <picker-view></picker-view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          趋势
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          对比
+        </view>
+      </swiper-item>
+    </swiper>
 </comon-view>
   
