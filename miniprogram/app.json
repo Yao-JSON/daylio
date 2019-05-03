@@ -66,6 +66,7 @@
     "wux-textarea": "./wux/textarea/index",
     "wux-cell-group": "./wux/cell-group/index",
     "wux-cell": "./wux/cell/index",
+    "wux-upload": "./wux/upload/index",
     "wux-popup": "./wux/popup/index",
     "wux-swipe-action": "./wux/swipe-action/index",
     "wux-swipe-action-group": "./wux/swipe-action-group/index",

@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "报表",
-  "navigationStyle": "custom",
   "usingComponents": {
     "ff-canvas": "@antv/f2-canvas"
   }
