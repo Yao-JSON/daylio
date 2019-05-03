@@ -68,19 +68,19 @@
 				{
 					"id": 2,
 					"name": "选择心情",
-					"pathName":  "pages/new-diary/select-mood/index",
+					"pathName": "pages/new-diary/select-mood/index",
 					"query": ""
 				},
 				{
 					"id": 3,
 					"name": "选择活动",
-					"pathName":"pages/new-diary/select-active/index",
+					"pathName": "pages/new-diary/select-active/index",
 					"query": ""
 				},
 				{
 					"id": 4,
 					"name": "活动列表",
-					"pathName":"pages/active/list/active-list",
+					"pathName": "pages/active/list/active-list",
 					"query": ""
 				},
 				{
@@ -92,7 +92,7 @@
 				{
 					"id": 6,
 					"name": "心情列表",
-					"pathName":"pages/mood/list/mood-list",
+					"pathName": "pages/mood/list/mood-list",
 					"query": ""
 				},
 				{

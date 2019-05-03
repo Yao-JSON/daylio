@@ -1,52 +1,10 @@
 // const app = getApp();
-
-const currentDate = new Date();
+import { pickerData, currentDate, getCurrentMonthPickerValue, getCurrentWeekPickerValue, getCurrentYearPickerValue, getDay, getDateByPickerData  } from './utils'
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
 
 
-const initPickerData = (date) => {
-  const baseYear = date.getFullYear();
-  const baseMonth = date.getMonth() + 1;
-
-  const years= [];
-  const months = [];
-  const days = [];
-
-  for(let i = 0; i <= 10; i ++) {
-    years.push(baseYear - i);
-  }
-
-  for(let i = 1; i <= 12; i ++) {
-    months.push(i);
-  }
-
-  let tableDays = {
-    1: 31,
-    3: 31,
-    5: 31,
-    7: 31,
-    8: 31,
-    10: 31,
-    12: 31,
-    4: 30,
-    6: 30,
-    9: 30,
-    11: 30
-  }
-
-  let baseDays = tableDays[baseMonth];
-  
-  if(baseMonth === 2) {
-    baseDays = !(baseYear % 4) & !(baseYear % 400) ? 29 : 28
-  }
-
-  for(let i = 1; i <= baseDays; i ++) {
-    days.push(i);
-  }
-
-  return [years, months, days];
-}
+const pickerValue = getCurrentMonthPickerValue(currentYear, currentMonth);
 
 Page({
   data: {
@@ -69,22 +27,18 @@ Page({
       year: currentYear,
       month: currentMonth,
     },
-    dateSelectVisible: true,
-    dateRange: [
-      {
-        date: '2019-01-20',
-      },{
-        date: '2019-02-23'
-      }
-    ],
+    dateSelectPopupVisible: false,
+    dateRange: [],
     dateRangeQuicklySelectKey: 1,
     dateRangeQuicklySelectValues: [
       '本周',
       '本月',
       '本年'
     ],
-    pickerData: initPickerData(currentDate),
-    pickerValue: [2018, 3, 21]
+    pickerStartData: pickerData,
+    pickerEndData: pickerData,
+    pickerValueStart: pickerValue.pickerValueStart,
+    pickerValueEnd: pickerValue.pickerValueEnd
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -96,8 +50,18 @@ Page({
   },
   onTabsChange(e) {
     const { key } = e.detail;
+    console.log(key);
     this.setData({
       tabKey: key,
+      pickerStartData: pickerData,
+      pickerEndData: pickerData,
+      pickerValueStart: pickerValue.pickerValueStart,
+      pickerValueEnd: pickerValue.pickerValueEnd,
+      dateByYearMonth: {
+        year: currentYear,
+        month: currentMonth,
+      },
+      dateRange: []
     })
   },
   onSwiperChange(e) {
@@ -145,22 +109,76 @@ Page({
     });
   },
   // 选择时间范围
-  selectDateRange() {
-    
+  handlerConfirmSelectDateRange() {
+    const { pickerStartData, pickerEndData, pickerValueStart, pickerValueEnd } = this.data;
+    const startTime = getDateByPickerData(pickerValueStart, pickerStartData);
+    const endTime = getDateByPickerData(pickerValueEnd, pickerEndData);
+    this.setData({
+      dateRange: [startTime, endTime],
+      dateSelectPopupVisible: false
+    });
+
   },
   dateSelectOpen() {
     this.setData({
-      dateSelectVisible: true,
+      dateSelectPopupVisible: true,
     });
   },
   dateSelectClose() {
     this.setData({
-      dateSelectVisible: false
+      dateSelectPopupVisible: false
     })
   },
   dateRangeQuicklySelectChange(e) {
+
+    const { pickerStartData, pickerEndData } = this.data;
+    const dateRangeQuicklySelectKey = e.detail.key;
+
+    let prickerValue;
+    switch(dateRangeQuicklySelectKey) {
+      case 0:
+        prickerValue = getCurrentWeekPickerValue(currentDate, pickerStartData, pickerEndData);
+        break;
+      case 1:
+        prickerValue = getCurrentMonthPickerValue(currentYear, currentMonth, pickerStartData, pickerEndData);
+        break;
+      default:
+        prickerValue = getCurrentYearPickerValue(currentYear, pickerStartData, pickerEndData);
+    }
+
     this.setData({
-      dateRangeQuicklySelectKey: e.detail.key
+      dateRangeQuicklySelectKey,
+      ...prickerValue
     })
+  },
+  pickerViewStartChange(e) {
+    const { pickerStartData } = this.data;
+    const val = e.detail.value;
+    const year = pickerStartData[0][val[0]];
+    const month = pickerStartData[1][val[1]];
+    const baseDays = getDay(year, month);
+
+    const newPickerData = [...pickerStartData];
+    newPickerData[2] = baseDays.days;
+
+    this.setData({
+      pickerValueStart: val,
+      pickerStartData: newPickerData
+    });
+  },
+  pickerViewEndChange(e) {
+    const { pickerEndData } = this.data;
+    const val = e.detail.value;
+    const year = pickerEndData[0][val[0]];
+    const month = pickerEndData[1][val[1]];
+    const baseDays = getDay(year, month);
+
+    const newPickerData = [...pickerEndData];
+    newPickerData[2] = baseDays.days;
+
+    this.setData({
+      pickerValueStart: val,
+      pickerEndData: newPickerData
+    });
   }
 });

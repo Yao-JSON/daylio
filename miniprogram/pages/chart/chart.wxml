@@ -2,11 +2,11 @@
   <view wx:if="{{ !!dateRange.length }}" class="month-select-container">
     <view class="date-text" bind:tap="dateSelectOpen">
       <view class="start-time">
-        {{ dateRange[0].date }}
+        {{ dateRange[0].dateFmt }}
       </view>
         ~
       <view class="end-time">
-        {{ dateRange[1].date }}
+        {{ dateRange[1].dateFmt }}
       </view>
     </view>
   </view>
@@ -28,35 +28,52 @@
   </view>
 </template>
 
-<template name="picker-date-select">
+<wux-popup
+  position="center"
+  closable
+  bind:close="dateSelectClose"
+  visible="{{ dateSelectPopupVisible }}"
+  title="时间选择">
   <wux-segmented-control
     controlled
     bind:change="dateRangeQuicklySelectChange"
     current="{{ dateRangeQuicklySelectKey }}"
     values="{{ dateRangeQuicklySelectValues }}" />
+  <view class="date-title">开始时间</view>  
   <picker-view
-    indicator-style="height: 50px;"
-    value="{{pickerValue}}">
-    <picker-view-column>
-      <view wx:key="index" wx:for="{{pickerData[0]}}" style="line-height: 50px">{{item}}年</view>
+    indicator-style="height: 30px;"
+    class="picker-view-container"
+    bind:change="pickerViewStartChange"
+    value="{{pickerValueStart}}">
+    <picker-view-column >
+      <view wx:key="index" wx:for="{{pickerStartData[0]}}" class="picker-view-item">{{item}}年</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:key="index" wx:for="{{pickerData[1]}}" style="line-height: 50px">{{item}}月</view>
+      <view wx:key="index" wx:for="{{pickerStartData[1]}}" class="picker-view-item">{{item}}月</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:key="index" wx:for="{{pickerData[2]}}" style="line-height: 50px">{{item}}日</view>
+      <view wx:key="index" wx:for="{{pickerStartData[2]}}" class="picker-view-item">{{item}}日</view>
     </picker-view-column>
   </picker-view>
-    
-</template>
-
-<wux-popup
-  position="center"
-  closable
-  bind:close="dateSelectClose"
-  visible="{{ dateSelectVisible }}"
-  title="时间选择">
-  <template is="picker-date-select" data="{{pickerData: pickerData, years: pickerData[0], months: pickerData[1], days: pickerData[2], dateRangeQuicklySelectKey: dateRangeQuicklySelectKey, dateRangeQuicklySelectValues: dateRangeQuicklySelectValues  }}"/>
+  <view class="date-title">结束时间</view> 
+  <picker-view
+    indicator-style="height: 30px;"
+    class="picker-view-container"
+    bind:change="pickerViewEndChange"
+    value="{{pickerValueEnd}}">
+    <picker-view-column >
+      <view wx:key="index" wx:for="{{pickerEndData[0]}}" data-year="{{item}}" class="picker-view-item">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerEndData[1]}}" data-month="{{item}}" class="picker-view-item">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerEndData[2]}}" data-day="{{item}}" class="picker-view-item">{{item}}日</view>
+    </picker-view-column>
+  </picker-view>
+  <view class="text-green" bind:tap="handlerConfirmSelectDateRange">
+    <wux-icon type="ios-checkmark-circle-outline" size="32"/>
+  </view>
 </wux-popup >
 
 <comon-view >
@@ -65,11 +82,13 @@
           <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
       </block>
     </wux-tabs>
+    <view class="date-select-container">
+      <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
+    </view>
     <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>
         <view class="classify-container">
-          <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
-          
+          分类
         </view>
       </swiper-item>
       <swiper-item>
