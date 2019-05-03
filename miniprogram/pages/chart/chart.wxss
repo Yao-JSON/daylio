@@ -40,10 +40,11 @@
 
 
 .classify-container .chart-container {
-  height: 100px;
+  height: 400px;
+  width: 100%;
 }
 
 .ring-dom {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }

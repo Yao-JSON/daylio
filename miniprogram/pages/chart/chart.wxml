@@ -31,6 +31,7 @@
 <wux-popup
   position="center"
   closable
+  zIndex="{{ 100000 }}"
   bind:close="dateSelectClose"
   visible="{{ dateSelectPopupVisible }}"
   title="时间选择">
@@ -88,8 +89,8 @@
     <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>
         <view class="classify-container">
+          分类
           <view class="chart-container">
-            <ff-canvas class="ring-dom" canvas-id="ring" opts="{{ classifyRingOptions }}"/>
           </view>
         </view>
       </swiper-item>
