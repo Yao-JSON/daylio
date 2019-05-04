@@ -211,11 +211,6 @@ export const initTrendLineChart = (canvas, width, height, chartData) => {
       data: ['狂喜', '开心', '一般', '不爽', '超烂'],
       bottom: 0,
       left: 'center',
-      backgroundColor: 'red',
-      z: 100
-    },
-    grid: {
-      containLabel: true
     },
     tooltip: {
       show: true,

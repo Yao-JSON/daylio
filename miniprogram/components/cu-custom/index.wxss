@@ -1,22 +1,3 @@
-/* colorui/components/cu-custom.wxss */
-
-.cu-bar {
-	display: flex;
-	position: relative;
-	align-items: center;
-	min-height: 100rpx;
-	justify-content: space-between;
-}
-
-.cu-bar .action {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	justify-content: center;
-	max-width: 100%;
-}
-
-
 .cu-custom {
 	display: block;
 	position: relative;
@@ -79,7 +60,7 @@
 	background-color: #fff;
 }
 
-.cu-custom .cu-bar .border-custom text {
+.cu-custom .cu-bar .border-custom .cu-icon {
 	display: block;
 	flex: 1;
 	margin: auto !important;
@@ -87,10 +68,70 @@
 	font-size: 34rpx;
 }
 
-.cu-custom .cu-bar.fixed {
-	position: fixed;
-	width: 100%;
+
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+
+.cu-bar .action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+
+
+
+.cu-bar .action:first-child {
+	margin-left: 30rpx;
+	font-size: 30rpx;
+}
+
+.cu-bar .action:first-child .cu-icon {
+	margin-left: -0.3em;
+	margin-right: 0.3em;
+}
+
+.cu-bar .action:last-child {
+	margin-right: 30rpx;
+}
+
+.cu-bar .action .cu-icon {
+	font-size: 36rpx;
+}
+
+
+
+.cu-bar .content {
+	position: absolute;
+	text-align: center;
+	width: calc(100% - 340rpx);
+	left: 0;
+	right: 0;
+	bottom: 0;
 	top: 0;
-	z-index: 1024;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+	margin: auto;
+	height: 60rpx;
+	font-size: 32rpx;
+	line-height: 60rpx;
+	cursor: none;
+	pointer-events: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.bg-img {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
