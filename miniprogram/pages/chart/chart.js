@@ -13,8 +13,89 @@ import {
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
 
-
 const pickerValue = getCurrentMonthPickerValue(currentYear, currentMonth);
+
+
+let moodData =  [
+  {
+    moodIcon: 'happy-daxiao',
+    num: 9,
+    id: 1,
+    moodKey: 'happy',
+    moodTitle: '开心'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 19,
+    id: 2,
+    moodTitle: '高兴',
+    moodKey: 'happy',
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 29,
+    id: 3,
+    moodKey: 'happy',
+    moodTitle: '不开心'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 49,
+    id: 4,
+    moodKey: 'happy',
+    moodTitle: '哈哈'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 8,
+    id: 5,
+    moodKey: 'happy',
+    moodTitle: '😄'
+  },
+  {
+    moodIcon: 'happy-daxiao',
+    num: 9,
+    id: 6,
+    moodKey: 'happy',
+    moodTitle: '开心'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 19,
+    id: 7,
+    moodTitle: '高兴',
+    moodKey: 'happy',
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 29,
+    id: 13,
+    moodKey: 'happy',
+    moodTitle: '不开心'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 49,
+    id: 14,
+    moodKey: 'happy',
+    moodTitle: '哈哈'
+  },
+  {
+    moodIcon: 'happy-wink',
+    num: 8,
+    id: 15,
+    moodKey: 'happy',
+    moodTitle: '😄'
+  },
+];
+
+let num = 0;
+moodData.forEach(_ => num += _.num)
+
+moodData = moodData.map(item => {
+  item.percent = ((item.num/num) * 100 ).toFixed(2)
+  return item;
+})
 
 Page({
   data: {
@@ -54,38 +135,8 @@ Page({
       chartTabs: ['饼图', '折线图'],
       chartKey: 0
     },
-    moodData: [
-      {
-        moodIcon: 'happy-daxiao',
-        num: 9,
-        id: 1,
-        moodTitle: '开心'
-      },
-      {
-        moodIcon: 'happy-wink',
-        num: 19,
-        id: 2,
-        moodTitle: '高兴'
-      },
-      {
-        moodIcon: 'happy-wink',
-        num: 29,
-        id: 3,
-        moodTitle: '不开心'
-      },
-      {
-        moodIcon: 'happy-wink',
-        num: 49,
-        id: 4,
-        moodTitle: '哈哈'
-      },
-      {
-        moodIcon: 'happy-wink',
-        num: 8,
-        id: 5,
-        moodTitle: '😄'
-      },
-    ]
+    moodData,
+    swiperHeihgt: 300
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -97,6 +148,7 @@ Page({
   },
   onTabsChange(e) {
     const { key } = e.detail;
+    this.calcSwiperHeight();
     this.setData({
       tabKey: key,
       pickerStartData: pickerData,
@@ -159,6 +211,15 @@ Page({
     const { pickerStartData, pickerEndData, pickerValueStart, pickerValueEnd } = this.data;
     const startTime = getDateByPickerData(pickerValueStart, pickerStartData);
     const endTime = getDateByPickerData(pickerValueEnd, pickerEndData);
+
+    if(+endTime.date < +startTime.date) {
+      wx.showToast({
+        title: '时间设置错误',
+        icon:'none'
+      })
+      return;
+    }
+
     this.setData({
       dateRange: [startTime, endTime],
       dateSelectPopupVisible: false
@@ -251,5 +312,20 @@ Page({
   },
   barInit(e) {
     
+  },
+  // 计算 swiper
+  onReady() {
+    this.calcSwiperHeight();
+  },
+  calcSwiperHeight() {
+    const selectQuery = wx.createSelectorQuery();
+    selectQuery.select('.chart-container').boundingClientRect();
+    selectQuery.exec((res) => {
+      const style = res[0];
+      this.setData({
+        swiperHeihgt: style.bottom
+      });
+    })
   }
+
 });

@@ -1,3 +1,7 @@
+.date-select-container {
+  margin: 5px 0;
+}
+
 .month-select-container {
   display: flex;
   justify-content: center;
@@ -20,10 +24,6 @@
 
 .month-select-container .date-text .end-time {
   margin-left: 5px; 
-}
-
-.date-select-container {
-  margin: 2px 0 5px;
 }
 
 .picker-view-container {
@@ -52,14 +52,39 @@ ec-canvas {
 
 
 /*== 分类 ==*/
-.classify-container  {
-  width: 100%;
+.classify-list-container {
+
 }
 
 
-.classify-container .chart-parent {
-  height: 150px;
-  margin-bottom: 10px;
+.classify-list-container .list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e7ebed; 
 }
 
+.classify-list-container .list-container:first-child {
+  border-top: 1px solid #e7ebed;
+}
 
+.classify-list-container .list-container > view {
+  margin: 10px 25px;
+  width: 33%;
+}
+
+.classify-list-container .list-container > view.mood-title {
+  display: flex;
+}
+
+.classify-list-container .list-container > view.mood-title  .mood-list-icon {
+  margin-right: 5px;
+}
+
+.classify-list-container .list-container > view.mood-percent {
+  width: 50px;
+}
+
+.classify-list-container .list-container > view.mood-num {
+  text-align: right;
+}
