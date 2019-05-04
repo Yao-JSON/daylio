@@ -138,7 +138,7 @@ Page({
       chartTabs: ['饼图', '折线图'],
       chartKey: 0
     },
-    moodData:[],
+    moodData,
     swiperHeihgt: 300
   },
   onShow() {

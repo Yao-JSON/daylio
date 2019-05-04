@@ -89,6 +89,24 @@
     values="{{ classifyChart.chartTabs }}" />
 </template>
 
+<template name="empty-text">
+  <view class="empty-container" bind:tap="jumpNewDiaryPage">
+    <wux-icon type="ios-apps" size="100"/>
+    <view>
+      <text class="">
+        报表空空的
+      </text>
+      <text class="">
+        点击“这里”添加一些新记录
+      </text>
+    </view>
+  </view>
+</template>
+
+<template name="trend-chart">
+
+</template>
+
 <comon-view >
   <view class="chart-tab" >
     <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
@@ -99,20 +117,9 @@
   </view>
 
   <view class="date-select-container">
-    <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
+    <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange }}"/>
   </view>
-
-   <view wx:if="{{ !moodData.length }}" class="empty-container">
-    <wux-icon type="ios-apps" size="100"/>
-    <view bind:tap="jumpNewDiaryPage">
-      <text class="">
-        报表空空的
-      </text>
-      <text class="">
-        点击“这里”添加一些新记录
-      </text>
-    </view>
-  </view>
+  <template wx:if="{{ !moodData.length }}" is="empty-text" data="{{ jumpNewDiaryPage }}" />
   <view wx:else class="export-container">
      <view class="chart-container">
       <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, echartInit, barInit, ec }}"/>
