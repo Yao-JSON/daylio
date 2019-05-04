@@ -9,7 +9,10 @@ import {
   getDateByPickerData,
   initClassifyPieChart,
   initClassifyBarChart,
-} from './utils'
+} from './utils';
+const app = getApp();
+const { SystemInfo } = app.globalData;
+
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
 
@@ -148,7 +151,6 @@ Page({
   },
   onTabsChange(e) {
     const { key } = e.detail;
-    this.calcSwiperHeight();
     this.setData({
       tabKey: key,
       pickerStartData: pickerData,
@@ -160,6 +162,8 @@ Page({
         month: currentMonth,
       },
       dateRange: [],
+    }, () => {
+      this.calcSwiperHeight();
     })
   },
   onSwiperChange(e) {
@@ -323,7 +327,7 @@ Page({
     selectQuery.exec((res) => {
       const style = res[0];
       this.setData({
-        swiperHeihgt: style.bottom
+        swiperHeihgt: SystemInfo.windowHeight - style.bottom - 60
       });
     })
   }
