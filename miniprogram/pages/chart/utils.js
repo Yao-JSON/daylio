@@ -117,13 +117,9 @@ export const getDateByPickerData = (pickerValue, data = pickerData) => {
   }
 }
 
-export const initClassifyRingChart = (canvas, width, height, F2) => {
-  console.log(this,canvas, width, height, F2);
-}
+const color = ["#e54d42", "#f37b1d", "#8dc63f", "#91F2DE", "#FFDB5C", "#FF9F7F"];
 
-
-
-export const  initChart = (canvas, width, height) => {
+export const initClassifyPieChart = (canvas, width, height, chartData) => {
   const chart = echarts.init(canvas, null, {
     width: width,
     height: height
@@ -132,7 +128,7 @@ export const  initChart = (canvas, width, height) => {
 
   var option = {
     backgroundColor: "#ffffff",
-    color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
+    color,
     series: [{
       label: {
         normal: {
@@ -141,24 +137,8 @@ export const  initChart = (canvas, width, height) => {
       },
       type: 'pie',
       center: ['50%', '50%'],
-      radius: [0, '60%'],
-      data: [{
-        value: 55,
-        name: '北京'
-      }, {
-        value: 20,
-        name: '武汉'
-      }, {
-        value: 10,
-        name: '杭州'
-      }, {
-        value: 20,
-        name: '广州'
-      }, {
-        value: 38,
-        name: '上海'
-      },
-      ],
+      radius: ['50%', '70%'],
+      data: chartData,
       itemStyle: {
         emphasis: {
           shadowBlur: 10,
@@ -167,6 +147,51 @@ export const  initChart = (canvas, width, height) => {
         }
       }
     }]
+  };
+
+  chart.setOption(option);
+  return chart;
+}
+
+export const initClassifyBarChart = (canvas, width, height, chartData) => {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+
+  const option = {
+    color,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      },
+      confine: true
+    },
+    legend: {
+      data: ['心情']
+    },
+    xAxis: {
+      type: 'category',
+      data: chartData.map(_ => _.name)
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        name: '热度',
+        type: 'bar',
+        label: {
+          normal: {
+            show: true,
+            position: 'inside'
+          }
+        },
+        data: chartData.map(_ => _.value)
+      },
+    ]
   };
 
   chart.setOption(option);

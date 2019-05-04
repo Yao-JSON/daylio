@@ -51,7 +51,6 @@
           <text wx:else  class="image-empty">
             无
           </text>
-            
         </view>
       </view>
     </scroll-view>

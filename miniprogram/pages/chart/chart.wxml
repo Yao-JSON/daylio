@@ -77,6 +77,18 @@
   </view>
 </wux-popup >
 
+<template name="classify-chart">
+  <view class="chart">
+    <ec-canvas wx:if="{{ classifyChart.chartKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="moodInitPieChart" />
+    <ec-canvas wx:if="{{ classifyChart.chartKey === 1 }}"  canvas-id="mychart-bar" ec="{{ ec }}" bind:init="moodInitPieChart"/>
+  </view>
+  <wux-segmented-control 
+    controlled
+    bind:change="classifyChartChange"
+    current="{{ classifyChart.chartKey }}"
+    values="{{ classifyChart.chartTabs }}" />
+</template>
+
 <comon-view >
    <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
       <block wx:for="{{ tabs }}" wx:key="key">
@@ -86,22 +98,15 @@
     <view class="date-select-container">
       <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
     </view>
+    
+    <view class="chart-container">
+      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, echartInit, barInit, ec }}"/>
+    </view> 
+
     <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>
         <view class="classify-container">
-          <view class="chart-parent">
-            <view class="chart-container mood-pie-container {{ dateSelectPopupVisible ? 'hide' : '' }}">
-              <ec-canvas wx:if="{{ tabKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit" />
-            </view>
-          </view>
-          <view class="">
-             <wux-segmented-control 
-              controlled
-              bind:change="classifyChartChange"
-              current="{{ classifyChart.chartKey }}"
-              values="{{ classifyChart.chartTabs }}" />
-          </view>
-            测试
+         分类
         </view>
       </swiper-item>
       <swiper-item>

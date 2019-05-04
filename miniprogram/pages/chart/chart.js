@@ -7,8 +7,8 @@ import {
   getCurrentYearPickerValue,
   getDay,
   getDateByPickerData,
-  initClassifyRingChart,
-  initChart
+  initClassifyPieChart,
+  initClassifyBarChart,
 } from './utils'
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
@@ -49,16 +49,43 @@ Page({
     pickerEndData: pickerData,
     pickerValueStart: pickerValue.pickerValueStart,
     pickerValueEnd: pickerValue.pickerValueEnd,
-    classifyRingOptions: {
-      onInit: initChart,
-      width: '100%',
-      height: '100px'
-    },
     ec: {},
     classifyChart: {
       chartTabs: ['饼图', '折线图'],
       chartKey: 0
-    }
+    },
+    moodData: [
+      {
+        moodIcon: 'happy-daxiao',
+        num: 9,
+        id: 1,
+        moodTitle: '开心'
+      },
+      {
+        moodIcon: 'happy-wink',
+        num: 19,
+        id: 2,
+        moodTitle: '高兴'
+      },
+      {
+        moodIcon: 'happy-wink',
+        num: 29,
+        id: 3,
+        moodTitle: '不开心'
+      },
+      {
+        moodIcon: 'happy-wink',
+        num: 49,
+        id: 4,
+        moodTitle: '哈哈'
+      },
+      {
+        moodIcon: 'happy-wink',
+        num: 8,
+        id: 5,
+        moodTitle: '😄'
+      },
+    ]
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -199,8 +226,30 @@ Page({
       pickerEndData: newPickerData
     });
   },
-  echartInit(e) {
-    console.log(e);
-    initChart(e.detail.canvas, e.detail.width, e.detail.height)
+  classifyChartChange(e) {
+    const { classifyChart } = this.data;
+    const { key } = e.detail
+    classifyChart.chartKey = key;
+    this.setData({
+      classifyChart
+    })
+  },
+  moodInitPieChart(e) {
+    const { moodData, classifyChart } = this.data;
+    const chartData = moodData.map((item) => {
+      const {moodTitle, num} = item;
+      return {
+        name: moodTitle,
+        value: num
+      }
+    })
+    if(classifyChart.chartKey === 0) {
+      initClassifyPieChart(e.detail.canvas, e.detail.width, e.detail.height, chartData)
+    } else {
+      initClassifyBarChart(e.detail.canvas, e.detail.width, e.detail.height, chartData)
+    }
+  },
+  barInit(e) {
+    
   }
 });
