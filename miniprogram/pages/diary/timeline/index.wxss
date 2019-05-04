@@ -1,6 +1,5 @@
 .cu-timeline {
   display: block;
-  background-color: #fff;
 }
 
 .cu-timeline .cu-time {
