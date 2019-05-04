@@ -54,8 +54,13 @@ ec-canvas {
 
 /*== 图表 ===*/
 
-.chart-container .chart {
+.chart-container .classify-chart {
   height: 200px;
+  margin: 5px 0;
+}
+
+.chart-container .trend-chart {
+  height: 250px;
   margin: 5px 0;
 }
 

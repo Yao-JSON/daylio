@@ -59,6 +59,10 @@
   border-radius: 5px;
 }
 
-.select-active-container .textarea-container .textarea {
-  height: 50px;
+.select-active-container .textarea-container .add-textarea {
+  min-height: 60px;
+}
+
+.select-active-container .textarea-container .add-textarea textarea {
+  min-height: 60px;
 }

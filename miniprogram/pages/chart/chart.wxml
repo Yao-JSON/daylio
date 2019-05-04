@@ -78,7 +78,7 @@
 </wux-popup >
 
 <template name="classify-chart">
-  <view class="chart">
+  <view class="classify-chart">
     <ec-canvas wx:if="{{ classifyChart.chartKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="moodInitPieChart" />
     <ec-canvas wx:if="{{ classifyChart.chartKey === 1 }}"  canvas-id="mychart-bar" ec="{{ ec }}" bind:init="moodInitPieChart"/>
   </view>
@@ -104,7 +104,9 @@
 </template>
 
 <template name="trend-chart">
-
+  <view class="trend-chart">
+    <ec-canvas canvas-id="mychart-line" ec="{{ ec }}" bind:init="trendInitPieChart" />
+  </view>
 </template>
 
 <comon-view >
@@ -117,12 +119,13 @@
   </view>
 
   <view class="date-select-container">
-    <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange }}"/>
+    <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
   </view>
   <template wx:if="{{ !moodData.length }}" is="empty-text" data="{{ jumpNewDiaryPage }}" />
   <view wx:else class="export-container">
      <view class="chart-container">
-      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, echartInit, barInit, ec }}"/>
+      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, ec }}"/>
+      <template wx:elif="{{ tabKey === 1 }}" is="trend-chart" data="{{ ec }}"/>
     </view> 
     <swiper style="height:{{ swiperHeihgt }}px;" current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>

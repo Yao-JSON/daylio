@@ -10,7 +10,7 @@ Page({
         date: "6-17",
         events: [
           {
-            content: "宝宝 爱你哈",
+            content: "喵喵喵喵喵 🐱",
             moodIcon: "happy-daxiao",
             moodKey: "happy",
             moodValue: 4,
@@ -35,7 +35,7 @@ Page({
             ],
           },
           {
-            content: "宝宝 爱你哈",
+            content: "喵喵喵喵喵 🐱",
             moodIcon: "kaixin-smile",
             moodKey: "kaixin",
             moodValue: 4,
@@ -60,7 +60,7 @@ Page({
             ],
           },
           {
-            content: "宝宝 爱你哈",
+            content: "喵喵喵喵喵 🐱",
             moodIcon: "yiban-headache",
             moodKey: "happy",
             moodValue: 4,
@@ -90,7 +90,7 @@ Page({
         date: "6-16",
         events: [
           {
-            content: "宝宝 爱你哈",
+            content: "喵喵喵喵喵 🐱",
             moodIcon: "happy-daxiao",
             moodKey: "happy",
             moodValue: 4,
@@ -115,7 +115,7 @@ Page({
             ],
           },
           {
-            content: "宝宝 爱你哈",
+            content: "喵喵喵喵喵 🐱",
             moodIcon: "happy-daxiao",
             moodKey: "happy",
             moodValue: 4,

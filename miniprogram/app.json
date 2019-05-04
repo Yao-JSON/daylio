@@ -2,8 +2,8 @@
   "pages": [
     "pages/chart/chart",
     "pages/diary/timeline/index",
-    "pages/new-diary/select-mood/index",
     "pages/new-diary/select-active/index",
+    "pages/new-diary/select-mood/index",
     "pages/active/list/active-list",
     "pages/diary/list/diary",
     "pages/mood/list/mood-list",

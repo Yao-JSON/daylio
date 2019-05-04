@@ -197,3 +197,63 @@ export const initClassifyBarChart = (canvas, width, height, chartData) => {
   chart.setOption(option);
   return chart;
 }
+
+export const initTrendLineChart = (canvas, width, height, chartData) => {
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height
+  });
+  canvas.setChart(chart);
+
+  const option = {
+    color,
+    legend: {
+      data: ['狂喜', '开心', '一般', '不爽', '超烂'],
+      bottom: 0,
+      left: 'center',
+      backgroundColor: 'red',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      // show: false
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    series: [{
+      name: '狂喜',
+      type: 'line',
+      smooth: true,
+      data: [18, 36, 65, 30, 78, 40, 33]
+    }, {
+      name: '开心',
+      type: 'line',
+      smooth: true,
+      data: [12, 50, 51, 35, 70, 30, 20]
+    }, {
+      name: '一般',
+      type: 'line',
+      smooth: true,
+      data: [10, 30, 31, 50, 40, 20, 10]
+    }]
+  };
+
+  chart.setOption(option);
+  return chart;
+};

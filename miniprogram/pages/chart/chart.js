@@ -9,6 +9,7 @@ import {
   getDateByPickerData,
   initClassifyPieChart,
   initClassifyBarChart,
+  initTrendLineChart
 } from './utils';
 const app = getApp();
 const { SystemInfo } = app.globalData;
@@ -116,7 +117,7 @@ Page({
         title: '对比',
       },
     ],
-    tabKey: 0,
+    tabKey: 1,
     dateByYearMonth: {
       year: currentYear,
       month: currentMonth,
@@ -301,6 +302,7 @@ Page({
   },
   moodInitPieChart(e) {
     const { moodData, classifyChart } = this.data;
+    const { canvas, width, height } = e.detail;
     const chartData = moodData.map((item) => {
       const {moodTitle, num} = item;
       return {
@@ -309,13 +311,14 @@ Page({
       }
     })
     if(classifyChart.chartKey === 0) {
-      initClassifyPieChart(e.detail.canvas, e.detail.width, e.detail.height, chartData)
+      initClassifyPieChart(canvas, width, height, chartData)
     } else {
-      initClassifyBarChart(e.detail.canvas, e.detail.width, e.detail.height, chartData)
+      initClassifyBarChart(canvas, width, height, chartData)
     }
   },
-  barInit(e) {
-    
+  trendInitPieChart(e) {
+    const { canvas, width, height } = e.detail;
+    initTrendLineChart(canvas, width, height, );
   },
   // 计算 swiper
   onReady() {
