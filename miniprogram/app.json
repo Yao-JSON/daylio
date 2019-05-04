@@ -52,7 +52,6 @@
   "usingComponents": {
     "comon-view": "./components/comon-view/index",
     "cu-custom": "./components/cu-custom/index",
-    "cu-icon": "./components/cu-icon/index",
     "active-icon": "./components/active-icon/index",
     "mood-icon": "./components/mood-icon/index",
     "wux-popover": "./wux/popover/index",

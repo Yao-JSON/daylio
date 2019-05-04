@@ -101,37 +101,51 @@
   <view class="date-select-container">
     <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
   </view>
-  <view class="chart-container">
-    <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, echartInit, barInit, ec }}"/>
-  </view> 
 
-  <swiper style="height:{{ swiperHeihgt }}px;" current="{{ tabKey }}"  bind:change="onSwiperChange">
-    <swiper-item>
-      <scroll-view scroll-y style="height: 100%;" class="classify-list-container">
-        <view wx:for="{{ moodData }}" wx:key="index" class="list-container">
-          <view class="mood-title">
-            <mood-icon wux-class="mood-color-{{ item.moodKey }} mood-list-icon" type="{{ item.moodIcon }}" size="16"/>
-            {{item.moodTitle}}
+   <view wx:if="{{ !moodData.length }}" class="empty-container">
+    <wux-icon type="ios-apps" size="100"/>
+    <view bind:tap="jumpNewDiaryPage">
+      <text class="">
+        报表空空的
+      </text>
+      <text class="">
+        点击“这里”添加一些新记录
+      </text>
+    </view>
+  </view>
+  <view wx:else class="export-container">
+     <view class="chart-container">
+      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, echartInit, barInit, ec }}"/>
+    </view> 
+    <swiper style="height:{{ swiperHeihgt }}px;" current="{{ tabKey }}"  bind:change="onSwiperChange">
+      <swiper-item>
+        <scroll-view scroll-y style="height: 100%;" class="classify-list-container">
+          <view wx:for="{{ moodData }}" wx:key="index" class="list-container">
+            <view class="mood-title">
+              <mood-icon wux-class="mood-color-{{ item.moodKey }} mood-list-icon" type="{{ item.moodIcon }}" size="16"/>
+              {{item.moodTitle}}
+            </view>
+            <view class="mood-percent">
+              {{ item.percent }}%
+            </view>
+            <view class="mood-num">
+              {{ item.num }}
+            </view>
           </view>
-          <view class="mood-percent">
-            {{ item.percent }}%
-          </view>
-          <view class="mood-num">
-            {{ item.num }}
-          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          趋势
         </view>
-      </scroll-view>
-    </swiper-item>
-    <swiper-item>
-      <view>
-        趋势
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view>
-        对比
-      </view>
-    </swiper-item>
-  </swiper>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          对比
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+    
 </comon-view>
   

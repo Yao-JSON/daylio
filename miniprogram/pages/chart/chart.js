@@ -138,7 +138,7 @@ Page({
       chartTabs: ['饼图', '折线图'],
       chartKey: 0
     },
-    moodData,
+    moodData:[],
     swiperHeihgt: 300
   },
   onShow() {
@@ -326,10 +326,16 @@ Page({
     selectQuery.select('.chart-container').boundingClientRect();
     selectQuery.exec((res) => {
       const style = res[0];
-      this.setData({
-        swiperHeihgt: SystemInfo.windowHeight - style.bottom - 60
-      });
+      if(style) {
+        this.setData({
+          swiperHeihgt: SystemInfo.windowHeight - style.bottom - 60
+        });
+      }
+    })
+  },
+  jumpNewDiaryPage() {
+    wx.navigateTo({
+      url: "/pages/new-diary/select-mood/index",
     })
   }
-
 });

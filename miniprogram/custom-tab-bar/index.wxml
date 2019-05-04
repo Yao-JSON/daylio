@@ -7,7 +7,7 @@
     bindtap="{{item.action}}" 
     class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} {{ index === 2 ? 'add-action' : '' }}">
     <view wx:if="{{item.type !== 'button'}}" class="icon-container" >
-      <cn-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"></cn-icon>
+      <wux-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"/>
     </view>
     <wux-fab-button 
       wx:else sAngle="{{ 240 }}" 

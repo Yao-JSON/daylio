@@ -70,7 +70,6 @@ Page({
     })
   },
   datePickerChange(e) {
-    console.log(e);
     const val = e.detail.value;
     const { time } = this.data;
 

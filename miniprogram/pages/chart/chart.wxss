@@ -1,7 +1,16 @@
+.empty-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .date-select-container {
   margin: 5px 0;
 }
-
 .month-select-container {
   display: flex;
   justify-content: center;

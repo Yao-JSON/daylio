@@ -13,15 +13,15 @@ baseComponent({
       {
         "pagePath": "/pages/diary/list/diary",
         "text": "日记",
-        "icon": "new",
-        "iconFill": "newfill",
+        "icon": "ios-paper",
+        "iconFill": "ios-paper",
         "action": "switchTab"
       },
       {
         "pagePath": "/pages/chart/chart",
         "text": "报表",
-        "icon": "rank",
-        "iconFill": "rankfill",
+        "icon": "ios-stats",
+        "iconFill": "ios-stats",
         "action": "switchTab"
       },
       {
@@ -33,16 +33,16 @@ baseComponent({
       {
         "pagePath": "/pages/calendar/calendar",
         "text": "日历",
-        "icon": 'calendar',
-        "iconFill": 'calendar',
+        "icon": 'ios-calendar',
+        "iconFill": 'ios-calendar',
         "action": "switchTab"
       },
       {
         "pagePath": "/pages/about/about",
         "text": "我的",
         "action": "switchTab",
-        "icon": "peoplefill",
-        "iconFill": "peoplefill"
+        "icon": "ios-person",
+        "iconFill": "ios-person"
       }
     ],
     visible: false,
