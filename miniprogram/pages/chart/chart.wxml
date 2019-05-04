@@ -28,38 +28,6 @@
   </view>
 </template>
 
-<comon-view >
-   <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
-      <block wx:for="{{ tabs }}" wx:key="key">
-          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
-      </block>
-    </wux-tabs>
-    <view class="date-select-container">
-      <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
-    </view>
-    <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
-      <swiper-item>
-        <view class="classify-container">
-          分类
-          <view class="chart-container mood-pie-container {{ dateSelectPopupVisible && !moodPieChart.show ? 'hide' : '' }}">
-            <ec-canvas wx:if="{{ tabKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit" />
-          </view>
-        </view>
-      </swiper-item>
-      <swiper-item>
-        <view>
-          趋势
-        </view>
-      </swiper-item>
-      <swiper-item>
-        <view>
-          对比
-        </view>
-      </swiper-item>
-    </swiper>
-</comon-view>
-  
-
 <wux-popup
   position="center"
   closable
@@ -108,3 +76,44 @@
     <wux-icon type="ios-checkmark-circle-outline" size="32"/>
   </view>
 </wux-popup >
+
+<comon-view >
+   <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
+      <block wx:for="{{ tabs }}" wx:key="key">
+          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+      </block>
+    </wux-tabs>
+    <view class="date-select-container">
+      <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
+    </view>
+    <swiper current="{{ tabKey }}"  bind:change="onSwiperChange">
+      <swiper-item>
+        <view class="classify-container">
+          <view class="chart-parent">
+            <view class="chart-container mood-pie-container {{ dateSelectPopupVisible ? 'hide' : '' }}">
+              <ec-canvas wx:if="{{ tabKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit" />
+            </view>
+          </view>
+          <view class="">
+             <wux-segmented-control 
+              controlled
+              bind:change="classifyChartChange"
+              current="{{ classifyChart.chartKey }}"
+              values="{{ classifyChart.chartTabs }}" />
+          </view>
+            测试
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          趋势
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          对比
+        </view>
+      </swiper-item>
+    </swiper>
+</comon-view>
+  

@@ -54,10 +54,11 @@ Page({
       width: '100%',
       height: '100px'
     },
-    moodPieChart: {
-      show: true
-    },
-    ec: {}
+    ec: {},
+    classifyChart: {
+      chartTabs: ['饼图', '折线图'],
+      chartKey: 0
+    }
   },
   onShow() {
     if (typeof this.getTabBar === 'function' &&
@@ -80,17 +81,6 @@ Page({
         month: currentMonth,
       },
       dateRange: [],
-      moodPieChart: {
-        show: false
-      }
-    }, () => {
-      if(key === 0) {
-        this.setData({
-          moodPieChart: {
-            show: true
-          }
-        })
-      }
     })
   },
   onSwiperChange(e) {
