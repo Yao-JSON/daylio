@@ -1,7 +1,7 @@
 <scroll-view
   scroll-y
   wx:if="{{ backgroundImage }}"
-  style="height: {{ screenHeight }}px; background-image: url({{ backgroundImage }});"
+  style="height: {{ screenHeight }}px; background-image: url({{ backgroundImage }}); color: #f1f1f1;"
   class="wux-class"
   class="comon-view-conatiner"
   catch:longpress="onLongPress">
