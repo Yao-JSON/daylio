@@ -82,8 +82,10 @@
 
 <template name="classify-chart">
   <view class="classify-chart">
-    <ec-canvas wx:if="{{ classifyChart.chartKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="moodInitPieChart" />
-    <ec-canvas wx:if="{{ classifyChart.chartKey === 1 }}"  canvas-id="mychart-bar" ec="{{ ec }}" bind:init="moodInitPieChart"/>
+    <view class="{{ dateSelectPopupVisible ? 'hide' : '' }}" style="height:100%;">
+      <ec-canvas wx:if="{{ classifyChart.chartKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="moodInitPieChart" />
+      <ec-canvas wx:if="{{ classifyChart.chartKey === 1 }}"  canvas-id="mychart-bar" ec="{{ ec }}" bind:init="moodInitPieChart"/>
+    </view>
   </view>
   <wux-segmented-control 
     controlled
@@ -108,7 +110,9 @@
 
 <template name="trend-chart">
   <view class="trend-chart">
-    <ec-canvas canvas-id="mychart-line" ec="{{ ec }}" bind:init="trendInitPieChart" />
+    <view class="{{ dateSelectPopupVisible ? 'hide' : '' }}" style="height:100%;">
+      <ec-canvas canvas-id="mychart-line" ec="{{ ec }}" bind:init="trendInitPieChart" />
+    </view>
   </view>
 </template>
 
@@ -127,8 +131,8 @@
   <template wx:if="{{ !moodData.length }}" is="empty-text" data="{{ jumpNewDiaryPage }}" />
   <view wx:else class="export-container">
      <view class="chart-container">
-      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, ec }}"/>
-      <template wx:elif="{{ tabKey === 1 }}" is="trend-chart" data="{{ ec }}"/>
+      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, ec, dateSelectPopupVisible }}"/>
+      <template wx:elif="{{ tabKey === 1 }}" is="trend-chart" data="{{ ec, dateSelectPopupVisible }}"/>
     </view> 
     <swiper style="height:{{ swiperHeihgt }}px;" current="{{ tabKey }}"  bind:change="onSwiperChange">
       <swiper-item>

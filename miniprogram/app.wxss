@@ -78,6 +78,10 @@ image {
   border-radius: 6rpx;
 }
 
+.hide {
+	display: none;
+}
+
 /* ==================
         心情
  ==================== */
