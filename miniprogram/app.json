@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/chart/chart",
+    "pages/about/about",
     "pages/diary/timeline/index",
+    "pages/chart/chart",
     "pages/new-diary/select-active/index",
     "pages/new-diary/select-mood/index",
     "pages/active/list/active-list",
@@ -9,8 +10,7 @@
     "pages/mood/list/mood-list",
     "pages/active/edit/edit-active",
     "pages/mood/edit/edit-mood",
-    "pages/calendar/calendar",
-    "pages/about/about"
+    "pages/calendar/calendar"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
@@ -56,6 +56,7 @@
     "mood-icon": "./components/mood-icon/index",
     "wux-popover": "./wux/popover/index",
     "wux-media": "./wux/media/index",
+    "wux-progress": "./wux/progress/index",
     "wux-backdrop": "./wux/backdrop/index",
     "wux-animation-group": "./wux/animation-group/index",
     "wux-segmented-control": "./wux/segmented-control/index",

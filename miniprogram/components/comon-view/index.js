@@ -6,6 +6,7 @@ const { SystemInfo, navRect, backgroundImage } = app.globalData;
 const screenHeight = SystemInfo.screenHeight - navRect.bottom;
 
 baseComponent({
+  externalClasses: ['wux-class'],
   properties:{
     isHasCustomBar: {
       type: Boolean,
