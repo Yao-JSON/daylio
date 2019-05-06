@@ -37,4 +37,17 @@
 }
 .user-container .user-info .userinfo-nickname {
   flex: 1;
+  padding: 5px 10px;
+}
+.user-container .user-info .userinfo-nickname .nickName {
+  font-size: 14px;
+  margin: 5px 0;
+}
+.user-container .user-info .userinfo-nickname .userinfo-remark {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #8799a3;
+}
+.user-container .user-info .userinfo-nickname .userinfo-remark .day {
+  color: #0081ff;
 }

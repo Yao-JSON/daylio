@@ -17,10 +17,10 @@
         <image mode="widthFix" src="{{userInfo.avatarUrl}}" />
       </view>
       <view class="userinfo-nickname"> 
-        <view>{{userInfo.nickName}}</view>
+        <view class="nickName">{{userInfo.nickName}}</view>
         <wux-progress percent="{{ (day/targetDay) * 100 }}"/>
-        <view>
-          你已经坚持记日记：<text>{{day}}</text>/{{targetDay}}天
+        <view class="userinfo-remark">
+          你已经坚持记日记：<text class="day">{{day}}</text>/{{targetDay}}天
         </view>
       </view>
     </block>
