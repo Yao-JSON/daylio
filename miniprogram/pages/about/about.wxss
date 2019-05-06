@@ -30,6 +30,10 @@
   align-items: center;
   color: #fff;
 }
+.user-container .user-info .userinfo-avatar {
+  display: flex;
+  align-items: center;
+}
 .user-container .user-info .userinfo-avatar image {
   width: 60px;
   border-radius: 50%;
