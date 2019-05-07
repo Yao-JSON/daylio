@@ -1,0 +1,83 @@
+{
+  "pages": [
+    "pages/about/about",
+    "pages/diary/timeline/index",
+    "pages/chart/chart",
+    "pages/new-diary/select-active/index",
+    "pages/new-diary/select-mood/index",
+    "pages/active/list/active-list",
+    "pages/diary/list/diary",
+    "pages/mood/list/mood-list",
+    "pages/active/edit/edit-active",
+    "pages/mood/edit/edit-mood",
+    "pages/calendar/calendar"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#aaa",
+    "selectedColor": "#39b54a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/diary/list/diary",
+        "text": "日记",
+        "action": "switchTab"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "统计",
+        "icon": "icon-similar",
+        "action": "switchTab"
+      },
+      {
+        "pagePath": "pages/diary/timeline/index",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "comon-view": "./components/comon-view/index",
+    "cu-custom": "./components/cu-custom/index",
+    "active-icon": "./components/active-icon/index",
+    "mood-icon": "./components/mood-icon/index",
+    "wux-popover": "./wux/popover/index",
+    "wux-media": "./wux/media/index",
+    "wux-progress": "./wux/progress/index",
+    "wux-backdrop": "./wux/backdrop/index",
+    "wux-animation-group": "./wux/animation-group/index",
+    "wux-segmented-control": "./wux/segmented-control/index",
+    "wux-row": "./wux/row/index",
+    "wux-calendar": "./wux/calendar/index",
+    "wux-prompt": "./wux/prompt/index",
+    "wux-card": "./wux/card/index",
+    "wux-col": "./wux/col/index",
+    "wux-input": "./wux/input/index",
+    "wux-textarea": "./wux/textarea/index",
+    "wux-cell-group": "./wux/cell-group/index",
+    "wux-cell": "./wux/cell/index",
+    "wux-upload": "./wux/upload/index",
+    "wux-popup": "./wux/popup/index",
+    "wux-tabs": "./wux/tabs/index",
+    "wux-tab": "./wux/tab/index",
+    "wux-swipe-action": "./wux/swipe-action/index",
+    "wux-swipe-action-group": "./wux/swipe-action-group/index",
+    "wux-icon": "./wux/icon/index",
+    "wux-toptips": "./wux/toptips/index",
+    "wux-fab-button": "./wux/fab-button/index",
+    "wux-tag": "./wux/tag/index"
+  }
+}
