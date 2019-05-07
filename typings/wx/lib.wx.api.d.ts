@@ -7242,6 +7242,33 @@ worker.postMessage({
     terminate(): void;
   }
   interface Wx {
+    cloud: {
+      init: (config?: ICloudConfig) => void,
+
+      // callFunction: (param: ICloud.CallFunctionParam) => Promise<ICloud.CallFunctionResult> | void,
+
+      // uploadFile: (param: ICloud.UploadFileParam) => Promise<ICloud.UploadFileResult> | WXNS.IUploadFileTask,
+      // downloadFile: (param: ICloud.DownloadFileParam) => Promise<ICloud.DownloadFileResult> | WXNS.IDownloadFileTask,
+      // getTempFileURL: (param: ICloud.GetTempFileURLParam) => Promise<ICloud.GetTempFileURLResult> | void,
+      // deleteFile: (param: ICloud.DeleteFileParam) => Promise<ICloud.DeleteFileResult> | void,
+
+      callFunction(param: OQ<ICloud.CallFunctionParam>): void
+      callFunction(param: RQ<ICloud.CallFunctionParam>): Promise<ICloud.CallFunctionResult>
+
+      uploadFile(param: OQ<ICloud.UploadFileParam>): WXNS.IUploadFileTask
+      uploadFile(param: RQ<ICloud.UploadFileParam>): Promise<ICloud.UploadFileResult>
+
+      downloadFile(param: OQ<ICloud.DownloadFileParam>): WXNS.IDownloadFileTask
+      downloadFile(param: RQ<ICloud.DownloadFileParam>): Promise<ICloud.DownloadFileResult>
+
+      getTempFileURL(param: OQ<ICloud.GetTempFileURLParam>): void,
+      getTempFileURL(param: RQ<ICloud.GetTempFileURLParam>): Promise<ICloud.GetTempFileURLResult>
+
+      deleteFile(param: OQ<ICloud.DeleteFileParam>): void,
+      deleteFile(param: RQ<ICloud.DeleteFileParam>): Promise<ICloud.DeleteFileResult>
+
+      database: (config?: ICloudConfig) => DB.Database,
+    }
     /** [Object wx.getAccountInfoSync()](wx.getAccountInfoSync.md)
 *
 * 获取当前帐号信息
