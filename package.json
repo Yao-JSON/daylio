@@ -26,12 +26,16 @@
   },
   "homepage": "https://github.com/Yao-JSON/daylio#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.123",
     "eslint": "^3.19.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.3",
     "gulp-less": "^4.0.0",
     "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",
-    "less": "^2.7.3"
+    "less": "^2.7.3",
+    "lodash": "^4.17.11",
+    "typescript": "^3.4.5"
   }
 }

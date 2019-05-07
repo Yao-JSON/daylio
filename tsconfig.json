@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["dom", "es2017"],
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "sourceRoot": ".",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"],
+    },
+    "rootDir": ".",
+    "types": ["lodash"]
+  },
+  "include": [
+    ".",
+    "./types/"
+  ],
+  "exclude": ["./node_modules"]
+}

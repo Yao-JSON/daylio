@@ -2,6 +2,7 @@ const gulp = require('../node_modules/gulp');
 const less = require('../node_modules/gulp-less');
 const cssmin = require('../node_modules/gulp-clean-css');
 const rename = require('../node_modules/gulp-rename');
+const ts = require('./../node_modules/gulp-typescript');
 
 gulp.task('compile-css', () => {
     return gulp.src(['../src/**/*.less', '!../src/**/_*.less'])
@@ -16,6 +17,15 @@ gulp.task('compile-css', () => {
 gulp.task('compile-js', () => {
     return gulp.src(['../src/**/*.js'])
         .pipe(gulp.dest('../dist/'));
+});
+
+
+const tsProject = ts.createProject('../tsconfig.json');
+
+gulp.task('compile-ts', () => {
+    const tsResult = gulp.src(['../src/**/*.ts'])
+                        .pipe(tsProject());
+    return tsResult.js.pipe(gulp.dest('../dist/'));    
 });
 
 gulp.task('compile-wxss', () => {
@@ -35,10 +45,10 @@ gulp.task('compile-wxml', () => {
 
 gulp.task('auto', () => {
     gulp.watch('../src/**/*.less', ['compile-css']);
-    gulp.watch('../src/**/*.js', ['compile-js']);
+    gulp.watch('../src/**/*.ts', ['compile-ts']);
     gulp.watch('../src/**/*.json', ['compile-json']);
     gulp.watch('../src/**/*.wxml', ['compile-wxml']);
     gulp.watch('../src/**/*.wxss', ['compile-wxss']);
 });
 
-gulp.task('default', ['compile-css', 'compile-js', 'compile-json', 'compile-wxml', 'auto']);
+gulp.task('default', ['compile-css', 'compile-ts', 'compile-json', 'compile-wxml', 'auto']);
