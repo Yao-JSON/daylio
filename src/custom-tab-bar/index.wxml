@@ -48,8 +48,10 @@
             mode="widthFix"
             style="width:60px;"
           />
-          <text wx:else  class="image-empty">
-            无
+          <view wx:else  class="image-empty">
+            <text>
+              无
+            </text>
           </text>
         </view>
       </view>
