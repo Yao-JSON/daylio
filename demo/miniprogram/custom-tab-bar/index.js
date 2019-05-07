@@ -1,6 +1,6 @@
 import { imageList } from './utils'
-import { globalData } from './../utils'
-import baseComponent from './../wux/helpers/baseComponent'
+import { globalData } from '../utils'
+import baseComponent from '../wux/helpers/baseComponent'
 
 baseComponent({
   useFunc: true,

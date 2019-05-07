@@ -23,10 +23,10 @@
     "paths": {
       "src/*": ["./src/*"],
     },
+    "types": ["lodash"],
     "typeRoots": [
       "./typings"
-    ],
-    "types": ["lodash"]
+    ]
   },
   "include": [
     "./src/**/*.ts"
