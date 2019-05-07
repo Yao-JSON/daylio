@@ -24,7 +24,7 @@ const tsProject = ts.createProject('../tsconfig.json');
 gulp.task('compile-ts', () => {
     const tsResult = gulp.src(['../src/**/*.ts'])
                         .pipe(tsProject());
-    return tsResult.js.pipe(gulp.dest('../dist/'));    
+    return tsResult.js.pipe(gulp.dest('../diary-dist/'));    
 });
 
 gulp.task('compile-wxss', () => {
