@@ -1,0 +1,23 @@
+/* ==================
+        初始化
+ ==================== */
+
+ page {
+  background: #f1f1f1;
+  font-size: 28rpx;
+  color: #333;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+view, text, scroll-view, swiper, button, form, input, textarea, label, navigator,
+image {
+  box-sizing: border-box;
+}
+
+.round {
+  border-radius: 5000rpx;
+}
+
+.radius {
+  border-radius: 6rpx;
+}

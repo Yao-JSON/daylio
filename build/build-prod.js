@@ -28,17 +28,17 @@ gulp.task('compile-ts', () => {
 });
 
 gulp.task('compile-wxss', () => {
-    return gulp.src(['../src/**/*.wxss'])
+    return gulp.src(['../src/**/*.wxss', '!../src/wux/**/*.wxss'])
         .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('compile-json', () => {
-    return gulp.src(['../src/**/*.json'])
+    return gulp.src(['../src/**/*.json', '!../src/wux/**/*.json'])
         .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('compile-wxml', () => {
-    return gulp.src(['../src/**/*.wxml'])
+    return gulp.src(['../src/**/*.wxml', '!../src/wux/**/*.wxml'])
         .pipe(gulp.dest('../diary-dist/'));
 });
 
