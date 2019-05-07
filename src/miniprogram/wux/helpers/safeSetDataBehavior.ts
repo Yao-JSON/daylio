@@ -1,4 +1,4 @@
-module.exports = Behavior({
+export default Behavior({
     lifetimes: {
         created () {
             this.nextCallback = null

@@ -1,2 +1,1 @@
-export * from './global-data';
-export * from './background-imgae';
+export * from './base-utils'
