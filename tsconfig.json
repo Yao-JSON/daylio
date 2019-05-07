@@ -18,22 +18,17 @@
     "removeComments": true,
     "pretty": true,
     "strictPropertyInitialization": true,
-    "baseUrl": ".",
-    "rootDir": ".",
-    "paths": {
-      "src/*": ["./src/*"],
-    },
-    "types": ["lodash"],
     "typeRoots": [
       "./typings"
     ]
   },
   "include": [
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "./miniprogram/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "miniprogram_dist",
+    "dist",
     "**/*.spec.ts"
   ]
 }
