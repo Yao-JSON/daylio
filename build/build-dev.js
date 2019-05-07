@@ -18,6 +18,11 @@ gulp.task('compile-js', () => {
         .pipe(gulp.dest('../dist/'));
 });
 
+gulp.task('compile-wxss', () => {
+    return gulp.src(['../src/**/*.wxss'])
+        .pipe(gulp.dest('../dist/'));
+});
+
 gulp.task('compile-json', () => {
     return gulp.src(['../src/**/*.json'])
         .pipe(gulp.dest('../dist/'));
@@ -33,6 +38,7 @@ gulp.task('auto', () => {
     gulp.watch('../src/**/*.js', ['compile-js']);
     gulp.watch('../src/**/*.json', ['compile-json']);
     gulp.watch('../src/**/*.wxml', ['compile-wxml']);
+    gulp.watch('../src/**/*.wxss', ['compile-wxss']);
 });
 
 gulp.task('default', ['compile-css', 'compile-js', 'compile-json', 'compile-wxml', 'auto']);

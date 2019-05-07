@@ -18,6 +18,11 @@ gulp.task('compile-js', () => {
         .pipe(gulp.dest('../diary-dist/'));
 });
 
+gulp.task('compile-wxss', () => {
+    return gulp.src(['../src/**/*.wxss'])
+        .pipe(gulp.dest('../diary-dist/'));
+});
+
 gulp.task('compile-json', () => {
     return gulp.src(['../src/**/*.json'])
         .pipe(gulp.dest('../diary-dist/'));
@@ -28,4 +33,4 @@ gulp.task('compile-wxml', () => {
         .pipe(gulp.dest('../diary-dist/'));
 });
 
-gulp.task('default', ['compile-css', 'compile-js', 'compile-json', 'compile-wxml']);
+gulp.task('default', ['compile-css', 'compile-js', 'compile-json', 'compile-wxml', 'compile-wxss']);
