@@ -1,10 +1,9 @@
-import assign from 'lodash/assign'
 /**
  * 过滤对象的函数属性
  * @param {Object} opts
  */
 const mergeOptionsToData = (opts = {}) => {
-    const options = assign({}, opts)
+    const options = Object.assign({}, opts)
 
     for (const key in options) {
         if (options.hasOwnProperty(key) && typeof options[key] === 'function') {
@@ -22,9 +21,7 @@ const mergeOptionsToData = (opts = {}) => {
  * @param {Object} ctx
  * @return {Function}
  */
-// @ts-ignore
-const bind = (fn, ctx)=> {
-    // @ts-ignore
+const bind = (fn, ctx) => {
     return (...args) => {
         return args.length ? fn.apply(ctx, args) : fn.call(ctx)
     }
@@ -33,7 +30,7 @@ const bind = (fn, ctx)=> {
 /**
  * Object assign
  */
-
+const assign = (...args) => Object.assign({}, ...args)
 
 export default Behavior({
     definitionFilter(defFields) {
