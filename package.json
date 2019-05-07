@@ -35,10 +35,6 @@
     "gulp-util": "^3.0.8",
     "less": "^2.7.3",
     "lodash": "^4.17.11",
-    "typescript": "^3.4.5",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-plugin-prettier": "^2.0.1"
+    "typescript": "^3.4.5"
   }
 }
