@@ -6,9 +6,10 @@
   "dependencies": {
     "@antv/f2-canvas": "^1.0.5"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp --gulpfile build/build-dev.js",
+    "build": "gulp --gulpfile build/build-prod.js",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,14 @@
   "bugs": {
     "url": "https://github.com/Yao-JSON/daylio/issues"
   },
-  "homepage": "https://github.com/Yao-JSON/daylio#readme"
+  "homepage": "https://github.com/Yao-JSON/daylio#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-less": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.8",
+    "less": "^2.7.3"
+  }
 }
