@@ -1,6 +1,6 @@
 let backgroundImage = '';
 const backgroundKey = 'diary-global-background-image';
-
+import { IMyApp } from './../interface'
 
 try {
   backgroundImage = wx.getStorageSync(backgroundKey)
@@ -17,12 +17,6 @@ enum moodData {
 }
 
 
-interface IMyApp {
-  globalData: {
-    backgroundImage: string;
-    [propsName: string]: any;
-  }
-}
 
 App<IMyApp>({  
   globalData: {
