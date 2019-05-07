@@ -1,0 +1,32 @@
+<comon-view wux-class="user-container">
+  <view class="user-info">
+    <block class="no-user" wx:if="{{ !hasUserInfo }}"> 
+      <wux-icon wux-class="user-icon" type="ios-sad" size="72"/>
+      <view bind:tap="getUserInfo" class="user-login-text">
+        <text class="login-text">
+          立即登录  
+        </text>
+        <view class="login-remark">
+         <wux-icon wux-class="ios-information" type="ios-information-circle" size="14"/>
+          登录后可免费备份数据
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="userinfo-avatar">
+        <image mode="widthFix" src="{{userInfo.avatarUrl}}" />
+      </view>
+      <view class="userinfo-nickname"> 
+        <view class="nickName">{{userInfo.nickName}}</view>
+        <wux-progress percent="{{ (day/targetDay) * 100 }}"/>
+        <view class="userinfo-remark">
+          你已经坚持记日记：<text class="day">{{day}}</text>/{{targetDay}}天
+        </view>
+      </view>
+    </block>
+    <view class="user-setting-icon">
+      <wux-icon type="ios-arrow-forward" size="36"/>
+    </view>
+  </view>
+</comon-view>
+  
