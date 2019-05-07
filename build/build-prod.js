@@ -10,22 +10,22 @@ gulp.task('compile-css', () => {
         .pipe(rename((path) => {
             path.extname = '.wxss';
         }))
-        .pipe(gulp.dest('../dist/'));
+        .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('compile-js', () => {
     return gulp.src(['../src/**/*.js'])
-        .pipe(gulp.dest('../dist/'));
+        .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('compile-json', () => {
     return gulp.src(['../src/**/*.json'])
-        .pipe(gulp.dest('../dist/'));
+        .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('compile-wxml', () => {
     return gulp.src(['../src/**/*.wxml'])
-        .pipe(gulp.dest('../dist/'));
+        .pipe(gulp.dest('../diary-dist/'));
 });
 
 gulp.task('default', ['compile-css', 'compile-js', 'compile-json', 'compile-wxml']);

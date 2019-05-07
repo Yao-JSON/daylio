@@ -1,9 +1,0 @@
-{
-  "name": "daylio-miniprogram",
-  "version": "1.0.0",
-  "description": "daylio-miniprogram",
-  "license": "MIT",
-  "dependencies": {
-    "@antv/f2-canvas": "~1.0.5"
-  }
-}
