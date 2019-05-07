@@ -14,10 +14,10 @@ gulp.task('compile-css', () => {
         .pipe(gulp.dest('../dist/'));
 });
 
-// gulp.task('compile-js', () => {
-//     return gulp.src(['../src/**/*.js'])
-//         .pipe(gulp.dest('../dist/'));
-// });
+gulp.task('compile-js', () => {
+    return gulp.src(['../src/**/*.js'])
+        .pipe(gulp.dest('../dist/'));
+});
 
 
 const tsProject = ts.createProject('../tsconfig.json');
@@ -29,23 +29,24 @@ gulp.task('compile-ts', () => {
 });
 
 gulp.task('compile-wxss', () => {
-    return gulp.src(['../src/**/*.wxss', '!../src/wux/**/*.wxss'])
+    return gulp.src(['../src/**/*.wxss'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-json', () => {
-    return gulp.src(['../src/**/*.json', '!../src/wux/**/*.json'])
+    return gulp.src(['../src/**/*.json'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-wxml', () => {
-    return gulp.src(['../src/**/*.wxml', '!../src/wux/**/*.wxml'])
+    return gulp.src(['../src/**/*.wxml'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('auto', () => {
     gulp.watch('../src/**/*.less', ['compile-css']);
     gulp.watch('../src/**/*.ts', ['compile-ts']);
+    gulp.watch('../src/**/*.js', ['compile-js']);
     gulp.watch('../src/**/*.json', ['compile-json']);
     gulp.watch('../src/**/*.wxml', ['compile-wxml']);
     gulp.watch('../src/**/*.wxss', ['compile-wxss']);

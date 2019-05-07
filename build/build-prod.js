@@ -14,10 +14,10 @@ gulp.task('compile-css', () => {
         .pipe(gulp.dest('../diary-dist/'));
 });
 
-// gulp.task('compile-js', () => {
-//     return gulp.src(['../src/**/*.js'])
-//         .pipe(gulp.dest('../diary-dist/'));
-// });
+gulp.task('compile-js', () => {
+    return gulp.src(['../src/**/*.js', '!../src/wux/**/*.js'])
+        .pipe(gulp.dest('../diary-dist/'));
+});
 
 const tsProject = ts.createProject('../tsconfig.json');
 
@@ -42,4 +42,4 @@ gulp.task('compile-wxml', () => {
         .pipe(gulp.dest('../diary-dist/'));
 });
 
-gulp.task('default', ['compile-css', 'compile-ts', 'compile-json', 'compile-wxml', 'compile-wxss']);
+gulp.task('default', ['compile-css', 'compile-ts', 'compile-js', 'compile-json', 'compile-wxml', 'compile-wxss']);
