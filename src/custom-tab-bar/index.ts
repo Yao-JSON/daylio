@@ -62,6 +62,7 @@ baseComponent({
     ]
   },
   methods: {
+    // @ts-ignore
     switchTab(e) {      
       const { url } = e.currentTarget.dataset;
       if(url) {

@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "weapp ",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "dev": "gulp --gulpfile build/build-dev.js",
     "build": "gulp --gulpfile build/build-prod.js",
@@ -29,7 +28,7 @@
     "eslint": "^3.19.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.3",
-    "gulp-less": "^4.0.0",
+    "gulp-less": "^4.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",

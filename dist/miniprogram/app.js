@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var backgroundImage = '';
 var backgroundKey = 'diary-global-background-image';
 try {
