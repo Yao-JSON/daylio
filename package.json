@@ -6,8 +6,7 @@
   "dependencies": {},
   "scripts": {
     "dev": "gulp --gulpfile build/build-dev.js",
-    "build": "gulp --gulpfile build/build-prod.js",
-    "prepare": "npm run build"
+    "build": "gulp --gulpfile build/build-prod.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",
-    "less": "^2.7.3",
+    "less": "^3.9.0",
     "lodash": "^4.17.11",
     "typescript": "^3.4.5"
   }

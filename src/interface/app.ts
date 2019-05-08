@@ -4,3 +4,5 @@ export interface IMyApp {
     [propsName: string]: any;
   }
 }
+
+console.log(2);

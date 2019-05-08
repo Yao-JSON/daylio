@@ -23,7 +23,7 @@ gulp.task('compile-js', () => {
 const tsProject = ts.createProject('../tsconfig.json');
 
 gulp.task('compile-ts', () => {
-    const tsResult = gulp.src(['../src/**/*.ts'])
+    const tsResult = gulp.src(['../src/**/*.ts', '!../src/interface/**/*.ts'])
                         .pipe(tsProject());
     return tsResult.js.pipe(gulp.dest('../dist/'));    
 });
