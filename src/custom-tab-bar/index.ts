@@ -1,13 +1,20 @@
 import { globalData, backgroundImageList } from './../comon/utils';
-// @ts-ignore
 import baseComponent from './../miniprogram/wux/helpers/baseComponent';
 
+console.log(baseComponent);
 
-baseComponent({
+interface IComponentInstance {
+  data: {
+    selected: number;
+  }
+}
+
+baseComponent<IComponentInstance, IComponentInstance>({
   useFunc: true,
   options: {
     addGlobalClass: true,
   },
+  // @ts-ignore
   data: {
     selected: 2,
     list: [
