@@ -1,4 +1,11 @@
-const activeIconList = [
+export interface IActiveItem {
+  title: string;
+  icon: string [];
+}
+
+
+
+const activeIconList: IActiveItem[] = [
   {
     title: "商务活动",
     icon: [

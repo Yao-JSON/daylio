@@ -1,58 +1,32 @@
 
 import { $wuxToptips } from '../../../wux/index'
 
-Page({
+import { activeList, IActiveListItem } from './../utils'
+
+
+interface IActiveListProps {
+  handlerSelectActive: (e) => void;
+  jumpActiveList: () => void;
+}
+
+interface IActiveListParams {
+  data: {
+    activeList: IActiveListItem[];
+    moodIcon: string;
+    moodKey: string;
+    remark: string;
+  },
+  onLoad: (query:Record<string, any>) => void;
+}
+
+
+Page<IActiveListProps, IActiveListParams>({
+  // @ts-ignore
   data: {
     moodIcon: 'happy-wink',
     moodKey: 'happy',
     remark: '',
-    activeList: [
-      {
-        activeIcon:"business-dasao",
-        title: "工作",
-        id: 1,
-      },
-      {
-        activeIcon:"business-chanpin",
-        title: "休息",
-        id: 2,
-      },
-      {
-        activeIcon:"business-chucha",
-        title: "约会",
-        id: 3,
-      },
-      {
-        activeIcon:"business-zuzhijiagou",
-        title: "工作",
-        id: 4,
-      },
-      {
-        activeIcon:"business-chanpin",
-        title: "休息",
-        id: 5,
-      },
-      {
-        activeIcon:"business-baoxiao",
-        title: "约会",
-        id: 6,
-      },
-      {
-        activeIcon:"business-dianhua",
-        title: "工作",
-        id: 7,
-      },
-      {
-        activeIcon:"business-caigou",
-        title: "休息",
-        id: 8,
-      },
-      {
-        activeIcon:"business-gongzuo",
-        title: "约会",
-        id: 9,
-      },
-    ],
+    activeList,
   },
   handlerSelectActive(e) {
     const { dataset } = e.currentTarget;

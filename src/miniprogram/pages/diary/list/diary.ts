@@ -1,6 +1,32 @@
-import { $wuxCalendar } from './../../../wux/index'
 
-Page({
+interface IEventListItem {
+  moodValue: number;
+  moodIcon: string;
+  moodText: string;
+  activity?: Array<{
+    id: number;
+    title: string;
+    activityIcon: string;
+  }>;
+  date: string;
+  time: string;
+  createTime: number;
+  content: string;
+}
+
+
+interface IDiaryProps {
+
+}
+
+interface IDiaryInstance {
+  data: {
+    titmeValue: number[];
+    list: IEventListItem[];
+  }
+}
+
+Page<IDiaryProps, IDiaryInstance>({
   data: {
     titmeValue: [],
     list: [
@@ -62,6 +88,7 @@ Page({
     if (typeof this.getTabBar === 'function') {
         const tabBarCtx = this.getTabBar();
         if(tabBarCtx) {
+          // @ts-ignore
           tabBarCtx.setData({
             selected: 0
           })

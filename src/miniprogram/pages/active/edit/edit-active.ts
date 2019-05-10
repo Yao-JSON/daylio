@@ -1,6 +1,24 @@
-import iconList from './icon-list'
+import iconList, {IActiveItem} from './icon-list'
 
-Page({
+interface IEditActiveProps {
+  handlerChange: (e) => void;
+  handlerSelectIcon: (e) => void;
+  handlerConfirm: () => void;
+}
+
+interface IEditActiveInstance {
+  data: {
+    id: number,
+    iconType: string,
+    title: string,
+    iconList: IActiveItem[]
+  },
+  onLoad: (query: { [queryKey: string]: string }) => void;
+}
+
+
+Page<IEditActiveProps, IEditActiveInstance>({
+  // @ts-ignore
   data: {
     id: 0,
     iconType: "business-dasao",

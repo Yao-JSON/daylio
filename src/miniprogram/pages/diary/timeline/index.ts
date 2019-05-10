@@ -3,7 +3,37 @@
 // console.log(app);
 
 
-Page({
+interface ITimelineEventListItemEventsItemActivityItem {
+  id: number;
+  title: string;
+  activityIcon: string;
+}
+
+interface ITimelineEventListItemEventsItem {
+  content?: string;
+  moodIcon: string;
+  moodKey: string;
+  moodValue: number;
+  moodText: string;
+  time: string;
+  activity: ITimelineEventListItemEventsItemActivityItem[];
+}
+
+interface ITimelineEventListItem {
+  date: string;
+  events: ITimelineEventListItemEventsItem[];
+}
+
+
+interface ITimelineProps {}
+
+interface ITimelineInstance {
+  data: {
+    eventList: ITimelineEventListItem[];
+  }
+}
+
+Page<ITimelineProps, ITimelineInstance>({
   data: {
     eventList: [
       {

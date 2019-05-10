@@ -1,6 +1,33 @@
-import { $wuxToptips } from './../../../wux/index'
+import { $wuxToptips } from '../../../wux/index'
 
-Page({
+
+interface IReghtItem {
+  text: string;
+  style: string;
+}
+
+interface IActiveListItem {
+  id: number;
+  iconType: string;
+  title: string;
+  remark?: string;
+}
+
+interface IActiveListProps {
+  handlerDeleteActive: (e) => void;
+  handlerAddActive: () => void;
+}
+
+interface IActiveListInstance {
+  data: {
+    url: string;
+    right: IReghtItem[];
+    activeList: IActiveListItem[];
+  }
+}
+
+Page<IActiveListProps, IActiveListInstance>({
+  // @ts-ignore
   data: {
     url: '/pages/active/edit/edit-active',
     right: [
@@ -15,23 +42,23 @@ Page({
     ],
     activeList: [
       {
-        "id": "1",
+        "id": 1,
         "iconType": "business-dasao",
         "title": "打扫卫生",
         "remark": "非常客气的打扫卫生"
       },
       {
-        "id": "2",
+        "id": 2,
         "iconType": "business-chanpin",
         "title": "打扫卫生"
       },
       {
-        "id": "3",
+        "id": 3,
         "iconType": "business-chucha",
         "title": "打扫卫生"
       },
       {
-        "id": "4",
+        "id": 4,
         "iconType": "business-dianhua",
         "title": "打扫卫生"
       },

@@ -1,11 +1,33 @@
 import { $wuxToptips } from '../../../wux/index'
-import { globalData, getDate, dateFtt } from '../../../utils'
+import { globalData, getDate, dateFtt } from '../../../../comon/utils'
+
+import { IMoodsListItem, moodsList } from './../utils'
 
 const s = 1000;
 const m = 60 * s;
 const h = 60 * m;
 
-Page({
+interface ISelectMoodProps {
+  jumpMoodEdit: () => void;
+}
+interface ISelectMoodInstance {
+  data: {
+    moodsList: IMoodsListItem[];
+    diaryTime: number;
+    time: {
+      date: string;
+      time: string;
+    },
+    datedetail: null | number;
+    mood: {
+      [propsName: string]: string[];
+    }
+  }
+}
+
+
+Page<ISelectMoodProps, ISelectMoodInstance>({
+  // @ts-ignore
   data: {
     diaryTime: +new Date(),
     time: {
@@ -13,33 +35,7 @@ Page({
       time: dateFtt('hh:mm')
     },
     datedetail: null,
-    moods:[
-      {
-        key: 'happy',
-        mood: ['happy-daxiao', 'happy-wink'],
-        text: '狂喜'
-      },
-      {
-        key: 'kaixin',
-        mood: ['kaixin-ufo'],
-        text: '开心'
-      },
-      {
-        key: 'yiban',
-        mood: ['yiban-headache'],
-        text: '一般'
-      },
-      {
-        key: 'bushuang',
-        mood: ['bushuang-karate'],
-        text: '不爽'
-      },
-      {
-        key: 'chaolan',
-        mood: ['chaolan-kulian'],
-        text: '超烂'
-      }
-    ],
+    moodsList,
     mood: {
       happy: ['happy-daxiao', 'happy-wink'],
       kaixin: ['kaixin-ufo'],

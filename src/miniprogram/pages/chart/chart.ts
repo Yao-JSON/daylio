@@ -1,3 +1,4 @@
+import { IMyApp } from './../../../interface';
 // const app = getApp();
 import {
   pickerData,
@@ -11,7 +12,7 @@ import {
   initClassifyBarChart,
   initTrendLineChart
 } from './utils';
-const app = getApp();
+const app = getApp<IMyApp>();
 const { SystemInfo } = app.globalData;
 
 const currentYear = currentDate.getFullYear();
@@ -19,8 +20,17 @@ const currentMonth = currentDate.getMonth();
 
 const pickerValue = getCurrentMonthPickerValue(currentYear, currentMonth);
 
+interface IMoodDataItem {
+  moodIcon: string;
+  num: number;
+  id: number;
+  moodKey: string;
+  moodTitle: string;
+  percent?: string;
+}
 
-let moodData =  [
+
+let moodData: IMoodDataItem[] =  [
   {
     moodIcon: 'happy-daxiao',
     num: 9,
@@ -101,7 +111,48 @@ moodData = moodData.map(item => {
   return item;
 })
 
-Page({
+
+interface ITabsItem {
+  key: number;
+  title: string;
+}
+
+interface IChartProps {
+  onTabsChange: (e) => void;
+  onSwiperChange: (e) => void;
+  dateBackMonth: () => void;
+  dateForwardMonth: () => void;
+  handlerConfirmSelectDateRange: () => void;
+  dateSelectOpen: () => void;
+  dateSelectClose: () => void;
+  dateRangeQuicklySelectChange: () => void;
+}
+
+interface IChartIntance {
+  data: {
+    tabs: ITabsItem[];
+    tabKey: number;
+    dateByYearMonth: {
+      year: number;
+      month: number;
+    },
+    dateSelectPopupVisible: boolean;
+    dateRange: [number?, number?];
+    dateRangeQuicklySelectKey: number;
+    dateRangeQuicklySelectValues: string[];
+    pickerStartData: [number[], number[], number[]];
+    pickerEndData: [number[], number[], number[]];
+    pickerValueStart: number[];
+    pickerValueEnd: number[];
+    ec: any;
+    classifyChart: any;
+    moodData: IMoodDataItem[];
+    swiperHeihgt: number
+  }
+}
+
+Page<IChartProps, IChartIntance>({
+  // @ts-ignore
   data: {
     tabs: [
       {

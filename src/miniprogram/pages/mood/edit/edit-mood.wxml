@@ -30,7 +30,7 @@
           wx:for-item="iconType"
           data-icon-type="{{ iconType }}"
           data-mood-level="{{ item.level }}"
-          data-mood-level-color-type="{{ colorLevel[item.level].levelColorType }}"
+          data-mood-level-color-type="{{ colorLevel[item.level - 1].levelColorType }}"
           bind:tap="handlerSelectIcon"
           span="2">
           <mood-icon

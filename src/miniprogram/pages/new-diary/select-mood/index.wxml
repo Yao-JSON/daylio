@@ -25,7 +25,7 @@
     </view>
     <view class="mood-container">
       <view
-        wx:for="{{moods}}"
+        wx:for="{{moodsList}}"
         wx:for-item="item"
         wx:key="index"
         data-mood-key="{{ item.key }}"

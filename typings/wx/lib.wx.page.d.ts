@@ -89,6 +89,8 @@ declare namespace Page {
 
     /** 到当前页面的路径，类型为`String`。最低基础库： `1.2.0` */
     route?: string
+
+    getTabBar?():PageInstanceBaseProps
   }
 
   interface PageInstance<D extends IAnyObject = any, T extends IAnyObject = any> extends PageInstanceBaseProps<D> {

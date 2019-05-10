@@ -1,6 +1,10 @@
-import * as echarts from './../../components/ec-canvas/echarts';
+// @ts-ignore
+import * as echarts from './../../../comon/components/ec-canvas/echarts'
 
-export const getDay = (baseYear, baseMonth) => {
+export const getDay = (baseYear: number, baseMonth: number): {
+  days: number[];
+  daysNum: number;
+} => {
   let tableDays = {
     1: 31,
     3: 31,
@@ -17,7 +21,7 @@ export const getDay = (baseYear, baseMonth) => {
   let baseDays = tableDays[baseMonth];
 
   if(baseMonth === 2) {
-    baseDays = !(baseYear % 4) & !(baseYear % 400) ? 29 : 28
+    baseDays = !(baseYear % 4) && !(baseYear % 400) ? 29 : 28
   }
 
   const days = [];
@@ -31,7 +35,9 @@ export const getDay = (baseYear, baseMonth) => {
   };
 };
 
-export const initPickerData = (baseYear, baseMonth) => {
+
+
+export const initPickerData = (baseYear, baseMonth): [number[], number[], number[]] => {
 
   const years= [];
   const months = [];
@@ -62,7 +68,10 @@ export const getCurrentYearPickerValue = (year, startPickerData = pickerData, en
   }
 }
 
-export const getCurrentMonthPickerValue = (year, month, startPickerData = pickerData, endPickerData = pickerData) => {
+export const getCurrentMonthPickerValue = (year, month, startPickerData = pickerData, endPickerData = pickerData):{
+  pickerValueStart: number[];
+  pickerValueEnd: number[];
+} => {
   const pickerValueStart =  [startPickerData[0].indexOf(year), startPickerData[1].indexOf(month + 1), 0];
   const pickerValueEnd = [
     endPickerData[0].indexOf(year),

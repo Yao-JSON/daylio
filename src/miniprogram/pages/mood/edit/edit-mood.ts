@@ -1,8 +1,26 @@
-import iconList from './icon-list'
+import iconList, {IActiveIconListItem} from './icon-list'
 
-import { colorLevel } from './../utils'
+import { colorLevel, IColorLevelItem } from '../utils'
 
-Page({
+interface IEditMoodProps {
+  handlerChange: (e) => void;
+  handlerConfirm: () => void;
+}
+interface IEditMoodInstance {
+  data: {
+    id: number;
+    iconType: string;
+    title: string;
+    iconList: IActiveIconListItem[];
+    moodLevel: number;
+    moodLevelColorType: string;
+    colorLevel: IColorLevelItem[];
+  },
+  onLoad: (query:Record<string, any>) => void;
+}
+
+Page<IEditMoodProps, IEditMoodInstance>({
+  // @ts-ignore
   data: {
     id: 0,
     iconType: "happy-daxiao",
@@ -40,14 +58,14 @@ Page({
       wx.setNavigationBarTitle({
         title: "新增心情"
       })
-      return;
+    } else {
+      this.setData({
+        id,
+        iconType,
+        title,
+        levelColorType: level ? colorLevel[level].levelColorType : 'happy'
+      })
     }
 
-    this.setData({
-      id,
-      iconType,
-      title,
-      levelColorType: level ? colorLevel[level].levelColorType : 'happy'
-    })
   }
 })

@@ -2,7 +2,7 @@ const app = getApp();
 
 interface IAboutDataProps {
   data: {
-    hasUserInfo: boolean;
+    hasUserInfo?: boolean;
     day?: number;
     userInfo?: Record<string, any>,
     targetDay?: number 
@@ -19,8 +19,10 @@ Page<IAboutDataProps, IAboutDataProps>({
         })
       }
   },
+  // @ts-ignore
   data: {
     hasUserInfo: false,
+    userInfo: {},
     day: 2,
     targetDay: 7,
   },
@@ -28,7 +30,6 @@ Page<IAboutDataProps, IAboutDataProps>({
     wx.getUserInfo({
       success:(res) => {
         const { userInfo } = res;
-        console.log(userInfo);
         this.setData({
           userInfo,
           hasUserInfo: true

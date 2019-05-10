@@ -1,4 +1,10 @@
-const activeIconList = [
+export interface IActiveIconListItem {
+  title: string;
+  level: number;
+  icon: string[];
+}
+
+const activeIconList: IActiveIconListItem[] = [
   {
     title: "狂喜",
     level: 5,
