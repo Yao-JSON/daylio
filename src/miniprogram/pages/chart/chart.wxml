@@ -1,0 +1,168 @@
+<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}">
+  <view slot="content">报表</view>
+</cu-custom>
+<template name="month-select">
+  <view wx:if="{{ !!dateRange.length }}" class="month-select-container">
+    <view class="date-text" bind:tap="dateSelectOpen">
+      <view class="start-time">
+        {{ dateRange[0].dateFmt }}
+      </view>
+        ~
+      <view class="end-time">
+        {{ dateRange[1].dateFmt }}
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ !dateRange.length }}"  class="month-select-container">
+    <view bind:tap="dateBackMonth">
+      <wux-icon
+        type="ios-arrow-back"
+        size="24"/>
+    </view>
+    <view class="date-text" bind:tap="dateSelectOpen">
+      {{ year }}年{{ month }}月
+      <wux-icon type="md-create" size="16"/>
+    </view>
+    <view bind:tap="dateForwardMonth">
+      <wux-icon
+        type="ios-arrow-forward"
+        size="24"/>
+    </view>
+  </view>
+</template>
+
+<wux-popup
+  position="center"
+  closable
+  zIndex="{{ 100000 }}"
+  bind:close="dateSelectClose"
+  visible="{{ dateSelectPopupVisible }}"
+  title="时间选择">
+  <wux-segmented-control
+    controlled
+    bind:change="dateRangeQuicklySelectChange"
+    current="{{ dateRangeQuicklySelectKey }}"
+    values="{{ dateRangeQuicklySelectValues }}" />
+  <view class="date-title">开始时间</view>  
+  <picker-view
+    indicator-style="height: 30px;"
+    class="picker-view-container"
+    bind:change="pickerViewStartChange"
+    value="{{pickerValueStart}}">
+    <picker-view-column >
+      <view wx:key="index" wx:for="{{pickerStartData[0]}}" class="picker-view-item">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerStartData[1]}}" class="picker-view-item">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerStartData[2]}}" class="picker-view-item">{{item}}日</view>
+    </picker-view-column>
+  </picker-view>
+  <view class="date-title">结束时间</view> 
+  <picker-view
+    indicator-style="height: 30px;"
+    class="picker-view-container"
+    bind:change="pickerViewEndChange"
+    value="{{pickerValueEnd}}">
+    <picker-view-column >
+      <view wx:key="index" wx:for="{{pickerEndData[0]}}" data-year="{{item}}" class="picker-view-item">{{item}}年</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerEndData[1]}}" data-month="{{item}}" class="picker-view-item">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:key="index" wx:for="{{pickerEndData[2]}}" data-day="{{item}}" class="picker-view-item">{{item}}日</view>
+    </picker-view-column>
+  </picker-view>
+  <view class="text-green" bind:tap="handlerConfirmSelectDateRange">
+    <wux-icon type="ios-checkmark-circle-outline" size="32"/>
+  </view>
+</wux-popup >
+
+<template name="classify-chart">
+  <view class="classify-chart">
+    <view class="{{ dateSelectPopupVisible ? 'hide' : '' }}" style="height:100%;">
+      <ec-canvas wx:if="{{ classifyChart.chartKey === 0 }}" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="moodInitPieChart" />
+      <ec-canvas wx:if="{{ classifyChart.chartKey === 1 }}"  canvas-id="mychart-bar" ec="{{ ec }}" bind:init="moodInitPieChart"/>
+    </view>
+  </view>
+  <wux-segmented-control 
+    controlled
+    bind:change="classifyChartChange"
+    current="{{ classifyChart.chartKey }}"
+    values="{{ classifyChart.chartTabs }}" />
+</template>
+
+<template name="empty-text">
+  <view class="empty-container" bind:tap="jumpNewDiaryPage">
+    <wux-icon type="ios-apps" size="100"/>
+    <view>
+      <text class="">
+        报表空空的
+      </text>
+      <text class="">
+        点击“这里”添加一些新记录
+      </text>
+    </view>
+  </view>
+</template>
+
+<template name="trend-chart">
+  <view class="trend-chart">
+    <view class="{{ dateSelectPopupVisible ? 'hide' : '' }}" style="height:100%;">
+      <ec-canvas canvas-id="mychart-line" ec="{{ ec }}" bind:init="trendInitPieChart" />
+    </view>
+  </view>
+</template>
+
+<comon-view >
+  <view class="chart-tab" >
+    <wux-tabs controlled current="{{ tabKey }}" bind:change="onTabsChange">
+      <block wx:for="{{ tabs }}" wx:key="key">
+          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+      </block>
+    </wux-tabs>
+  </view>
+
+  <view class="date-select-container">
+    <template is="month-select" data="{{ year: dateByYearMonth.year, month: dateByYearMonth.month + 1, dateRange: dateRange }}"/>
+  </view>
+  <template wx:if="{{ !moodData.length }}" is="empty-text" data="{{ jumpNewDiaryPage }}" />
+  <view wx:else class="export-container">
+     <view class="chart-container">
+      <template wx:if="{{ tabKey === 0 }}" is="classify-chart" data="{{ classifyChart, ec, dateSelectPopupVisible }}"/>
+      <template wx:elif="{{ tabKey === 1 }}" is="trend-chart" data="{{ ec, dateSelectPopupVisible }}"/>
+    </view> 
+    <swiper style="height:{{ swiperHeihgt }}px;" current="{{ tabKey }}"  bind:change="onSwiperChange">
+      <swiper-item>
+        <scroll-view scroll-y style="height: 100%;" class="classify-list-container">
+          <view wx:for="{{ moodData }}" wx:key="index" class="list-container">
+            <view class="mood-title">
+              <mood-icon wux-class="mood-color-{{ item.moodKey }} mood-list-icon" type="{{ item.moodIcon }}" size="16"/>
+              {{item.moodTitle}}
+            </view>
+            <view class="mood-percent">
+              {{ item.percent }}%
+            </view>
+            <view class="mood-num">
+              {{ item.num }}
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          趋势
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view>
+          对比
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+    
+</comon-view>
+  

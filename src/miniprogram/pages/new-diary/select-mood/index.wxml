@@ -1,0 +1,61 @@
+<comon-view >
+  <view class="new-diary-container">
+    <text class="new-diary-title" selectable="false" space="false" decode="false">
+      此刻你感觉怎么样？
+    </text>
+    <view class="new-diary-date">
+      <wux-icon size="{{ 16 }}"  type="md-today"/>
+      <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+        {{(datedetail.isToday ? "今天" : (datedetail.isYestoday ? '昨天' : null)) || ( '星期' + datedetail.week) }}，{{ datedetail.dayMoon }}
+      </view>
+      <picker mode="date" value="{{ time.date }}" bind:change="datePickerChange">
+        <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+          {{ time.date }}
+        </view>
+      </picker>
+      <picker
+        mode="time"
+        class=""
+        value="{{ time.time }}" 
+        bind:change="timePickerChange">
+        <view class="new-diary-date-text" wx:if="{{ datedetail }}">
+          {{  time.time }}
+        </view>
+      </picker>
+    </view>
+    <view class="mood-container">
+      <view
+        wx:for="{{moods}}"
+        wx:for-item="item"
+        wx:key="index"
+        data-mood-key="{{ item.key }}"
+        data-mood-icon="{{ item.mood[0] }}"
+        bind:tap="newDiaryActive">
+         <mood-icon 
+          wux-class="mood-color-{{item.key}}"
+          type="{{ item.mood[0] }}"/>
+          <!-- <wux-popover wux-class="popover-mood" wx:else>
+            <mood-icon
+              wux-class="mood-color-{{item.key}}"
+              type="{{ item.mood[0] }}" />
+            <view slot="content">
+              <mood-icon 
+                wx:for="{{ item.mood }}" 
+                wx:for-item="mood"
+                wx:key="mood"
+                wux-class="mood-color-{{item.key}}"
+                type="{{ mood }}" />
+            </view>
+          </wux-popover> -->
+         <text class="">
+           {{ item.text }}
+         </text>
+      </view>        
+    </view>
+    <text bind:tap="jumpMoodEdit" class="new-diary-edit-action">
+      编辑心情
+    </text>
+  </view>
+</comon-view>
+
+<wux-toptips id="wux-toptips" />

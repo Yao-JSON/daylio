@@ -1,0 +1,57 @@
+.user-container {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.user-container .user-info {
+  display: flex;
+  padding: 5px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.user-container .user-info .user-icon {
+  color: cornflowerblue;
+}
+.user-container .user-info .user-login-text {
+  flex: 1;
+  margin-left: 10px;
+}
+.user-container .user-info .user-login-text .login-text {
+  font-size: 16px;
+}
+.user-container .user-info .user-login-text .login-remark {
+  font-size: 12px;
+  color: #8799a3;
+}
+.user-container .user-info .user-login-text .login-remark .ios-information {
+  color: cornflowerblue;
+}
+.user-container .user-info .user-setting-icon {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.user-container .user-info .userinfo-avatar {
+  display: flex;
+  align-items: center;
+}
+.user-container .user-info .userinfo-avatar image {
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.user-container .user-info .userinfo-nickname {
+  flex: 1;
+  padding: 5px 10px;
+}
+.user-container .user-info .userinfo-nickname .nickName {
+  font-size: 14px;
+  margin: 5px 0;
+}
+.user-container .user-info .userinfo-nickname .userinfo-remark {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #8799a3;
+}
+.user-container .user-info .userinfo-nickname .userinfo-remark .day {
+  color: #0081ff;
+}
