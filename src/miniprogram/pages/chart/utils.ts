@@ -24,7 +24,7 @@ export const getDay = (baseYear: number, baseMonth: number): {
     baseDays = !(baseYear % 4) && !(baseYear % 400) ? 29 : 28
   }
 
-  const days = [];
+  const days: number[] = [];
 
   for(let i = 1; i <= baseDays; i ++) {
     days.push(i);
@@ -39,8 +39,8 @@ export const getDay = (baseYear: number, baseMonth: number): {
 
 export const initPickerData = (baseYear, baseMonth): [number[], number[], number[]] => {
 
-  const years= [];
-  const months = [];
+  const years: number[]= [];
+  const months: number[] = [];
   for(let i = 1970; i <= 2099; i ++) {
     years.push(i);
   }
@@ -207,7 +207,7 @@ export const initClassifyBarChart = (canvas, width, height, chartData) => {
   return chart;
 }
 
-export const initTrendLineChart = (canvas, width, height, chartData) => {
+export const initTrendLineChart = (canvas, width, height) => {
   const chart = echarts.init(canvas, null, {
     width: width,
     height: height

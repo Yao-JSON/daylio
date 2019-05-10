@@ -224,7 +224,7 @@ Page<IChartProps, IChartIntance>({
       tabKey: current
     })
   },
-  dateBackMonth(e) {
+  dateBackMonth() {
     const { dateByYearMonth } = this.data;
     const { year, month } = dateByYearMonth;
     let backMonth = month - 1;
@@ -369,7 +369,7 @@ Page<IChartProps, IChartIntance>({
   },
   trendInitPieChart(e) {
     const { canvas, width, height } = e.detail;
-    initTrendLineChart(canvas, width, height, );
+    initTrendLineChart(canvas, width, height);
   },
   // 计算 swiper
   onReady() {

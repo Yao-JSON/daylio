@@ -45,9 +45,9 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     }
   },
   onShow() {
-    const date = globalData.get('date');
+    const date = globalData.get<{index: number; time: number}>('date');
     this.setData({
-      datedetail: getDate( date && date.time || new Date()),
+      datedetail: getDate( date && date.time || +new Date()),
     });
   },
   onHide() {
