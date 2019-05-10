@@ -1,20 +1,3 @@
-class GlobalData {
-  constructor() {
-    this.data = {};
-  }
-
-  get(key) {
-    return this.data[key] || null;
-  }
-
-  set(key, value) {
-    this.data[key] = value;
-    return this;
-  }
-}
-
-export const globalData = new GlobalData();
-
 
 export const dateFtt = (fmt,date = new Date()) => {
   var o = {   
@@ -36,8 +19,18 @@ export const dateFtt = (fmt,date = new Date()) => {
 
 const weeks = ['日','一','二','三','四','五','六'];
 
-export const getDate = (time = new Date()) => {
-  const calcTime = new Date(time);
+
+interface IGetDateResult {
+  dayMoon: string;
+  dateFmt: string;
+  week: string;
+  isYestoday: boolean;
+  isToday: boolean;
+  date: number
+};
+
+export const getDate = (time: number): IGetDateResult => {
+  const calcTime = time? new Date(time) : new Date();
   const now = new Date();
   const nowDay = now.getDate();
   const calcDay = calcTime.getDate();
@@ -50,6 +43,6 @@ export const getDate = (time = new Date()) => {
     week: calcWeeks,
     isYestoday: nowDay - 1 === calcDay,
     isToday: nowDay === calcDay,
-    date: time
+    date: +calcTime
   }
 };
