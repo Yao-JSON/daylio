@@ -16,21 +16,23 @@ export interface IBaseComponentParams {
   useExport?: boolean;
   methods?: Record<string, any>;
   options?: any;
+  externalClasses?: string[]
 }
 
 
 
 const baseComponent = <T, D>(params: IBaseComponentParams) => {
-  const { useFunc, useField, useExport, methods, options } = params;
+  const { useFunc, useField, useExport, methods, options, externalClasses = [], ...otherOptions } = params;
 
   const componentOptions: IComponentOptions = {
     externalClasses: ['wux-class',
-    'wux-hover-class',],
+    'wux-hover-class', ...externalClasses],
     behaviors: [computedBehavior, relationsBehavior, safeSetDataBehavior],
     options: {
       multipleSlots: true,
       addGlobalClass: true,
-    }
+    },
+    ...otherOptions
   };
 
   let otherBehaviors: any[] = [];

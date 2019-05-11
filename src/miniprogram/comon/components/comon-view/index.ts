@@ -1,5 +1,4 @@
-// @ts-ignore
-import baseComponent from '../../wux/helpers/baseComponent';
+import baseComponent from './../../../wux/helpers/baseComponent';
 import { IMyApp } from '../../../../interface'
 
 const app = getApp<IMyApp>();
@@ -7,7 +6,12 @@ const { SystemInfo, navRect, backgroundImage } = app.globalData;
 
 const screenHeight = SystemInfo.screenHeight - navRect.bottom;
 
-baseComponent({
+
+interface IComponentInstance {
+  externalClasses: string[];
+}
+
+baseComponent<IComponentInstance, IComponentInstance>({
   externalClasses: ['wux-class'],
   properties:{
     isHasCustomBar: {
