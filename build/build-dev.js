@@ -15,7 +15,7 @@ gulp.task('compile-css', () => {
 });
 
 gulp.task('compile-js', () => {
-    return gulp.src(['../src/**/*.js', '!./../src/miniprogram/wux/**/*.js'])
+    return gulp.src(['../src/**/*.js', '!./../src/miniprogram/wux/**/*.js', './../src/miniprogram/wux/helpers//**/*.js'])
         .pipe(gulp.dest('../dist/'));
 });
 

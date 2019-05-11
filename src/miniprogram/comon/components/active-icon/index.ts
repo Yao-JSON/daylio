@@ -64,6 +64,7 @@ baseComponent({
         },
     },
     attached() {
+        // @ts-ignore
         this.updated()
     },
 })

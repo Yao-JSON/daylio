@@ -18,8 +18,10 @@ export interface IBaseComponentParams {
   options?: any;
   externalClasses?: string[];
   properties?:  Record<string, any>;
-  data?:  Record<string, any>;
-  computed?:  Record<string, any>;
+  data?: Record<string, any>;
+  computed?: Record<string, any>;
+  attached?: Record<string, any>;
+  pageLifetimes?: Record<string, any>;
 }
 
 

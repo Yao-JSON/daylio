@@ -1,4 +1,4 @@
-import baseComponent from './../../../wux/helpers/baseComponent';
+import baseComponent from '../../../wux/helpers/baseComponent';
 import { IMyApp } from '../../../../interface'
 
 const app = getApp<IMyApp>();

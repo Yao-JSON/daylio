@@ -1,5 +1,5 @@
 import { globalData, backgroundImageList } from '../comon/utils';
-import baseComponent from './../wux/helpers/baseComponent';
+import baseComponent from '../wux/helpers/baseComponent';
 
 
 interface IComponentInstance {

@@ -1,7 +1,5 @@
-// @ts-ignore
-import isEmpty from 'lodash/isEmpty'
-// @ts-ignore
-import debounce from 'lodash/debounce'
+import isEmpty from './isEmpty'
+import debounce from './debounce'
 
 /**
  * bind func to obj

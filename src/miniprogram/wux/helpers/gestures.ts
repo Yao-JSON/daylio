@@ -25,7 +25,7 @@ export const isEqualPoints = (p1, p2) => p1.x === p2.x && p1.y === p2.y
 export const isNearbyPoints = (p1, p2, DOUBLE_TAP_RADIUS = 25) => {
     const xMove = Math.abs(p1.x - p2.x)
     const yMove = Math.abs(p1.y - p2.y)
-    return xMove < DOUBLE_TAP_RADIUS & yMove < DOUBLE_TAP_RADIUS
+    return xMove < DOUBLE_TAP_RADIUS && yMove < DOUBLE_TAP_RADIUS
 }
 
 /**

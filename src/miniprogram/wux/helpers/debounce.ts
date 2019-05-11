@@ -23,7 +23,8 @@ export default function debounce(func, wait, immediate) {
     }
 
     return function debounced() {
-        context = this
+        // @ts-ignore
+        context = this;
         args = arguments
         timestamp = +(new Date())
 
