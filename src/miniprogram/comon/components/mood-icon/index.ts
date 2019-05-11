@@ -1,5 +1,4 @@
-// @ts-ignore
-import baseComponent from '../../wux/helpers/baseComponent'
+import baseComponent from '../../../wux/helpers/baseComponent';
 
 baseComponent({
     externalClasses: ['wux-class'],
@@ -81,6 +80,7 @@ baseComponent({
         },
     },
     attached() {
+        // @ts-ignore
         this.updated()
     },
 })

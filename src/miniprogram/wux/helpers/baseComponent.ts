@@ -27,7 +27,7 @@ export interface IBaseComponentParams {
 
 
 const baseComponent = <T, D>(params: IBaseComponentParams) => {
-  const { useFunc, useField, useExport, methods, options, externalClasses = [], ...otherOptions } = params;
+  const { useFunc, useField, useExport, methods={}, options, externalClasses = [], ...otherOptions } = params;
 
   const componentOptions: IComponentOptions = {
     externalClasses: ['wux-class',
@@ -37,7 +37,8 @@ const baseComponent = <T, D>(params: IBaseComponentParams) => {
       multipleSlots: true,
       addGlobalClass: true,
     },
-    ...otherOptions
+    ...otherOptions,
+    methods
   };
 
   let otherBehaviors: any[] = [];

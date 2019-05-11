@@ -1,4 +1,4 @@
-import { globalData, backgroundImageList } from '../comon/utils';
+import { globalData, backgroundImageList } from '../comon/utils/index';
 import baseComponent from '../wux/helpers/baseComponent';
 
 
