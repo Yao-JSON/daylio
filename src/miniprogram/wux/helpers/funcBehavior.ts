@@ -1,5 +1,4 @@
-// @ts-ignore
-import assign from 'lodash/assign'
+const assign = Object.assign;
 
 /**
  * 过滤对象的函数属性

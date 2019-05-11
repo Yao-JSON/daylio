@@ -1,5 +1,4 @@
-// @ts-ignore
-import assign from 'lodash/assign';
+const assign = Object.assign;
 
 // @ts-ignore
 const safeSetDataBehavior =  Behavior({

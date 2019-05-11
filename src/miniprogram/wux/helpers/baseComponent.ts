@@ -16,7 +16,10 @@ export interface IBaseComponentParams {
   useExport?: boolean;
   methods?: Record<string, any>;
   options?: any;
-  externalClasses?: string[]
+  externalClasses?: string[];
+  properties?:  Record<string, any>;
+  data?:  Record<string, any>;
+  computed?:  Record<string, any>;
 }
 
 

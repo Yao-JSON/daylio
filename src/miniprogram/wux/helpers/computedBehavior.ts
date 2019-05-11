@@ -4,7 +4,7 @@
  */
 
  // @ts-ignore
-import isEmpty from 'lodash/isEmpty'
+import isEmpty from './isEmpty'
 import shallowEqual from './shallowEqual'
 
 // @ts-ignore
