@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "日记",
   "usingComponents": {
-    "diary-card": "./../../../components/diary-card/index"
+    "diary-card": "./../../../comon/components/diary-card/index"
   }
 }

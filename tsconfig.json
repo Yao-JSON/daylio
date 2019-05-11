@@ -23,7 +23,7 @@
     ]
   },
   "include": [
-    "./src/**/*.ts", "src/miniprogram/wux/helpers/classNames.js"
+    "./src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

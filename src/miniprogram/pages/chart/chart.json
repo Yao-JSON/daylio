@@ -2,6 +2,6 @@
   "navigationBarTitleText": "报表",
   "navigationStyle": "custom",
   "usingComponents": {
-    "ec-canvas": "./../../components/ec-canvas/ec-canvas"
+    "ec-canvas": "./../../comon/components/ec-canvas/ec-canvas"
   }
 }
