@@ -1,7 +1,7 @@
 import { globalData, backgroundImageList } from './../comon/utils';
-import baseComponent from './../miniprogram/wux/helpers/baseComponent';
+// import baseComponent from './../miniprogram/wux/helpers/baseComponent';
 
-console.log(baseComponent);
+// console.log(baseComponent);
 
 interface IComponentInstance {
   data: {
@@ -9,7 +9,7 @@ interface IComponentInstance {
   }
 }
 
-baseComponent<IComponentInstance, IComponentInstance>({
+Component<IComponentInstance, IComponentInstance>({
   useFunc: true,
   options: {
     addGlobalClass: true,
@@ -17,6 +17,7 @@ baseComponent<IComponentInstance, IComponentInstance>({
   // @ts-ignore
   data: {
     selected: 2,
+    // @ts-ignore
     list: [
       {
         "pagePath": "/pages/diary/list/diary",

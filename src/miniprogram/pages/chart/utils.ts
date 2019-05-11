@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as echarts from './../../../comon/components/ec-canvas/echarts'
+import echarts from './../../../comon/components/ec-canvas/echarts.js'
 
 export const getDay = (baseYear: number, baseMonth: number): {
   days: number[];

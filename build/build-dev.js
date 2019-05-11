@@ -15,7 +15,7 @@ gulp.task('compile-css', () => {
 });
 
 gulp.task('compile-js', () => {
-    return gulp.src(['../src/**/*.js'])
+    return gulp.src(['../src/**/*.js', '!./../src/miniprogram/wux/**/*.js'])
         .pipe(gulp.dest('../dist/'));
 });
 
@@ -29,17 +29,17 @@ gulp.task('compile-ts', () => {
 });
 
 gulp.task('compile-wxss', () => {
-    return gulp.src(['../src/**/*.wxss'])
+    return gulp.src(['../src/**/*.wxss', '!./../src/miniprogram/wux/**/*.wxss'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-json', () => {
-    return gulp.src(['../src/**/*.json'])
+    return gulp.src(['../src/**/*.json', '!./../src/miniprogram/wux/**/*.json'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-wxml', () => {
-    return gulp.src(['../src/**/*.wxml'])
+    return gulp.src(['../src/**/*.wxml', '!./../src/miniprogram/wux/**/*.wxml'])
         .pipe(gulp.dest('../dist/'));
 });
 
