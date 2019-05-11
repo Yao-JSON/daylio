@@ -1,5 +1,5 @@
 import { $wuxToptips } from '../../../wux/index'
-import { globalData, getDate, dateFtt } from '../../../../comon/utils'
+import { globalData, getDate, dateFtt } from '../../../comon/utils'
 
 import { IMoodsListItem, moodsList } from './../utils'
 

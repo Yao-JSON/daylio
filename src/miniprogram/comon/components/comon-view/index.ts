@@ -1,6 +1,6 @@
 // @ts-ignore
-import baseComponent from './../../wux/helpers/baseComponent';
-import { IMyApp } from '../../../interface'
+import baseComponent from '../../wux/helpers/baseComponent';
+import { IMyApp } from '../../../../interface'
 
 const app = getApp<IMyApp>();
 const { SystemInfo, navRect, backgroundImage } = app.globalData;

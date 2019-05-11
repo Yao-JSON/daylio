@@ -1,4 +1,4 @@
-import { globalData, backgroundImageList } from './../comon/utils';
+import { globalData, backgroundImageList } from '../miniprogram/comon/utils';
 // import baseComponent from './../miniprogram/wux/helpers/baseComponent';
 
 // console.log(baseComponent);
