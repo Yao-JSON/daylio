@@ -5,7 +5,7 @@ const rename = require('../node_modules/gulp-rename');
 const ts = require('./../node_modules/gulp-typescript');
 
 gulp.task('compile-css', () => {
-    return gulp.src(['../src/**/*.less', '!../src/**/_*.less'])
+    return gulp.src(['../src/**/*.less'])
         .pipe(less())
         .pipe(cssmin())
         .pipe(rename((path) => {
@@ -29,17 +29,17 @@ gulp.task('compile-ts', () => {
 });
 
 gulp.task('compile-wxss', () => {
-    return gulp.src(['../src/**/*.wxss', '!./../src/miniprogram/wux/**/*.wxss'])
+    return gulp.src(['../src/**/*.wxss'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-json', () => {
-    return gulp.src(['../src/**/*.json', '!./../src/miniprogram/wux/**/*.json'])
+    return gulp.src(['../src/**/*.json'])
         .pipe(gulp.dest('../dist/'));
 });
 
 gulp.task('compile-wxml', () => {
-    return gulp.src(['../src/**/*.wxml', '!./../src/miniprogram/wux/**/*.wxml'])
+    return gulp.src(['../src/**/*.wxml'])
         .pipe(gulp.dest('../dist/'));
 });
 
