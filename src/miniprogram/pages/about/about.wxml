@@ -14,7 +14,7 @@
     </block>
     <block wx:else>
       <view class="userinfo-avatar">
-        <image mode="widthFix" src="{{userInfo.avatarUrl}}" />
+        <image src="{{userInfo.avatarUrl}}" />
       </view>
       <view class="userinfo-nickname"> 
         <view class="nickName">{{userInfo.nickName}}</view>
@@ -27,6 +27,20 @@
     <view class="user-setting-icon">
       <wux-icon type="ios-arrow-forward" size="36"/>
     </view>
+  </view>
+  <view class="about-action-list-container">
+    <view class="group-list-container">
+      <view class="list-itme">
+        <view class="list-icon-container">
+          <wux-icon wux-class="list-icon" size="24"  type="logo-apple"/>
+        </view>
+        <view class="list-action">
+          <view>结绳社区</view>
+          <wux-icon type="ios-arrow-forward"/>
+        </view>
+      </view>
+    </view>
+
   </view>
 </comon-view>
   

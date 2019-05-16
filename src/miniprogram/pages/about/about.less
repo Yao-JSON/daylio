@@ -41,8 +41,9 @@
       align-items: center;
       
       image {
-        width: 60px;
         border-radius: 50%;
+        width: 60px;
+        height: 60px;
         border: 2px solid #fff;
       }
     }
@@ -67,5 +68,33 @@
       }
     }
 
+  }
+
+  .about-action-list-container {
+    .group-list-container {
+      margin-top: 15px;
+      
+      .list-itme {
+        display: flex;
+        height: 36px;
+        line-height: 36px;
+
+        .list-icon-container {
+          .list-icon {
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .list-action {
+        flex: 1;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+    }
   }
 }
