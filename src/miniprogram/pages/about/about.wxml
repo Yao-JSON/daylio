@@ -1,6 +1,6 @@
 <comon-view wux-class="user-container">
   <view class="user-info">
-    <block class="no-user" wx:if="{{ !hasUserInfo }}"> 
+    <block wx:if="{{ !hasUserInfo }}"> 
       <wux-icon wux-class="user-icon" type="ios-sad" size="72"/>
       <view bind:tap="getUserInfo" class="user-login-text">
         <text class="login-text">
@@ -25,22 +25,21 @@
       </view>
     </block>
     <view class="user-setting-icon">
-      <wux-icon type="ios-arrow-forward" size="36"/>
+      <wux-icon type="ios-arrow-forward" size="24"/>
     </view>
   </view>
   <view class="about-action-list-container">
-    <view class="group-list-container">
-      <view class="list-itme">
-        <view class="list-icon-container">
-          <wux-icon wux-class="list-icon" size="24"  type="logo-apple"/>
+    <view class="group-list-container" wx:for="{{ actionData }}" wx:for-item="action" wx:key="index">
+      <view class="list-itme" wx:for="{{ action }}" wx:key="index">
+        <view class="list-icon-container" style="{{ item.textColor ? 'color:' + item.textColor : '' }}">
+          <wux-icon wux-class="list-icon" size="28"  type="{{ item.actionIcon }}" />
         </view>
         <view class="list-action">
-          <view>结绳社区</view>
-          <wux-icon type="ios-arrow-forward"/>
+          <view class="action-title">{{ item.title }}</view>
+          <wux-icon size="16" wux-class="list-forward" type="ios-arrow-forward"/>
         </view>
       </view>
     </view>
-
   </view>
 </comon-view>
   
