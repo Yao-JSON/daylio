@@ -36,7 +36,7 @@
         </view>
         <view class="list-action">
           <view class="action-title">{{ item.title }}</view>
-          <wux-icon size="16" wux-class="list-forward" type="ios-arrow-forward"/>
+          <wux-icon size="24" wux-class="list-forward" type="ios-arrow-forward"/>
         </view>
       </view>
     </view>
