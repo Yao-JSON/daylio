@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/calendar/calendar",
     "pages/about/about",
     "pages/diary/timeline/index",
     "pages/chart/chart",
@@ -9,8 +10,7 @@
     "pages/diary/list/diary",
     "pages/mood/list/mood-list",
     "pages/active/edit/edit-active",
-    "pages/mood/edit/edit-mood",
-    "pages/calendar/calendar"
+    "pages/mood/edit/edit-mood"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

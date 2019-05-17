@@ -1,4 +1,6 @@
-<comon-view class="" hover-class="none" hover-stop-propagation="false">
-  日历
+<comon-view class="calendar-page-container" hover-class="none" hover-stop-propagation="false">
+  <view class="calendar-container">
+    
+  </view>
 </comon-view>
   
