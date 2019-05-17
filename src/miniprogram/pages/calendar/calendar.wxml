@@ -18,12 +18,12 @@
             </view>
           </view>
           <view class="add-diary">
-            <wux-icon size="16" type="ios-add"/>
+            <wux-icon wux-class="dete-add-icon" size="16" type="ios-add"/>
           </view>
         </view>
         <!-- weeks -->
         <view class="weeks">
-          <view wx:for="{{ weeks }}" wx:key="index" >{{ item }}</view>
+          <view class="week" wx:for="{{ weeks }}" wx:key="index" >{{ item }}</view>
         </view>
       </view>
     </view>
