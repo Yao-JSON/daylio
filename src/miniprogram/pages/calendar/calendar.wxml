@@ -2,18 +2,28 @@
   <view class="calendar-info-container">
     <view class="calendar-container">
       <view class="calendar-hander">
-        <view class="today">
-          <wux-btn size="small" type="light">
-            今天
-          </wux-btn>
+        <!-- actions -->
+        <view class="actions">
+          <view class="today">
+            <wux-btn size="small" type="light">
+              今天
+            </wux-btn>
+          </view>
+          <view class="date-change-action">
+            <view class="date-text">
+              2019年5月
+            </view>
+            <view class="date-change">
+              <wux-icon size="16" type="ios-arrow-down"/>
+            </view>
+          </view>
+          <view class="add-diary">
+            <wux-icon size="16" type="ios-add"/>
+          </view>
         </view>
-        <view class="date-change-action">
-          <view class="date-text">
-            2019年5月
-          </view>
-          <view class="date-change">
-            <wux-icon type="ios-arrow-down"/>
-          </view>
+        <!-- weeks -->
+        <view class="weeks">
+          <view wx:for="{{ weeks }}" wx:key="index" >{{ item }}</view>
         </view>
       </view>
     </view>
