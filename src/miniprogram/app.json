@@ -55,6 +55,7 @@
     "active-icon": "./comon/components/active-icon/index",
     "mood-icon": "./comon/components/mood-icon/index",
     "wux-popover": "./wux/popover/index",
+    "wux-btn": "./wux/button/index",
     "wux-media": "./wux/media/index",
     "wux-progress": "./wux/progress/index",
     "wux-backdrop": "./wux/backdrop/index",

@@ -1,6 +1,22 @@
 <comon-view class="calendar-page-container" hover-class="none" hover-stop-propagation="false">
-  <view class="calendar-container">
-    
+  <view class="calendar-info-container">
+    <view class="calendar-container">
+      <view class="calendar-hander">
+        <view class="today">
+          <wux-btn size="small" type="light">
+            今天
+          </wux-btn>
+        </view>
+        <view class="date-change-action">
+          <view class="date-text">
+            2019年5月
+          </view>
+          <view class="date-change">
+            <wux-icon type="ios-arrow-down"/>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 </comon-view>
   
