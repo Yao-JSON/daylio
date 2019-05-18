@@ -1,26 +1,32 @@
- <view class="cu-bar tabbar bg-white">
-  <view wx:for="{{ list }}" 
+ <view class="cu-bar tabbar">
+  <view 
+    wx:for="{{ list }}" 
     wx:key="index"
     data-url="{{item.pagePath || null}}" 
     data-index="{{ index }}"
     data-selected="{{ selected }}"
     bindtap="{{item.action}}" 
-    class="action text-{{selected === index && selected !== 2 ? 'green' : 'gray'}} ">
-    <view wx:if="{{selected !== 2}}" class="icon-container" >
-      <wux-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"/>
+    class="action text-{{selected === index ? 'green' : 'gray'}} {{index === 2 &&  selected === 2 ? 'add-action' : ''}}">
+    <view class="icon-container" >
+      <block wx:if="{{index === 2 &&  selected === 2}}">
+        <wux-fab-button 
+          sAngle="{{ 240 }}" 
+          bind:click="onNewDiary" 
+          vibrateShort
+          eAngle="{{ 120 }}"
+          position="bottomCenter"
+          theme="balanced" 
+          direction="circle"
+          spaceBetween="{{ 10 }}" 
+          buttons="{{ buttons }}" />
+      </block>
+      <block wx:else>
+        <wux-icon size="32rpx" type="{{ selected === index ? item.iconFill : item.icon}}"/>
+        <view class="tab-text">
+          {{item.text}}
+        </view>
+      </block>
     </view>
-    <wux-fab-button 
-      wx:else
-      sAngle="{{ 240 }}" 
-      bind:click="onNewDiary" 
-      vibrateShort
-      eAngle="{{ 120 }}"
-      position="bottomCenter"
-      theme="balanced" 
-      direction="circle"
-      spaceBetween="{{ 10 }}" 
-      buttons="{{ buttons }}" />
-      {{item.text}}
   </view>
 </view>
 
