@@ -172,5 +172,16 @@ Page<ITimelineProps, ITimelineInstance>({
         ]
       }
     ]
+  },
+  onShow() {
+    if (typeof this.getTabBar === 'function') {
+        const tabBarCtx = this.getTabBar();
+        if(tabBarCtx) {
+          // @ts-ignore
+          tabBarCtx.setData({
+            selected: 2
+          })
+        }
+      }
   }
 });

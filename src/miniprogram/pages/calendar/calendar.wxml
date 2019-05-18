@@ -26,6 +26,39 @@
           <view class="week" wx:for="{{ weeks }}" wx:key="index" >{{ item }}</view>
         </view>
       </view>
+      <!-- body -->
+      <view class="calendar-body">
+        <view class="cale-row">
+          <view class="cale-item cale-working">
+            <view class="day">1</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-rest">
+            <view class="day">2</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-working">
+            <view class="day">3</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-rest">
+            <view class="day">4</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-working">
+            <view class="day">5</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-rest">
+            <view class="day">6</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+          <view class="cale-item cale-rest">
+            <view class="day">12</view>
+            <mood-icon size="12" type="happy-love"/>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </comon-view>

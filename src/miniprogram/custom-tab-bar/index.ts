@@ -15,7 +15,7 @@ baseComponent<IComponentInstance, IComponentInstance>({
   },
   // @ts-ignore
   data: {
-    selected: 2,
+    selected: 0,
     // @ts-ignore
     list: [
       {
@@ -33,10 +33,12 @@ baseComponent<IComponentInstance, IComponentInstance>({
         "action": "switchTab"
       },
       {
-        "type": "button",
-        "text": "发布 ",
+        "text": "记录",
         "className": "shadow",
-        "action": "switchTab"
+        "icon": 'ios-add-circle-outline',
+        "iconFill": "ios-add",
+        "action": "switchTab",
+        "pagePath": "/pages/diary/timeline/index"
       },
       {
         "pagePath": "/pages/calendar/calendar",

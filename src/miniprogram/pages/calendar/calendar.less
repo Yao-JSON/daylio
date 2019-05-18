@@ -1,7 +1,8 @@
 .calendar-page-container {
   .calendar-info-container {
+    padding: 0 10px;
+
     .calendar-hander {
-      padding: 0 10px;
       margin: 10px 0;
 
       .actions {
@@ -36,7 +37,25 @@
         justify-content: space-between;
 
         .week {
+          width: 14%;
           text-align: center;
+        }
+      }
+    }
+    // calendar body
+    .calendar-body {
+      .cale-row {
+        display: flex;
+        justify-content: space-between;
+
+        .cale-item  {
+          width: 14%;
+          text-align: center;
+          
+          .day {
+            font-size: 16px;
+            font-weight: 700;
+          }
         }
       }
     }
