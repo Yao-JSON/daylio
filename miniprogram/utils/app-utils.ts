@@ -97,5 +97,5 @@ export const appOnLaunch = (app) => {
     }
   } catch(e) {
     console.error(e);
-  } 
+  }
 }

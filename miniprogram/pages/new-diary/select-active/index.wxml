@@ -28,8 +28,13 @@
     <view class="add-textarea-container">
        <wux-textarea wux-class="add-textarea" defaultValue="" placeholder="添加备注" bind:blur="handlerTextareaBlur"/>
     </view>
-    <view class="camera-icon">
-      <wux-icon type="ios-camera"/>
+    <view bind:tap="handlerChooseImage" class="camera-icon {{ !activeImage ? 'camera-icon-padding' : '' }}">
+      <block wx:if="{{ activeImage }}">
+        <image class="active-img" src="{{ activeImage }}" />
+      </block>
+      <block wx:else>
+        <wux-icon type="ios-camera"/>
+      </block>
     </view>
   </view>
   <text bind:tap="jumpActiveList" class="new-diary-edit-action">

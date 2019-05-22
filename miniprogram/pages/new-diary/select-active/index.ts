@@ -15,6 +15,7 @@ interface IActiveListParams {
     moodIcon: string;
     moodKey: string;
     remark: string;
+    activeImage: string | null;
   },
   onLoad: (query:Record<string, any>) => void;
 }
@@ -27,6 +28,7 @@ Page<IActiveListProps, IActiveListParams>({
     moodKey: 'happy',
     remark: '',
     activeList,
+    activeImage: null
   },
   handlerSelectActive(e) {
     const { dataset } = e.currentTarget;
@@ -65,8 +67,19 @@ Page<IActiveListProps, IActiveListParams>({
   handlerConfirmActive() {
     console.log(this.data);
   },
+  handlerChooseImage() {
+    wx.chooseImage({
+      success:(imageRes) =>{
+        const { tempFilePaths } = imageRes;
+        this.setData({
+          activeImage: tempFilePaths[0]
+        })
+      }
+    })
+  },
   onLoad(query) {
-   const { diaryTime, moodKey, moodIcon } = query;
+    // @ts-ignore
+   const { diaryTime = new Date(), moodKey = "happy", moodIcon ="happy-wink" } = query || {};
    this.setData({
     diaryTime, moodKey, moodIcon
    })
