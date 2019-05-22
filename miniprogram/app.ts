@@ -31,6 +31,12 @@ App<IMyApp>({
         traceUser: true,
       })
     }
+    wx.login({
+      success: (res) => {
+        console.log(res);
+      }
+    });
+
     wx.getSystemInfo({
       success: e => {
         const navRect = wx.getMenuButtonBoundingClientRect();
