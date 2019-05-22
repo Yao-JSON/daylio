@@ -71,6 +71,9 @@ Page<IActiveListProps, IActiveListParams>({
     })
   },
   handlerConfirmActive() {
+    console.log(this.data);
+  },
+  chooseAddress() {
     wx.chooseLocation({
       success: (res) => {
         console.log(res);
@@ -81,7 +84,6 @@ Page<IActiveListProps, IActiveListParams>({
           address,
           placeName: name
         })
-        console.log(this.data);
       }
     })
   },

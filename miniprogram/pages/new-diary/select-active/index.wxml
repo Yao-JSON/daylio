@@ -41,6 +41,9 @@
     <view class="place-name">{{ placeName }}</view>
     <view class="address">{{ address }}</view>
   </view>
+  <view class="address-container" bind:tap="chooseAddress" wx:else>
+    选择地点
+  </view>
   <text bind:tap="jumpActiveList" class="new-diary-edit-action">
     编辑活动
   </text>
