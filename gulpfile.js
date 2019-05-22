@@ -8,8 +8,9 @@ var autoprefixer = require("autoprefixer");
 var clear = require("gulp-clean");
 var del = require("del");
 var ts = require("gulp-typescript");
+var tsCloud = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
-var tsCloudProject = ts.createProject("tsconfig.json");
+var tsCloudProject = tsCloud.createProject("tsconfig.json");
 var sourcemaps = require("gulp-sourcemaps");
 var projectConfig = require("./package.json");
 
@@ -25,10 +26,10 @@ var copyJsonPath = ['cloudfunctions/**/*.json'];
 var lessPath = ["miniprogram/**/*.less", "miniprogram/app.less"];
 var watchLessPath = ["miniprogram/**/*.less", "miniprogram/app.less"];
 var tsMiniprogramPath = ["miniprogram/**/*.ts", "miniprogram/app.ts"];
-var tsCloudfunctionsPath = ["cloudfunctions/**/*.ts"];
+var tsCloudfunctionsPath = ["cloudfunctions/**/*.ts", "!cloudfunctions/**/node_modules/**/*.*"];
 
 //项目路径
-var copyNodeModuleOption = {
+var cloudfunctionsOption = {
   base: "cloudfunctions",
   allowEmpty: true
 };
@@ -44,7 +45,7 @@ gulp.task("copy", () => {
 });
 
 gulp.task("copyJson", () => {
-  return gulp.src(copyJsonPath, copyNodeModuleOption).pipe(gulp.dest(cloudfunctionsDist));
+  return gulp.src(copyJsonPath, cloudfunctionsOption).pipe(gulp.dest(cloudfunctionsDist));
 });
 //复制不包含less和图片的文件(只改动有变动的文件）
 gulp.task("copyChange", () => {
@@ -65,13 +66,13 @@ for (let d in dependencies) {
 //复制依赖的node_modules文件
 gulp.task("copyNodeModules", () => {
   return gulp
-    .src(nodeModulesCopyPath, copyNodeModuleOption)
+    .src(nodeModulesCopyPath, cloudfunctionsOption)
     .pipe(gulp.dest(cloudfunctionsDist));
 });
 //复制依赖的node_modules文件(只改动有变动的文件）
 gulp.task("copyNodeModulesChange", () => {
   return gulp
-    .src(nodeModulesCopyPath, copyNodeModuleOption)
+    .src(nodeModulesCopyPath, cloudfunctionsOption)
     .pipe(changed(cloudfunctionsDist))
     .pipe(gulp.dest(cloudfunctionsDist));
 });
@@ -116,8 +117,8 @@ gulp.task("lessChange", () => {
 
 // 编译
 gulp.task("tsMinprogramCompile", function() {
-  return tsProject
-    .src()
+  return gulp
+    .src(tsMiniprogramPath, option)
     .pipe(sourcemaps.init())
     .pipe(tsProject())
     .js.pipe(sourcemaps.write())
@@ -125,8 +126,8 @@ gulp.task("tsMinprogramCompile", function() {
 });
 
 gulp.task("tsCloudfunctionsCompile", function() {
-  return tsCloudProject
-    .src()
+  return gulp
+    .src(tsCloudfunctionsPath, cloudfunctionsOption)
     .pipe(sourcemaps.init())
     .pipe(tsCloudProject())
     .js.pipe(sourcemaps.write())
@@ -135,7 +136,7 @@ gulp.task("tsCloudfunctionsCompile", function() {
 
 //监听
 gulp.task("watch", () => {
-  // gulp.watch(tsMiniprogramPath, gulp.series("tsMinprogramCompile"));
+  gulp.watch(tsMiniprogramPath, gulp.series("tsMinprogramCompile"));
   gulp.watch(tsCloudfunctionsPath, gulp.series("tsCloudfunctionsCompile"));
   var watcher = gulp.watch(copyPath, gulp.series("copyChange"));
   gulp.watch(nodeModulesCopyPath, gulp.series("copyNodeModulesChange"));
@@ -163,7 +164,7 @@ gulp.task(
       "copyJson",
       "copyNodeModules",
       "less",
-      // "tsMinprogramCompile",
+      "tsMinprogramCompile",
       "tsCloudfunctionsCompile"
     ),
     "watch"
@@ -181,7 +182,7 @@ gulp.task(
       "copy",
       "copyNodeModules",
       "less",
-      // "tsMinprogramCompile",
+      "tsMinprogramCompile",
       "tsCloudfunctionsCompile"
     )
   )
