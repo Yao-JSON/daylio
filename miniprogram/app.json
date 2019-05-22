@@ -56,7 +56,6 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "comon-view": "./comon/components/comon-view/index",
-    "cu-custom": "./comon/components/cu-custom/index",
     "active-icon": "./comon/components/active-icon/index",
     "mood-icon": "./comon/components/mood-icon/index",
     "wux-popover": "./wux/popover/index",
