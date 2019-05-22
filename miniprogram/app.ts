@@ -1,6 +1,6 @@
 let backgroundImage = '';
 const backgroundKey = 'diary-global-background-image';
-import { IMyApp } from './../interface'
+import { IMyApp } from "./../interface"
 
 try {
   backgroundImage = wx.getStorageSync(backgroundKey)

@@ -23,12 +23,15 @@
     ]
   },
   "include": [
-    "./src/**/*.ts"
+    "./miniprogram/**/*.ts"
   ],
+  "paths": {
+    "interface": "./interface/index"
+  },
   "exclude": [
     "node_modules",
     "dist",
     "**/*.spec.ts",
-    "./src/miniprogram/wux/**/*.ts"
+    "./miniprogram/wux/**/*.ts"
   ]
 }

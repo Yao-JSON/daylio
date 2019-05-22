@@ -10,7 +10,6 @@ var del = require("del");
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 var sourcemaps = require("gulp-sourcemaps");
-var jsonTransform = require("gulp-json-transform");
 var projectConfig = require("./package.json");
 
 //项目路径
@@ -84,13 +83,13 @@ gulp.task("less", () => {
         path.extname = ".wxss";
       })
     )
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(miniprogramDist));
 });
 //编译less(只改动有变动的文件）
 gulp.task("lessChange", () => {
   return gulp
     .src(lessPath, option)
-    .pipe(changed(dist))
+    .pipe(changed(miniprogramDist))
     .pipe(
       less().on("error", function(e) {
         console.error(e.message);
@@ -103,7 +102,7 @@ gulp.task("lessChange", () => {
         path.extname = ".wxss";
       })
     )
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(miniprogramDist));
 });
 
 // 编译
@@ -113,7 +112,7 @@ gulp.task("tsCompile", function() {
     .pipe(sourcemaps.init())
     .pipe(tsProject())
     .js.pipe(sourcemaps.write())
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest(miniprogramDist));
 });
 
 //监听
@@ -142,7 +141,6 @@ gulp.task(
     gulp.parallel(
       "copy",
       "copyNodeModules",
-      "generatePackageJson",
       "less",
       "tsCompile"
     ),
@@ -160,7 +158,6 @@ gulp.task(
       // async
       "copy",
       "copyNodeModules",
-      "generatePackageJson",
       "less",
       "tsCompile"
     )
