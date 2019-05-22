@@ -1,6 +1,6 @@
-<cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}">
+<!-- <cu-custom bgColor="bg-gradual-pink" isCustom="{{true}}">
   <view slot="content">报表</view>
-</cu-custom>
+</cu-custom> -->
 <template name="month-select">
   <view wx:if="{{ !!dateRange.length }}" class="month-select-container">
     <view class="date-text" bind:tap="dateSelectOpen">
