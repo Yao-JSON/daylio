@@ -37,6 +37,10 @@
       </block>
     </view>
   </view>
+  <view class="address-container" wx:if="{{ !!placeName && !!address }}">
+    <view class="place-name">{{ placeName }}</view>
+    <view class="address">{{ address }}</view>
+  </view>
   <text bind:tap="jumpActiveList" class="new-diary-edit-action">
     编辑活动
   </text>

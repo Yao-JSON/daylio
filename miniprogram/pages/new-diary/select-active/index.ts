@@ -16,6 +16,7 @@ interface IActiveListParams {
     moodKey: string;
     remark: string;
     activeImage: string | null;
+    [props:string]: any;
   },
   onLoad: (query:Record<string, any>) => void;
 }
@@ -28,7 +29,12 @@ Page<IActiveListProps, IActiveListParams>({
     moodKey: 'happy',
     remark: '',
     activeList,
-    activeImage: null
+    activeImage: null,
+    address: null,
+    placeName: null,
+    latitude: null,
+    longitude: null,
+
   },
   handlerSelectActive(e) {
     const { dataset } = e.currentTarget;
@@ -65,7 +71,19 @@ Page<IActiveListProps, IActiveListParams>({
     })
   },
   handlerConfirmActive() {
-    console.log(this.data);
+    wx.chooseLocation({
+      success: (res) => {
+        console.log(res);
+        const { longitude, latitude, name, address } = res;
+        this.setData({
+          longitude,
+          latitude,
+          address,
+          placeName: name
+        })
+        console.log(this.data);
+      }
+    })
   },
   handlerChooseImage() {
     wx.chooseImage({
