@@ -1,4 +1,6 @@
-const app = getApp();
+import { IMyApp } from './../../../interface'
+const userInfoKey = "diary-userinfo-global-key";
+const app = getApp<IMyApp>();
 
 interface IActionDataItem {
   title: string;
@@ -17,11 +19,13 @@ interface IAboutDataProps {
   getUserInfo: () => void
 }
 
+const { userInfo } = app.globalData;
+
 Page<IAboutDataProps, IAboutDataProps>({
   // @ts-ignore
   data: {
-    hasUserInfo: false,
-    userInfo: {},
+    hasUserInfo: !!userInfo,
+    userInfo,
     day: 2,
     targetDay: 7,
     actionData: [
@@ -72,6 +76,12 @@ Page<IAboutDataProps, IAboutDataProps>({
     wx.getUserInfo({
       success:(res) => {
         const { userInfo } = res;
+        const now = new Date().getTime();
+        try {
+          wx.setStorageSync(userInfoKey, {time: now, data: userInfo})
+        } catch(e) {
+          console.error(e);
+        }
         this.setData({
           userInfo,
           hasUserInfo: true

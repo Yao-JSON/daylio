@@ -25,7 +25,12 @@
     </view>
   </view>
   <view class="textarea-container">
-    <wux-textarea wux-class="add-textarea" hasCount defaultValue="" placeholder="添加备注" bind:blur="handlerTextareaBlur"/>
+    <view class="add-textarea-container">
+       <wux-textarea wux-class="add-textarea" defaultValue="" placeholder="添加备注" bind:blur="handlerTextareaBlur"/>
+    </view>
+    <view class="camera-icon">
+      <wux-icon type="ios-camera"/>
+    </view>
   </view>
   <text bind:tap="jumpActiveList" class="new-diary-edit-action">
     编辑活动

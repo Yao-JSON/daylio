@@ -56,17 +56,30 @@
 
 .select-active-container {
   .textarea-container {
+    display: flex;
     margin: 20px 10px 0;
     border: 1px solid #ddd;
     padding: 5px;
     border-radius: 5px;
+    justify-content: center;
 
-    .add-textarea {
-      min-height: 60px;
-
-      textarea {
+    .add-textarea-container {
+      flex: 1;
+      .add-textarea {
         min-height: 60px;
+  
+        textarea {
+          min-height: 60px;
+        }
       }
+    }
+
+    .camera-icon {
+      padding: 3px 8px 5px;
+      margin: 10px 5px;
+      border-radius: 5px;
+      border: 1px dashed #333;
+      height: 40px;
     }
   }
 }

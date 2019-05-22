@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/new-diary/select-active/index",
     "pages/calendar/calendar",
     "pages/about/about",
     "pages/diary/timeline/index",
     "pages/chart/chart",
-    "pages/new-diary/select-active/index",
     "pages/new-diary/select-mood/index",
     "pages/active/list/active-list",
     "pages/diary/list/diary",
