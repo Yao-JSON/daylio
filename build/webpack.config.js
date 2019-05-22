@@ -7,16 +7,16 @@ const baseConfig = require('./webpack.config.base');
 const { setSubPackageCacheGroup } = require('./lib/util');
 
 module.exports = merge(baseConfig, {
-    entry: path.resolve(__dirname, './../src/miniprogram/app.json'),
+    entry: path.resolve(__dirname, './../src/**/*.[ext]'),
     output: {
         path: path.resolve(__dirname, './../dist')
     },
     plugins: [
-        new MiniPlugin({
-            analyze: false,
-            setSubPackageCacheGroup,
-            // compilationFinish: statistics
-        }),
+        // new MiniPlugin({
+        //     analyze: false,
+        //     setSubPackageCacheGroup,
+        //     // compilationFinish: statistics
+        // }),
         new CopyWebpackPlugin([{
             from: './../src/cloudfunctions/**/*.json',
             to: './../dist/'

@@ -15,6 +15,7 @@ module.exports = [
     include: path.resolve(__dirname, './../src/'),
     exclude: /node_modules/,
     use: [
+      fileLoader('[path][name].js'),
       'cache-loader',
       'babel-loader',
       'ts-loader',
@@ -24,21 +25,21 @@ module.exports = [
     test: /.wxml/,
     use: [
       fileLoader('[path][name].[ext]'),
-      'mini-program-webpack-loader',
+      // 'mini-program-webpack-loader',
     ]
   },
   {
     test: /.js/,
     use: [
       fileLoader('[path][name].[ext]'),
-      'mini-program-webpack-loader',
+      // 'mini-program-webpack-loader',
     ]
   },
   {
     test: /.wxss/,
     use: [
       fileLoader('[path][name].[ext]'),
-      'mini-program-webpack-loader',
+      // 'mini-program-webpack-loader',
     ]
   },
   {
@@ -62,7 +63,7 @@ module.exports = [
     type: 'javascript/auto',
     use: [
       fileLoader('[path][name].[ext]'),
-      'mini-program-webpack-loader'
+      // 'mini-program-webpack-loader'
     ]
   },
   {
