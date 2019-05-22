@@ -1,0 +1,1 @@
+<view class="wux-class {{ groupType }} {{ type ? 'icon-'+ type : '' }}" style="font-size: {{ fontSize }}; {{ color ? 'color: ' + color : '' }}" hidden="{{ hidden }}"></view>
