@@ -9,7 +9,7 @@ const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
 
-export const databaseEnv = 'test';
+export const databaseEnv = 'test-r8ve0';
 
 export const diaryMoods = "diary-moods";
 
@@ -70,7 +70,6 @@ export const appOnLaunch = (app) => {
           } catch(e) {
             console.error(e);
           }
-
         }
       })
     }
@@ -92,12 +91,13 @@ export const appOnLaunch = (app) => {
           name: 'login',
           data: {}
         }).then((res) => {
+          console.log(res);
           // @ts-ignore
-          const { openid, appid } = res.result;
-          app.globalData.openId = openid;
-          app.globalData.appId = appid;
+          const { openId, appId, userInfo } = res.result;
+          app.globalData.openId = openId || userInfo.openId;
+          app.globalData.appId = appId || userInfo.appId;
           try {
-            wx.setStorageSync(appAndOpenId, {time: now, data: {openId: openid, appId: appid}});
+            wx.setStorageSync(appAndOpenId, {time: now, data: {openId: openId || userInfo.openId, appId: appId || userInfo.appId}});
           } catch(e) {
             console.error(e);
             reject(e)
@@ -116,14 +116,99 @@ export const appOnLaunch = (app) => {
 
 export const initUserMoods = (openId) => {
   const db = wx.cloud.database();
-  db.collection(diaryMoods).doc(openId).get({
-    success(res) {
-      console.log(res);
+  const diaryMoodsCol = db.collection(diaryMoods);
+  diaryMoodsCol.doc(openId).get({
+    fail() {
+      // 初始化 心情列表
+      diaryMoodsCol.add({
+        data: {
+          _id: openId,
+          createTime: new Date().getTime(),
+          updateTime: new Date().getTime(),
+          data: {
+            happy: {
+              list: [
+                {
+                  iconType: 'happy-daxiao',
+                  title: '大笑',
+                  remark: '',
+                },
+              ],
+              level: 5,
+              label: "狂喜"
+            },
+            kaixin: {
+              list: [
+                {
+                  iconType: 'kaixin-quiet',
+                  title: '开心',
+                  remark: ''
+                }
+              ],
+              level: 4,
+              label: "开心"
+            },
+            yiban: {
+              list: [
+                {
+                  iconType: 'yiban-headache',
+                  title: '一般',
+                  remark: ''
+                }
+              ],
+              level: 3,
+              label: "一般"
+            },
+            bushuang: {
+              list: [
+                {
+                  iconType: 'bushuang-layer',
+                  title: '伤心',
+                  remark: ''
+                }
+              ],
+              level: 2,
+              label: "不爽"
+            },
+            chaolan: {
+              list: [
+                {
+                  iconType: 'chaolan-kulian',
+                  title: '流泪',
+                  remark: ''
+                }
+              ],
+              level: 1,
+              label: "超烂"
+            },
+          }
+        },
+        success(res) {
+          console.log(res)
+        },
+        fail: console.error
+      })
     },
+  })
+
+
+}
+export const initUserActives = (openId) => {
+  const db = wx.cloud.database();
+  const diaryActivesCol = db.collection(diaryActives)
+  diaryActivesCol.doc(openId).get({
     fail(res) {
-      console.log(res);
-    },
-    complete(res) {
+      // 初始化活动列表
+      diaryActivesCol.add({
+        data: {
+          _id: openId,
+          createTime: new Date().getTime(),
+          updateTime: new Date().getTime(),
+          data: {
+
+          }
+        }
+      })
       console.log(res);
     }
   })
