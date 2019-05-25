@@ -6,6 +6,7 @@ interface IActionDataItem {
   title: string;
   actionIcon: string;
   textColor?: string;
+  url?:string; 
 }
 
 interface IAboutDataProps {
@@ -34,6 +35,18 @@ Page<IAboutDataProps, IAboutDataProps>({
           title: '结绳社区',
           actionIcon: 'logo-apple',
           textColor: '#0081ff'
+        },
+        {
+          title: "心情管理",
+          actionIcon: "ios-sunny",
+          textColor: "#e54d42",
+          url: "/pages/mood/list/mood-list"
+        },
+        {
+          title: "活动管理",
+          actionIcon: "ios-wine",
+          textColor: "#9c26b0",
+          url: "/pages/mood/list/mood-list"
         }
       ],
       [
@@ -88,6 +101,14 @@ Page<IAboutDataProps, IAboutDataProps>({
         })
       }
     });
+  },
+  onJump(e) {
+    const { url } = e.currentTarget.dataset;
+    if(url) {
+      wx.navigateTo({
+        url
+      })
+    }
   }
 })
 

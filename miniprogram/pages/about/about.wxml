@@ -34,7 +34,7 @@
         <view class="list-icon-container" style="{{ item.textColor ? 'color:' + item.textColor : '' }}">
           <wux-icon wux-class="list-icon" size="28"  type="{{ item.actionIcon }}" />
         </view>
-        <view class="list-action">
+        <view class="list-action" data-url="{{ item.url }}" bind:tap="onJump">
           <view class="action-title">{{ item.title }}</view>
           <wux-icon size="24" wux-class="list-forward" type="ios-arrow-forward"/>
         </view>

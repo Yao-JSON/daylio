@@ -9,6 +9,12 @@ const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
 
+export const databaseEnv = 'test';
+
+export const diaryMoods = "diary-moods";
+
+export const diaryActives = "diary-actives";
+
 
 export const appOnLaunch = (app) => {
   const now = new Date().getTime();
@@ -36,33 +42,6 @@ export const appOnLaunch = (app) => {
       })
     }
   }catch(e) {
-    console.error(e);
-  }
-
-  // openId
-  try {
-    const openInfo = wx.getStorageSync(appAndOpenId);
-    if(openInfo && openInfo.time && now - openInfo.time <= week) {
-      const { openId, appId } = openInfo.data;
-      app.globalData.openId = openId
-      app.globalData.appId = appId
-    } else {
-      wx.cloud.callFunction({
-        name: 'login',
-        data: {}
-      }).then((res) => {
-        // @ts-ignore
-        const { openid, appid } = res.result;
-        app.globalData.openId = openid;
-        app.globalData.appId = appid;
-        try {
-          wx.setStorageSync(appAndOpenId, {time: now, data: {openId: openid, appId: appid}})
-        } catch(e) {
-          console.error(e);
-        }
-      });
-    }
-  } catch(e) {
     console.error(e);
   }
 
@@ -98,4 +77,56 @@ export const appOnLaunch = (app) => {
   } catch(e) {
     console.error(e);
   }
+
+  return new Promise((resolve, reject) => {
+    // openId
+    try {
+      const openInfo = wx.getStorageSync(appAndOpenId);
+      if(openInfo && openInfo.time && now - openInfo.time <= week) {
+        const { openId, appId } = openInfo.data;
+        app.globalData.openId = openId;
+        app.globalData.appId = appId;
+        resolve(app.globalData)
+      } else {
+        wx.cloud.callFunction({
+          name: 'login',
+          data: {}
+        }).then((res) => {
+          // @ts-ignore
+          const { openid, appid } = res.result;
+          app.globalData.openId = openid;
+          app.globalData.appId = appid;
+          try {
+            wx.setStorageSync(appAndOpenId, {time: now, data: {openId: openid, appId: appid}});
+          } catch(e) {
+            console.error(e);
+            reject(e)
+          }
+
+          resolve(app.globalData)
+        });
+      }
+    } catch(e) {
+      console.error(e);
+      reject(e);
+    }
+  })
+}
+
+
+export const initUserMoods = (openId) => {
+  const db = wx.cloud.database();
+  db.collection(diaryMoods).doc(openId).get({
+    success(res) {
+      console.log(res);
+    },
+    fail(res) {
+      console.log(res);
+    },
+    complete(res) {
+      console.log(res);
+    }
+  })
+
+
 }

@@ -6,8 +6,7 @@
   "dependencies": {},
   "scripts": {
     "start": "gulp --continue",
-    "dev": "gulp --gulpfile build/build-dev.js",
-    "build": "gulp --gulpfile build/build-prod.js"
+    "dev": "npm start"
   },
   "repository": {
     "type": "git",
