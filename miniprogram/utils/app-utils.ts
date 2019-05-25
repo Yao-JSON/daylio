@@ -12,8 +12,8 @@ const week = day * 7;
 export const databaseEnv = 'test-r8ve0';
 
 export const diaryMoods = "diary-moods";
-
 export const diaryActives = "diary-actives";
+export const diaryUsers = "diary-users";
 
 
 export const appOnLaunch = (app) => {
@@ -114,6 +114,31 @@ export const appOnLaunch = (app) => {
 }
 
 
+export const initUsers = (openId) => {
+  const db = wx.cloud.database();
+  const diaryUserdsCol = db.collection(diaryUsers);
+  return new Promise((resolve) => {
+    diaryUserdsCol.doc(openId).get({
+      fail() {
+        diaryUserdsCol.add({
+          data: {
+            _id: openId,
+            createTime: new Date().getTime(),
+            updateTime: new Date().getTime(),
+          },
+          success() {
+            resolve();
+          }
+        })
+      },
+      success() {
+        resolve();
+      }
+    })
+  })
+}
+
+
 export const initUserMoods = (openId) => {
   const db = wx.cloud.database();
   const diaryMoodsCol = db.collection(diaryMoods);
@@ -122,7 +147,6 @@ export const initUserMoods = (openId) => {
       // 初始化 心情列表
       diaryMoodsCol.add({
         data: {
-          _id: openId,
           createTime: new Date().getTime(),
           updateTime: new Date().getTime(),
           data: {
@@ -197,7 +221,7 @@ export const initUserActives = (openId) => {
   const db = wx.cloud.database();
   const diaryActivesCol = db.collection(diaryActives)
   diaryActivesCol.doc(openId).get({
-    fail(res) {
+    fail() {
       // 初始化活动列表
       diaryActivesCol.add({
         data: {
@@ -209,9 +233,10 @@ export const initUserActives = (openId) => {
           }
         }
       })
-      console.log(res);
     }
   })
 
 
 }
+
+

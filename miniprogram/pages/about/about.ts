@@ -38,7 +38,7 @@ Page<IAboutDataProps, IAboutDataProps>({
         },
         {
           title: "心情管理",
-          actionIcon: "ios-sunny",
+          actionIcon: "ios-rocket",
           textColor: "#e54d42",
           url: "/pages/mood/list/mood-list"
         },
@@ -46,7 +46,7 @@ Page<IAboutDataProps, IAboutDataProps>({
           title: "活动管理",
           actionIcon: "ios-wine",
           textColor: "#9c26b0",
-          url: "/pages/mood/list/mood-list"
+          url: "/pages/active/list/active-list"
         }
       ],
       [
