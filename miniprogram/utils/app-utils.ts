@@ -207,9 +207,6 @@ export const initUserMoods = (openId) => {
             },
           }
         },
-        success(res) {
-          console.log(res)
-        },
         fail: console.error
       })
     },
@@ -228,15 +225,22 @@ export const initUserActives = (openId) => {
           _id: openId,
           createTime: new Date().getTime(),
           updateTime: new Date().getTime(),
-          data: {
-
-          }
+          data: [
+            {
+              iconType: "business-dasao",
+              title: "打扫卫生",
+              remark: ''
+            },
+            {
+              iconType: "business-chucha",
+              title: "出差",
+              remark: ''
+            }
+          ] 
         }
       })
     }
   })
-
-
 }
 
 
