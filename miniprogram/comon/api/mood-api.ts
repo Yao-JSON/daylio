@@ -1,5 +1,9 @@
-import { IMoodListItem, IMoodListItemListItem } from './../../pages/mood/utils';
-import { moodsBushuang, moodsChaolan, moodsHappy, moodsKaixin, moodsYiban, diaryMoods } from './../../utils';
+// @ts-ignore
+const regeneratorRuntime = require('./../utils/runtime');
+
+
+import { IMoodListItem, IMoodListItemListItem } from '../../pages/mood/utils';
+import { moodsBushuang, moodsChaolan, moodsHappy, moodsKaixin, moodsYiban, diaryMoods } from '../../utils/index';
 
 enum moodsColLevel {
    "moods-chaolan" = 1,
@@ -33,6 +37,7 @@ export const getMoods = (ids, colName): Promise<IMoodListItemListItem[]> => {
 
 export const getMoodsList = async (openId): Promise<IMoodListItem[]> => {
   const db = wx.cloud.database();
+  
   
   const col = db.collection(diaryMoods);
   const moodListResult = await col.doc(openId).get();
