@@ -9,7 +9,7 @@ const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
 
-export const databaseEnv = 'test-r8ve0';
+export const databaseEnv = 'daylio-611ad0'; //'test-r8ve0';
 
 export const diaryMoods = "diary-moods";
 export const diaryActives = "diary-actives";
