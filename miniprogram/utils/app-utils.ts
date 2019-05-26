@@ -145,26 +145,21 @@ export const initUsers = (openId) => {
   })
 }
 
-const list = [moodsHappy, moodsKaixin, moodsYiban, moodsBushuang, moodsBushuang];
-  const colList = list.map((name) => {
-    const db = wx.cloud.database();
-    return db.collection(name);
-  });
-
-export const initHappyMoods = (openId) => {
+export const initMoods = ({openId, colName, iconType, title}) => {
   
   const db = wx.cloud.database();
   const _ = db.command
-  const col = db.collection(moodsHappy);
+  const col = db.collection(colName);
 
   return new Promise((resolve) => {
     col.where({_openid: openId}).get().then((res) => {
       const {data} = res;
+      console.log('data', data);
       if(!data.length) {
-        return col.add({
+        col.add({
           data: {
-            iconType: "happy-daxiao",
-            title: "大笑",
+            iconType,
+            title,
             index: _.inc(1),
             createTime: new Date().getTime(),
             updateTime: new Date().getTime(),
@@ -183,77 +178,55 @@ export const initUserMoods = (openId) => {
   const db = wx.cloud.database();
   const _ = db.command
   const diaryMoodsCol = db.collection(diaryMoods);
-  diaryMoodsCol.where({_openid: openId}).get({
-    fail: async () => {
-
+  diaryMoodsCol.doc(openId).get({
+    fail(res) {
+      console.log(res);
       // 初始化 心情
-      const happyIds = await initHappyMoods(openId);
-      // 初始化 心情列表
-      diaryMoodsCol.add({
-        data: {
-          _id: openId,
-          index: _.inc(1),
-          createTime: new Date().getTime(),
-          updateTime: new Date().getTime(),
+      const happyIds = initMoods({openId, colName: moodsHappy, iconType: 'happy-daxiao', title: '大笑'});
+      const kaixinIds = initMoods({openId, colName: moodsKaixin, iconType: 'kaixin-quiet', title: '开心'});
+      const yibanIds =  initMoods({openId, colName: moodsYiban, iconType: 'yiban-headache', title: '一般'});
+      const bushuangIds =  initMoods({openId, colName: moodsBushuang, iconType: 'bushuang-layer', title: '伤心'});
+      const chaolanIds =  initMoods({openId, colName: moodsChaolan, iconType: 'chaolan-kulian', title: '流泪'});
+
+
+      Promise.all([happyIds, kaixinIds, yibanIds, bushuangIds, chaolanIds]).then(([happyIds, kaixinIds, yibanIds, bushuangIds, chaolanIds]) => {
+        // 初始化 心情列表
+        diaryMoodsCol.add({
           data: {
-            happy: {
-              list: [
-                {
-                  iconType: 'happy-daxiao',
-                  title: '大笑',
-                  remark: '',
-                },
-              ],
-              level: 5,
-              label: "狂喜"
-            },
-            kaixin: {
-              list: [
-                {
-                  iconType: 'kaixin-quiet',
-                  title: '开心',
-                  remark: ''
-                }
-              ],
-              level: 4,
-              label: "开心"
-            },
-            yiban: {
-              list: [
-                {
-                  iconType: 'yiban-headache',
-                  title: '一般',
-                  remark: ''
-                }
-              ],
-              level: 3,
-              label: "一般"
-            },
-            bushuang: {
-              list: [
-                {
-                  iconType: 'bushuang-layer',
-                  title: '伤心',
-                  remark: ''
-                }
-              ],
-              level: 2,
-              label: "不爽"
-            },
-            chaolan: {
-              list: [
-                {
-                  iconType: 'chaolan-kulian',
-                  title: '流泪',
-                  remark: ''
-                }
-              ],
-              level: 1,
-              label: "超烂"
-            },
-          }
-        },
-        fail: console.error
+            _id: openId,
+            index: _.inc(1),
+            createTime: new Date().getTime(),
+            updateTime: new Date().getTime(),
+            data: {
+              happy: {
+                list: happyIds,
+                level: 5,
+                label: "狂喜"
+              },
+              kaixin: {
+                list: kaixinIds,
+                level: 4,
+                label: "开心"
+              },
+              yiban: {
+                list: yibanIds,
+                level: 3,
+                label: "一般"
+              },
+              bushuang: {
+                list: bushuangIds,
+                level: 2,
+                label: "不爽"
+              },
+              chaolan: {
+                list: chaolanIds,
+                level: 1,
+                label: "超烂"
+              },
+            }
+          },
+          fail: console.error
+        })
       })
     },
   })
