@@ -14,7 +14,12 @@ export const databaseEnv = 'test-r8ve0';
 export const diaryMoods = "diary-moods";
 export const diaryActives = "diary-actives";
 export const diaryUsers = "diary-users";
-
+export const diaryEventList = 'diary-event-list'
+export const moodsHappy = 'moods-happy';
+export const moodsKaixin = 'moods-kaixin';
+export const moodsYiban = 'moods-yiban';
+export const moodsBushuang = 'moods-bushuang';
+export const moodsChaolan = 'moods-chaolan';
 
 export const appOnLaunch = (app) => {
   const now = new Date().getTime();
@@ -116,6 +121,7 @@ export const appOnLaunch = (app) => {
 
 export const initUsers = (openId) => {
   const db = wx.cloud.database();
+  const _ = db.command
   const diaryUserdsCol = db.collection(diaryUsers);
   return new Promise((resolve) => {
     diaryUserdsCol.doc(openId).get({
@@ -123,6 +129,7 @@ export const initUsers = (openId) => {
         diaryUserdsCol.add({
           data: {
             _id: openId,
+            index: _.inc(1),
             createTime: new Date().getTime(),
             updateTime: new Date().getTime(),
           },
@@ -138,15 +145,54 @@ export const initUsers = (openId) => {
   })
 }
 
+const list = [moodsHappy, moodsKaixin, moodsYiban, moodsBushuang, moodsBushuang];
+  const colList = list.map((name) => {
+    const db = wx.cloud.database();
+    return db.collection(name);
+  });
+
+export const initHappyMoods = (openId) => {
+  
+  const db = wx.cloud.database();
+  const _ = db.command
+  const col = db.collection(moodsHappy);
+
+  return new Promise((resolve) => {
+    col.where({_openid: openId}).get().then((res) => {
+      const {data} = res;
+      if(!data.length) {
+        return col.add({
+          data: {
+            iconType: "happy-daxiao",
+            title: "大笑",
+            index: _.inc(1),
+            createTime: new Date().getTime(),
+            updateTime: new Date().getTime(),
+          }
+        }).then((res) => {
+          resolve([res._id]);
+        })
+      }
+  
+      resolve(data.map(_ => _._id));
+    })
+  })
+};
 
 export const initUserMoods = (openId) => {
   const db = wx.cloud.database();
+  const _ = db.command
   const diaryMoodsCol = db.collection(diaryMoods);
-  diaryMoodsCol.doc(openId).get({
-    fail() {
+  diaryMoodsCol.where({_openid: openId}).get({
+    fail: async () => {
+
+      // 初始化 心情
+      const happyIds = await initHappyMoods(openId);
       // 初始化 心情列表
       diaryMoodsCol.add({
         data: {
+          _id: openId,
+          index: _.inc(1),
           createTime: new Date().getTime(),
           updateTime: new Date().getTime(),
           data: {
