@@ -9,7 +9,7 @@ const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
 
-export const databaseEnv = 'daylio-611ad0'; //'test-r8ve0';
+export const databaseEnv =  'test-r8ve0'; // 'daylio-611ad0'; // 
 
 export const diaryMoods = "diary-moods";
 export const diaryActives = "diary-actives";
@@ -190,6 +190,7 @@ export const initUserMoods = (openId) => {
 
 
       Promise.all([happyIds, kaixinIds, yibanIds, bushuangIds, chaolanIds]).then(([happyIds, kaixinIds, yibanIds, bushuangIds, chaolanIds]) => {
+        console.log(happyIds, kaixinIds);
         // 初始化 心情列表
         diaryMoodsCol.add({
           data: {

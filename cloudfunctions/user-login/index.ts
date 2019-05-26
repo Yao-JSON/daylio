@@ -9,7 +9,6 @@ export const main = async (event) => {
 
   return {
     event,
-    a: 1,
     openid: wxContext.OPENID,
     appid: wxContext.APPID,
     unionid: wxContext.UNIONID,

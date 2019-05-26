@@ -8,7 +8,7 @@ interface IEditMoodProps {
 }
 interface IEditMoodInstance {
   data: {
-    id: number;
+    id: number | null;
     iconType: string;
     title: string;
     iconList: IActiveIconListItem[];
@@ -22,7 +22,7 @@ interface IEditMoodInstance {
 Page<IEditMoodProps, IEditMoodInstance>({
   // @ts-ignore
   data: {
-    id: 0,
+    id: null,
     iconType: "happy-daxiao",
     title: '',
     iconList,
@@ -56,7 +56,7 @@ Page<IEditMoodProps, IEditMoodInstance>({
     const { id, iconType, title, level } = query;
     if(!id) {
       wx.setNavigationBarTitle({
-        title: "新增心情"
+        title: "新增心情",
       })
     } else {
       this.setData({
