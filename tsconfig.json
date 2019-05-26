@@ -22,6 +22,7 @@
       "./typings"
     ]
   },
+  "lib": ["dom", "scripthost", "es5", "es2015.promise", "es2015.core"],
   "include": [
     "./miniprogram/**/*.ts"
   ],
