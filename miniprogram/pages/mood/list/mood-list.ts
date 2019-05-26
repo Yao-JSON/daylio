@@ -1,9 +1,6 @@
-import { $wuxToptips } from '../../../wux/index'
-
-import { colorLevel, IColorLevelItem, defaultMoodList, IMoodListItem } from '../utils'
-
-
-
+import { $wuxToptips } from '../../../wux/index';
+import { colorLevel, IColorLevelItem, defaultMoodList, IMoodListItem } from '../utils';
+import { getMoodsList } from './../../../comon/api';
 
 
 interface IMoodListProps {
@@ -36,7 +33,7 @@ Page<IMoodListProps, IMoodListInstance>({
       }
     ],
     colorLevel,
-    moodList:defaultMoodList
+    moodList:[]
   },
   handlerDeleteActive(e){
     const { index, groupMoodIndex } = e.currentTarget.dataset;

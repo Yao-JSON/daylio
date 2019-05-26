@@ -1,3 +1,4 @@
+import { IMoodListItem, IMoodListItemListItem } from './../../pages/mood/utils';
 import { moodsBushuang, moodsChaolan, moodsHappy, moodsKaixin, moodsYiban, diaryMoods } from './../../utils';
 
 enum moodsColLevel {
@@ -16,7 +17,7 @@ enum moodsLevelType {
   "happy" = 5
 }
 
-export const getMoods = (ids, colName) => {
+export const getMoods = (ids, colName): Promise<IMoodListItemListItem[]> => {
   const db = wx.cloud.database();
   const col = db.collection(colName);
   const _ = db.command;
@@ -24,12 +25,13 @@ export const getMoods = (ids, colName) => {
   return new Promise((reslove) => {
     col.where({_id: _.or(ids)}).get().then((res) => {
       const {data} = res;
+      // @ts-ignore
       reslove(data);
     })
   })
 };
 
-export const getMoodsList = async (openId) => {
+export const getMoodsList = async (openId): Promise<IMoodListItem[]> => {
   const db = wx.cloud.database();
   
   const col = db.collection(diaryMoods);

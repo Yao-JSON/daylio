@@ -31,7 +31,8 @@ export interface IMoodListItemListItem {
   iconType: string;
   title: string;
   remark?: string;
-  id: number;
+  _id: number;
+  [propsName: string]: any; 
 }
 
 export interface IMoodListItem {
