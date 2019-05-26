@@ -93,7 +93,7 @@ export const appOnLaunch = (app) => {
         resolve(app.globalData)
       } else {
         wx.cloud.callFunction({
-          name: 'login',
+          name: 'user-login',
           data: {}
         }).then((res) => {
           console.log(res);
