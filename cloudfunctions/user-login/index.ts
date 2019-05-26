@@ -1,9 +1,6 @@
 import cloud from 'wx-server-sdk';
 
 
-cloud.init()
-
-
 export const main = async (event) => {
   const wxContext = cloud.getWXContext()
 
