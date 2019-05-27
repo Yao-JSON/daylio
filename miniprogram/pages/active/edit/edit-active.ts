@@ -48,11 +48,11 @@ Page<IEditActiveProps, IEditActiveInstance>({
   // 确定
   handlerConfirm() {
     const { id, iconType, title } = this.data;
-    console.log(id, iconType, title);
-
-    addOrUpdateActive({ id, iconType, title }, app.globalData.openId)
-
-
+    addOrUpdateActive({ id, iconType, title }, app.globalData.openId).then(() => {
+      wx.navigateBack({
+        delta: 1
+      })
+    })
   },
   onLoad(query) {
     const { id, iconType, title } = query;

@@ -49,7 +49,7 @@ interface IAddOrUpdateActiveParams {
 }
 
 
-export const addOrUpdateActive = async (params: IAddOrUpdateActiveParams, openId) => {
+export const addOrUpdateActive = async (params: IAddOrUpdateActiveParams, openId): Promise<any> => {
   const { id, iconType, title, remark = '' } = params;
   const db = wx.cloud.database();
   const activesItemCol = db.collection(activesItem);
@@ -77,16 +77,16 @@ export const addOrUpdateActive = async (params: IAddOrUpdateActiveParams, openId
     const { data } = diaryActivesResult;
     if(data) {
       const { ids } = data;
-      ids.push(activesItemResult._id);
+      ids.unshift(activesItemResult._id);
 
-      await diaryActivesCol.doc(openId).update({
+      return await diaryActivesCol.doc(openId).update({
         data: {
           ids
         }
       })
     }
   } else {
-    await activesItemCol.doc(id).update({
+    return await activesItemCol.doc(id).update({
       data: {
         iconType,
         title,
