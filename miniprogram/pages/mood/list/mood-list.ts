@@ -1,7 +1,7 @@
 import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
 import { colorLevel, IColorLevelItem, IMoodListItem } from '../utils';
-import { getMoodsList } from '../../../comon/api/mood-api';
+import { getMoodsLists } from '../../../comon/api/mood-api';
 
 const app = getApp<IMyApp>();
 
@@ -47,6 +47,7 @@ Page<IMoodListProps, IMoodListInstance>({
     const moodItem = newMoodList[groupMoodIndex];
     moodItem.list.splice(index, 1);
    
+    // @ts-ignore
     this.setData({
       moodList: newMoodList
     });
@@ -67,8 +68,7 @@ Page<IMoodListProps, IMoodListInstance>({
     })
   },
   onLoad() {
-    getMoodsList(app.globalData.openId).then((res) => {
-      console.log(res);
+    getMoodsLists(app.globalData.openId).then((res) => {
       this.setData({
         moodList: res
       })
