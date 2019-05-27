@@ -1,6 +1,9 @@
+import { IMyApp } from './../../../../../miniprogram-ts/miniprogram/app';
 import iconList, {IActiveIconListItem} from './icon-list'
-
 import { colorLevel, IColorLevelItem } from '../utils'
+import { addOrUpdateMoods } from './../../../comon/api/index'
+
+const app = getApp<IMyApp>();
 
 interface IEditMoodProps {
   handlerChange: (e) => void;
@@ -49,7 +52,17 @@ Page<IEditMoodProps, IEditMoodInstance>({
   // 确定
   handlerConfirm() {
     const { id, iconType, title, moodLevel } = this.data;
+
     console.log(id, iconType, title, moodLevel);
+
+    addOrUpdateMoods({
+      id,
+      iconType,
+      title,
+      level: moodLevel
+    }, app.globalData.openId).then((res) => {
+      console.log(res);
+    })
 
   },
   onLoad(query) {
@@ -59,11 +72,13 @@ Page<IEditMoodProps, IEditMoodInstance>({
         title: "新增心情",
       })
     } else {
+      const levelColorType = level ? colorLevel[level-1].levelColorType : 'happy';
       this.setData({
         id,
         iconType,
         title,
-        levelColorType: level ? colorLevel[level].levelColorType : 'happy'
+        moodLevel: +level,
+        moodLevelColorType: levelColorType
       })
     }
 

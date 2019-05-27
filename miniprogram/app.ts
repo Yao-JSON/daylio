@@ -3,7 +3,7 @@ const backgroundKey = 'diary-global-background-image';
 
 import { IMyApp } from "./../interface"
 
-import { appOnLaunch, databaseEnv, initUserMoods, initUserActives, initUsers } from './utils/app-utils'
+import { appOnLaunch, databaseEnv, initUserMoods, initUserActives, initUsers } from './comon/utils/index'
 
 try {
   backgroundImage = wx.getStorageSync(backgroundKey)

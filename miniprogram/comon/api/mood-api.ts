@@ -1,23 +1,15 @@
 import { IMoodListItem, IMoodListItemListItem } from '../../pages/mood/utils';
-import { moodsBushuang, moodsChaolan, moodsHappy, moodsKaixin, moodsYiban, diaryMoods } from '../../utils/index';
+import { moodsBushuang, 
+  moodsChaolan,
+  moodsHappy,
+  moodsKaixin,
+  moodsYiban,
+  diaryMoods,
+  moodsColLevel,
+  moodsLevelType
+} from '../../comon/utils/index';
 // @ts-ignore
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
-
-enum moodsColLevel {
-   "moods-chaolan" = 1,
-   "moods-bushuang" = 2,
-   "moods-yiban" = 3,
-   "moods-kaixin" = 4,
-   "moods-happy" = 5
-}
-
-enum moodsLevelType {
-  "chaolan" = 1,
-  "bushuang" = 2,
-  "yiban" = 3,
-  "kaixin" = 4,
-  "happy" = 5
-}
 
 export const getMoods = (ids, colName): Promise<IMoodListItemListItem[]> => {
   const db = wx.cloud.database();
@@ -42,6 +34,7 @@ export const getMoodsList = (openId): Promise<IMoodListItem[]> => {
   return new Promise((resolve) => {
     col.doc(openId).get().then((moodListResult) => {
       const { happy, kaixin, yiban, bushuang, chaolan } = moodListResult.data.data;
+      console.log(moodListResult.data.data);
       Promise.all([getMoods(happy.list, moodsHappy), getMoods(kaixin.list, moodsKaixin), getMoods(yiban.list, moodsYiban), getMoods(bushuang.list, moodsBushuang), getMoods(chaolan.list, moodsChaolan)])
       .then(([happyList, kaixinList,yibanList, bushuangList, chaolanList]) => {
         const result = [
@@ -87,7 +80,7 @@ interface IMoodsListItemPrams {
   id?: string;
 }
 
-export const addOrUpdateMoods = async (params: IMoodsListItemPrams, openId, list) => {
+export const addOrUpdateMoods = async (params: IMoodsListItemPrams, openId) => {
   const { id, level, ...data } = params;
   const db = wx.cloud.database();
   const moodsColName = moodsColLevel[level];
@@ -102,17 +95,22 @@ export const addOrUpdateMoods = async (params: IMoodsListItemPrams, openId, list
 
     const moodsKey = moodsLevelType[level];
     const diaryMoodsCol = db.collection(diaryMoods);
-    await diaryMoodsCol.doc(openId).update({
+    const diaryMoodsItem = await diaryMoodsCol.doc(openId).get();
+    const diaryMoodsKeysItem = diaryMoodsItem.data.data[moodsKey]
+
+    console.log(diaryMoodsKeysItem,  diaryMoodsKeysItem.list.push(_id));
+
+    return await diaryMoodsCol.doc(openId).update({
       data: {
         data: {
-          [moodsKey]: list.push(_id)
+          [moodsKey]: diaryMoodsKeysItem.list.push(_id)
         },
         updateTime: now
       }
     })
 
   } else {
-     await moodsCol.doc(id).update({
+    return  await moodsCol.doc(id).update({
       data: {
         ...data,
         updateTime: now
@@ -121,6 +119,3 @@ export const addOrUpdateMoods = async (params: IMoodsListItemPrams, openId, list
   }
 }
 
-export const test = async () => {
-  return 90;
-}

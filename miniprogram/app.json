@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/mood/list/mood-list",
     "pages/diary/timeline/index",
     "pages/calendar/calendar",
     "pages/about/about",
@@ -8,7 +9,6 @@
     "pages/new-diary/select-active/index",
     "pages/active/list/active-list",
     "pages/diary/list/diary",
-    "pages/mood/list/mood-list",
     "pages/active/edit/edit-active",
     "pages/mood/edit/edit-mood"
   ],

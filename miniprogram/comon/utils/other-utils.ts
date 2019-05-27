@@ -46,3 +46,20 @@ export const getDate = (time: number): IGetDateResult => {
     date: +calcTime
   }
 };
+
+
+export enum moodsColLevel {
+  "moods-chaolan" = 1,
+  "moods-bushuang" = 2,
+  "moods-yiban" = 3,
+  "moods-kaixin" = 4,
+  "moods-happy" = 5
+}
+
+export enum moodsLevelType {
+ "chaolan" = 1,
+ "bushuang" = 2,
+ "yiban" = 3,
+ "kaixin" = 4,
+ "happy" = 5
+}

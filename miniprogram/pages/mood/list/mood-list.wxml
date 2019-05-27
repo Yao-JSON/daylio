@@ -18,7 +18,7 @@
           title="{{ moodInfo.title }}"
           label="{{ moodInfo.remark || '' }}"
           isLink="true"
-          url="/pages/mood/edit/edit-mood?id={{ moodInfo.id }}&remark={{ moodInfo.remark }}&iconType={{ moodInfo.iconType }}&title={{ moodInfo.title }}&level={{ item.level }}">
+          url="/pages/mood/edit/edit-mood?id={{ moodInfo._id }}&remark={{ moodInfo.remark }}&iconType={{ moodInfo.iconType }}&title={{ moodInfo.title }}&level={{ item.level }}">
           <mood-icon
             wux-class="mood-icon-container mood-color-{{ colorLevel[item.level - 1].levelColorType }}" 
             size="16"

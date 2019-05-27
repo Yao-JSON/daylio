@@ -1,4 +1,4 @@
-import { diaryEventList } from'./../../utils'
+import { diaryEventList } from'./../../comon/utils/index'
 
 export interface IAddEventParams {
   id?: string;
