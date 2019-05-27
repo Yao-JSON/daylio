@@ -1,7 +1,7 @@
 import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
 import { colorLevel, IColorLevelItem, IMoodListItem } from '../utils';
-import { getMoodsList } from '../../../comon/api/mood-api';
+import { getMoodsList, test } from '../../../comon/api/mood-api';
 
 const app = getApp<IMyApp>();
 
@@ -73,5 +73,7 @@ Page<IMoodListProps, IMoodListInstance>({
         moodList: res
       })
     })
+
+    test().then(console.log)
   }
 })

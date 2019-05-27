@@ -1,5 +1,7 @@
 import { IMoodListItem, IMoodListItemListItem } from '../../pages/mood/utils';
 import { moodsBushuang, moodsChaolan, moodsHappy, moodsKaixin, moodsYiban, diaryMoods } from '../../utils/index';
+// @ts-ignore
+var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
 enum moodsColLevel {
    "moods-chaolan" = 1,
@@ -75,7 +77,6 @@ export const getMoodsList = (openId): Promise<IMoodListItem[]> => {
 
     })
   })
-
 }
 
 
@@ -118,4 +119,8 @@ export const addOrUpdateMoods = async (params: IMoodsListItemPrams, openId, list
       }
     })
   }
+}
+
+export const test = async () => {
+  return 90;
 }
