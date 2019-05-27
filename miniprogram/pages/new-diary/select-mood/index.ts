@@ -1,7 +1,11 @@
-import { $wuxToptips } from '../../../wux/index'
-import { globalData, getDate, dateFtt } from '../../../comon/utils/index'
-
+import { $wuxToptips } from '../../../wux/index';
+import { globalData, getDate, dateFtt } from '../../../comon/utils/index';
+import { getMoodsLists } from './../../../comon/api/index';
 import { IMoodsListItem, moodsList } from './../utils'
+
+import { IMyApp } from './../../../../interface/index'
+
+const app = getApp<IMyApp>();
 
 const s = 1000;
 const m = 60 * s;
@@ -49,6 +53,10 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     this.setData({
       datedetail: getDate( date && date.time || +new Date()),
     });
+
+    getMoodsLists(app.globalData.openId).then((res) => {
+      console.log(res);
+    })
   },
   onHide() {
     globalData.set('date', null);
@@ -97,5 +105,5 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     wx.navigateTo({
       url: '/pages/new-diary/select-active/index?diaryTime='+diaryTime + '&moodKey='+ dataset.moodKey + '&moodIcon='+ dataset.moodIcon,
     })
-  }
+  },
 });

@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/active/list/active-list",
+    "pages/new-diary/select-mood/index",
     "pages/diary/timeline/index",
+    "pages/active/list/active-list",
     "pages/mood/list/mood-list",
     "pages/calendar/calendar",
     "pages/about/about",
     "pages/chart/chart",
-    "pages/new-diary/select-mood/index",
     "pages/new-diary/select-active/index",
     "pages/diary/list/diary",
     "pages/active/edit/edit-active",
