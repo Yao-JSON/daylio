@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/mood/list/mood-list",
+    "pages/active/list/active-list",
     "pages/diary/timeline/index",
+    "pages/mood/list/mood-list",
     "pages/calendar/calendar",
     "pages/about/about",
     "pages/chart/chart",
     "pages/new-diary/select-mood/index",
     "pages/new-diary/select-active/index",
-    "pages/active/list/active-list",
     "pages/diary/list/diary",
     "pages/active/edit/edit-active",
     "pages/mood/edit/edit-mood"

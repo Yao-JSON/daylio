@@ -67,11 +67,11 @@ Page<IMoodListProps, IMoodListInstance>({
       }
     })
   },
-  onLoad() {
+  onShow() {
     getMoodsLists(app.globalData.openId).then((res) => {
       this.setData({
         moodList: res
       })
     })
   }
-})
+});

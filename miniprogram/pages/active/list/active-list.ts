@@ -7,7 +7,7 @@ interface IReghtItem {
 }
 
 interface IActiveListItem {
-  id: number;
+  _id: string;
   iconType: string;
   title: string;
   remark?: string;
@@ -41,27 +41,27 @@ Page<IActiveListProps, IActiveListInstance>({
       }
     ],
     activeList: [
-      {
-        "id": 1,
-        "iconType": "business-dasao",
-        "title": "打扫卫生",
-        "remark": "非常客气的打扫卫生"
-      },
-      {
-        "id": 2,
-        "iconType": "business-chanpin",
-        "title": "打扫卫生"
-      },
-      {
-        "id": 3,
-        "iconType": "business-chucha",
-        "title": "打扫卫生"
-      },
-      {
-        "id": 4,
-        "iconType": "business-dianhua",
-        "title": "打扫卫生"
-      },
+      // {
+      //   "id": 1,
+      //   "iconType": "business-dasao",
+      //   "title": "打扫卫生",
+      //   "remark": "非常客气的打扫卫生"
+      // },
+      // {
+      //   "id": 2,
+      //   "iconType": "business-chanpin",
+      //   "title": "打扫卫生"
+      // },
+      // {
+      //   "id": 3,
+      //   "iconType": "business-chucha",
+      //   "title": "打扫卫生"
+      // },
+      // {
+      //   "id": 4,
+      //   "iconType": "business-dianhua",
+      //   "title": "打扫卫生"
+      // },
     ]
   },
   handlerDeleteActive(e){

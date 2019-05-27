@@ -5,23 +5,13 @@ const systemInfoKey = "diary-system-info-key";
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
 
+import {diaryUsers, diaryMoods, moodsBushuang, moodsChaolan, moodsHappy, moodsYiban, moodsKaixin, diaryActives } from './constance'
+
 const s = 1000;
 const m = 60 * s;
 const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
-
-export const databaseEnv =  'test-r8ve0'; // 'daylio-611ad0'; // 
-
-export const diaryMoods = "diary-moods";
-export const diaryActives = "diary-actives";
-export const diaryUsers = "diary-users";
-export const diaryEventList = 'diary-event-list'
-export const moodsHappy = 'moods-happy';
-export const moodsKaixin = 'moods-kaixin';
-export const moodsYiban = 'moods-yiban';
-export const moodsBushuang = 'moods-bushuang';
-export const moodsChaolan = 'moods-chaolan';
 
 export const appOnLaunch = (app) => {
   const now = new Date().getTime();
