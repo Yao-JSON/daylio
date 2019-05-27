@@ -1,4 +1,4 @@
-import { IMyApp } from './../../../../interface/app';
+import { IMyApp } from '../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
 import { colorLevel, IColorLevelItem, IMoodListItem } from '../utils';
 import { getMoodsLists } from '../../../comon/api/mood-api';

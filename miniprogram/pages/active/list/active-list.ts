@@ -1,5 +1,8 @@
+import { IMyApp } from './../../../../../miniprogram-ts/miniprogram/app';
 import { $wuxToptips } from '../../../wux/index'
+import { getActiveList } from './../../../comon/api/index'
 
+const app = getApp<IMyApp>();
 
 interface IReghtItem {
   text: string;
@@ -40,29 +43,7 @@ Page<IActiveListProps, IActiveListInstance>({
         style: 'background-color: #F4333C; color: white',
       }
     ],
-    activeList: [
-      // {
-      //   "id": 1,
-      //   "iconType": "business-dasao",
-      //   "title": "打扫卫生",
-      //   "remark": "非常客气的打扫卫生"
-      // },
-      // {
-      //   "id": 2,
-      //   "iconType": "business-chanpin",
-      //   "title": "打扫卫生"
-      // },
-      // {
-      //   "id": 3,
-      //   "iconType": "business-chucha",
-      //   "title": "打扫卫生"
-      // },
-      // {
-      //   "id": 4,
-      //   "iconType": "business-dianhua",
-      //   "title": "打扫卫生"
-      // },
-    ]
+    activeList: []
   },
   handlerDeleteActive(e){
     const { detail, target } = e;
@@ -88,6 +69,13 @@ Page<IActiveListProps, IActiveListInstance>({
           duration: 3000,
         })
       }
+    })
+  },
+  onShow() {
+    getActiveList(app.globalData.openId).then((res) => {
+      this.setData({
+        activeList: res
+      })
     })
   }
 })

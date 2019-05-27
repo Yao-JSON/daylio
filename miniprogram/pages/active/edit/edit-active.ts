@@ -1,4 +1,9 @@
+import { IMyApp } from '../../../../interface';
 import iconList, {IActiveItem} from './icon-list'
+
+import { addOrUpdateActive } from './../../../comon/api/index'
+
+const app = getApp<IMyApp>();
 
 interface IEditActiveProps {
   handlerChange: (e) => void;
@@ -8,7 +13,7 @@ interface IEditActiveProps {
 
 interface IEditActiveInstance {
   data: {
-    id: number,
+    id: string,
     iconType: string,
     title: string,
     iconList: IActiveItem[]
@@ -20,13 +25,14 @@ interface IEditActiveInstance {
 Page<IEditActiveProps, IEditActiveInstance>({
   // @ts-ignore
   data: {
-    id: 0,
+    id: '',
     iconType: "business-dasao",
     title: '',
     iconList
   },
   // 编辑活动
   handlerChange(e) {
+    // @ts-ignore
     this.setData({
       title: e.detail.value
     });
@@ -43,6 +49,9 @@ Page<IEditActiveProps, IEditActiveInstance>({
   handlerConfirm() {
     const { id, iconType, title } = this.data;
     console.log(id, iconType, title);
+
+    addOrUpdateActive({ id, iconType, title }, app.globalData.openId)
+
 
   },
   onLoad(query) {

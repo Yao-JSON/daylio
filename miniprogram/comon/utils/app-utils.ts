@@ -5,7 +5,17 @@ const systemInfoKey = "diary-system-info-key";
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
 
-import {diaryUsers, diaryMoods, moodsBushuang, moodsChaolan, moodsHappy, moodsYiban, moodsKaixin, diaryActives } from './constance'
+import {
+  diaryUsers,
+  diaryMoods,
+  moodsBushuang,
+  moodsChaolan,
+  moodsHappy,
+  moodsYiban,
+  moodsKaixin,
+  diaryActives,
+  activesItem
+} from './constance'
 
 const s = 1000;
 const m = 60 * s;
@@ -230,30 +240,30 @@ export const initUserMoods = async (openId) => {
 }
 export const initUserActives = async (openId) => {
   const db = wx.cloud.database();
-  const diaryActivesCol = db.collection(diaryActives)
-
+  const diaryActivesCol = db.collection(diaryActives);
+  const activesItemCol = db.collection(activesItem);
   const result = await diaryActivesCol.doc(openId).get().catch((err) => {return { data: null, errMsg: err }});
-
   const { data } = result;
 
+  const now = new Date().getTime();
+
   if(!data) {
+    const activesItemResult = await activesItemCol.add({
+      data: {
+        iconType: "business-dasao",
+        title: "打扫卫生",
+        remark: '',
+        createTime: now,
+        updateTime: now,
+      },
+    });
+
     await diaryActivesCol.add({
       data: {
         _id: openId,
-        createTime: new Date().getTime(),
-        updateTime: new Date().getTime(),
-        data: [
-          {
-            iconType: "business-dasao",
-            title: "打扫卫生",
-            remark: ''
-          },
-          {
-            iconType: "business-chucha",
-            title: "出差",
-            remark: ''
-          }
-        ] 
+        createTime: now,
+        updateTime: now,
+        ids:[activesItemResult._id]
       }
     });
   }

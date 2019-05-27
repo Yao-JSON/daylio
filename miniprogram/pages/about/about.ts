@@ -1,4 +1,4 @@
-import { IMyApp } from './../../../interface'
+import { IMyApp } from '../../../interface'
 const userInfoKey = "diary-userinfo-global-key";
 const app = getApp<IMyApp>();
 
@@ -13,7 +13,7 @@ interface IAboutDataProps {
   data: {
     hasUserInfo?: boolean;
     day?: number;
-    userInfo?: Record<string, any>,
+    userInfo: Record<string, any> | null,
     targetDay?: number,
     actionData?: IActionDataItem[][]
   },

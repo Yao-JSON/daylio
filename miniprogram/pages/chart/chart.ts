@@ -1,4 +1,4 @@
-import { IMyApp } from './../../../interface';
+import { IMyApp } from '../../../interface';
 // const app = getApp();
 import {
   pickerData,

@@ -11,7 +11,7 @@
         title="{{ item.title }}" 
         label="{{ item.remark || '' }}"
         isLink="true"
-        url="/pages/active/edit/edit-active?id={{ item.id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
+        url="/pages/active/edit/edit-active?id={{ item._id }}&remark={{ item.remark }}&iconType={{ item.iconType }}&title={{ item.title }}">
         <active-icon 
           wux-class="active-icon-container"
           size="16"
