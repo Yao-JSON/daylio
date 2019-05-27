@@ -3,7 +3,7 @@
     "strictNullChecks": true,
     "noImplicitAny": false,
     "module": "CommonJS",
-    "target": "es5",
+    "target": "es6",
     "allowJs": false,
     "experimentalDecorators": true,
     "noImplicitThis": true,
@@ -20,9 +20,8 @@
     "strictPropertyInitialization": true,
     "typeRoots": [
       "./typings"
-    ]
+    ],
   },
-  "lib": ["dom", "scripthost", "es5", "es2015.promise", "es2015.core"],
   "include": [
     "./miniprogram/**/*.ts"
   ],

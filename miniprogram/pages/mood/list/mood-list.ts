@@ -1,6 +1,6 @@
 import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
-import { colorLevel, IColorLevelItem, IMoodListItem, defaultMoodList } from '../utils';
+import { colorLevel, IColorLevelItem, IMoodListItem } from '../utils';
 import { getMoodsList } from '../../../comon/api/mood-api';
 
 const app = getApp<IMyApp>();
@@ -36,7 +36,7 @@ Page<IMoodListProps, IMoodListInstance>({
     ],
     colorLevel,
     // @ts-ignore
-    moodList: defaultMoodList
+    moodList: []
   },
   handlerDeleteActive(e){
     const { index, groupMoodIndex } = e.currentTarget.dataset;
@@ -67,7 +67,11 @@ Page<IMoodListProps, IMoodListInstance>({
     })
   },
   onLoad() {
-    console.log(app.globalData.openId);
-    // getMoodsList(app.globalData.openId)
+    getMoodsList(app.globalData.openId).then((res) => {
+      console.log(res);
+      this.setData({
+        moodList: res
+      })
+    })
   }
 })
