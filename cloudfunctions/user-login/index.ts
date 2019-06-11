@@ -1,16 +1,19 @@
-import cloud from 'wx-server-sdk';
+// @ts-ignore
+const cloud = require('wx-server-sdk');
 
-cloud.init({
-  env: "daylio-611ad0"
-})
+// 初始化 cloud
+
+if(cloud) 
+cloud.init()
+
 
 export const main = async (event) => {
   const wxContext = cloud.getWXContext()
 
   return {
     event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
+    openId: wxContext.OPENID,
+    appId: wxContext.APPID,
+    unionId: wxContext.UNIONID,
   }
 }

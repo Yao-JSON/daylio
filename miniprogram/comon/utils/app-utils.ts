@@ -28,26 +28,7 @@ export const appOnLaunch = (app) => {
   // 获取用户信息
   try {
     const userInfo = wx.getStorageSync(userInfoKey);
-    if(userInfo && userInfo.time  &&  now - userInfo.time  <= week) {
-      app.globalData.userInfo = userInfo.data;
-    } else {
-      wx.getUserInfo({
-        success(res) {
-          const wxUserInfo: wx.UserInfo = res.userInfo;
-          app.globalData.userInfo = wxUserInfo;
-          try {
-            wx.setStorageSync(userInfoKey, {time: now, data: wxUserInfo})
-          } catch(e) {
-            console.error(e);
-          }
-        },
-        fail() {
-          wx.showToast({
-            title: "获取用户信息失败"
-          })
-        }
-      })
-    }
+    app.globalData.userInfo = userInfo || null;
   }catch(e) {
     console.error(e);
   }
@@ -88,7 +69,7 @@ export const appOnLaunch = (app) => {
     // openId
     try {
       const openInfo = wx.getStorageSync(appAndOpenId);
-      if(openInfo && openInfo.time && now - openInfo.time <= week) {
+      if(!openInfo && openInfo.time && now - openInfo.time <= week) {
         const { openId, appId } = openInfo.data;
         app.globalData.openId = openId;
         app.globalData.appId = appId;
@@ -100,11 +81,11 @@ export const appOnLaunch = (app) => {
         }).then((res) => {
           console.log(res);
           // @ts-ignore
-          const { openId, appId, userInfo } = res.result;
-          app.globalData.openId = openId || userInfo.openId;
-          app.globalData.appId = appId || userInfo.appId;
+          const { openId, appId } = res.result;
+          app.globalData.openId = openId;
+          app.globalData.appId = appId;
           try {
-            wx.setStorageSync(appAndOpenId, {time: now, data: {openId: openId || userInfo.openId, appId: appId || userInfo.appId}});
+            wx.setStorageSync(appAndOpenId, {time: now, data: {openId, appId}});
           } catch(e) {
             console.error(e);
             reject(e)
