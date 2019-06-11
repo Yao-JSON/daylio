@@ -2,7 +2,7 @@
   <view class="user-info">
     <block wx:if="{{ !hasUserInfo }}"> 
       <wux-icon wux-class="user-icon" type="ios-sad" size="72"/>
-      <view bind:tap="getUserInfo" class="user-login-text">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="user-login-text">
         <text class="login-text">
           立即登录  
         </text>
@@ -10,7 +10,7 @@
          <wux-icon wux-class="ios-information" type="ios-information-circle" size="14"/>
           登录后可免费备份数据
         </view>
-      </view>
+      </button>
     </block>
     <block wx:else>
       <view class="userinfo-avatar">

@@ -17,7 +17,7 @@ interface IAboutDataProps {
     targetDay?: number,
     actionData?: IActionDataItem[][]
   },
-  getUserInfo: () => void
+  getUserInfo: (val) => void
 }
 
 const { userInfo } = app.globalData;
@@ -85,22 +85,22 @@ Page<IAboutDataProps, IAboutDataProps>({
         })
       }
   },
-  getUserInfo() {
-    wx.getUserInfo({
-      success:(res) => {
-        const { userInfo } = res;
-        const now = new Date().getTime();
-        try {
-          wx.setStorageSync(userInfoKey, {time: now, data: userInfo})
-        } catch(e) {
-          console.error(e);
-        }
-        this.setData({
-          userInfo,
-          hasUserInfo: true
-        })
-      }
-    });
+  getUserInfo(e) {
+    const now = new Date().getTime();
+    const { userInfo } = e.detail;
+
+    try {
+      wx.setStorageSync(userInfoKey, {time: now, data: userInfo})
+    } catch(e) {
+      console.error(e);
+    }
+
+    app.globalData.userInfo = userInfo;
+
+    this.setData({
+      userInfo,
+      hasUserInfo: true
+    })
   },
   onJump(e) {
     const { url } = e.currentTarget.dataset;
