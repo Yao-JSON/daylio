@@ -2,7 +2,6 @@
   "pages": [
     "pages/about/about",
     "pages/diary/timeline/index",
-    "pages/phone-number/index",
     "pages/new-diary/select-mood/index",
     "pages/active/list/active-list",
     "pages/mood/list/mood-list",

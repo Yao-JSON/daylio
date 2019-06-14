@@ -3,7 +3,6 @@ export interface IMyApp {
     backgroundImage: string;
     openId?: string;
     userInfo: wx.UserInfo | null;
-    phoneNumber: number| null;
     [propsName: string]: any;
   }
 }

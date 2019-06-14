@@ -23,13 +23,13 @@ interface IAboutDataProps {
   getUserInfo: (val) => void
 }
 
-const { userInfo, phoneNumber } = app.globalData;
+const { userInfo } = app.globalData;
 
 
 Page<IAboutDataProps, IAboutDataProps>({
   // @ts-ignore
   data: {
-    hasUserInfo: !!(userInfo && phoneNumber),
+    hasUserInfo: !!(userInfo),
     userInfo,
     day: 2,
     targetDay: 7,
@@ -92,19 +92,16 @@ Page<IAboutDataProps, IAboutDataProps>({
   getUserInfo(e) {
     const { userInfo } = e.detail;
     try {
-      console.log(userInfoKey);
-      // wx.setStorageSync(userInfoKey, userInfo)
+      wx.setStorageSync(userInfoKey, userInfo)
     } catch(e) {
       console.error(e);
     }
 
     app.globalData.userInfo = userInfo;
 
-    wx.navigateTo({
-      url: "/pages/phone-number/index",
-      success: () => {
-        console.log('跳转完成');
-      }
+    this.setData({
+      hasUserInfo: true,
+      userInfo
     })
   },
   onJump(e) {

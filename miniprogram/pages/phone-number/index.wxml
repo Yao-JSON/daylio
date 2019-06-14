@@ -1,3 +1,0 @@
-<comon-view class="phone-number-container">
-  <button class="button-rest" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
-</comon-view>

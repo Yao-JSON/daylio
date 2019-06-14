@@ -1,7 +1,7 @@
 // @ts-ignore
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
-import { userInfoKey, appAndOpenId,  systemInfoKey, phoneNumberKey} from './../../comon/constant/index'
+import { userInfoKey, appAndOpenId,  systemInfoKey} from './../../comon/constant/index'
 
 
 import {
@@ -32,13 +32,37 @@ export const appOnLaunch = (app) => {
     console.error(e);
   }
 
-  // 获取用户手机号
-  try {
-    const usePhoneNumber = wx.getStorageSync(phoneNumberKey);
-    app.globalData.phoneNumber  = usePhoneNumber || null;
-  }catch(e) {
-    console.error(e);
-  }
+  // 查看并获取用户权限
+  wx.getSetting({
+    success(res) {
+      const { authSetting } = res;
+      // 查看用户头像
+      if(!authSetting['scope.userInfo']) {
+        wx.authorize({
+          scope: "scope.userInfo",
+          fail() {
+            wx.showToast({
+              title: "授权用户信息失败"
+            });
+          }
+        })
+      }
+      // 授权地理位置
+      if(!authSetting['scope.userLocation']) {
+        wx.authorize({
+          scope: "scope.userLocation",
+          fail() {
+            wx.showToast({
+              title: "授权地理位置失败"
+            });
+          }
+        })
+      }
+
+    }
+  })
+
+
 
   // 设备信息
   try {
