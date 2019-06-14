@@ -1,8 +1,7 @@
-const userInfoKey = "diary-userinfo-global-key";
-const appAndOpenId = "diary-app-open-id-key";
-const systemInfoKey = "diary-system-info-key";
 // @ts-ignore
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
+
+import { userInfoKey, appAndOpenId,  systemInfoKey, phoneNumberKey} from './../../comon/constant/index'
 
 
 import {
@@ -29,6 +28,14 @@ export const appOnLaunch = (app) => {
   try {
     const userInfo = wx.getStorageSync(userInfoKey);
     app.globalData.userInfo = userInfo || null;
+  }catch(e) {
+    console.error(e);
+  }
+
+  // 获取用户手机号
+  try {
+    const usePhoneNumber = wx.getStorageSync(phoneNumberKey);
+    app.globalData.phoneNumber  = usePhoneNumber || null;
   }catch(e) {
     console.error(e);
   }

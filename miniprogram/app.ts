@@ -26,6 +26,7 @@ App<IMyApp>({
     backgroundImage,
     moodData,
     userInfo: null,
+    phoneNumber: null
   },
   onLaunch() {
     wx.cloud.init({

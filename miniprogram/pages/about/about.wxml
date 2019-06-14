@@ -2,7 +2,7 @@
   <view class="user-info">
     <block wx:if="{{ !hasUserInfo }}"> 
       <wux-icon wux-class="user-icon" type="ios-sad" size="72"/>
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="user-login-text">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="user-login-text button-rest ">
         <text class="login-text">
           立即登录  
         </text>

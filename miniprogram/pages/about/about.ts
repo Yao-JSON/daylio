@@ -1,5 +1,8 @@
 import { IMyApp } from '../../../interface'
-const userInfoKey = "diary-userinfo-global-key";
+import { userInfoKey } from './../../comon/constant/index';
+
+
+
 const app = getApp<IMyApp>();
 
 interface IActionDataItem {
@@ -20,12 +23,13 @@ interface IAboutDataProps {
   getUserInfo: (val) => void
 }
 
-const { userInfo } = app.globalData;
+const { userInfo, phoneNumber } = app.globalData;
+
 
 Page<IAboutDataProps, IAboutDataProps>({
   // @ts-ignore
   data: {
-    hasUserInfo: !!userInfo,
+    hasUserInfo: !!(userInfo && phoneNumber),
     userInfo,
     day: 2,
     targetDay: 7,
@@ -86,27 +90,31 @@ Page<IAboutDataProps, IAboutDataProps>({
       }
   },
   getUserInfo(e) {
-    const now = new Date().getTime();
     const { userInfo } = e.detail;
-
     try {
-      wx.setStorageSync(userInfoKey, {time: now, data: userInfo})
+      console.log(userInfoKey);
+      // wx.setStorageSync(userInfoKey, userInfo)
     } catch(e) {
       console.error(e);
     }
 
     app.globalData.userInfo = userInfo;
 
-    this.setData({
-      userInfo,
-      hasUserInfo: true
+    wx.navigateTo({
+      url: "/pages/phone-number/index",
+      success: () => {
+        console.log('跳转完成');
+      }
     })
   },
   onJump(e) {
     const { url } = e.currentTarget.dataset;
     if(url) {
       wx.navigateTo({
-        url
+        url,
+        success: () => {
+          console.log('跳转完成');
+        }
       })
     }
   }
