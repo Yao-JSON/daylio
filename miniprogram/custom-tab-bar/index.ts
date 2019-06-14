@@ -1,4 +1,4 @@
-import { globalData, backgroundImageList } from '../comon/utils/index';
+import { backgroundImageList } from '../comon/utils/index';
 import baseComponent from '../wux/helpers/baseComponent';
 
 
@@ -109,25 +109,41 @@ baseComponent<IComponentInstance, IComponentInstance>({
     // @ts-ignore
     onNewDiary(e) {
       const { index } = e.detail;
-      // 昨天 今天
-      if(index === 0 || index === 1) {
-        const today = new Date().getTime();
-        const lastDay = today - 86400000;
-        const url = '/pages/new-diary/select-mood/index';
-        
-        globalData.set('date', {
-          index,
-          time: index === 0 ? lastDay : today
-        });
+      const url = '/pages/new-diary/select-mood/index';
+      const today = new Date().getTime();
+      const lastDay = today - 86400000;
 
-        wx.navigateTo({
-          url,
-          fail(e) {
-            console.log(e);
-          }
-        })
-        return;
+      let query = '?';
+
+      // 昨天
+      if(index === 0) {
+        // globalData.set('date', {
+        //   index,
+        //   time: lastDay
+        // })
+        query += 'time=' + lastDay;
       }
+      // 今天
+      if(index === 1) {
+        // globalData.set('date', {
+        //   index,
+        //   time: today
+        // })
+        query += 'time=' + today;
+      }
+      
+      if(index === 2) {
+        query += 'time=' + today + '&otherDay=' + 1;
+      }
+    
+      wx.navigateTo({
+        url: url + query,
+        fail(e) {
+          console.log(e);
+        }
+      })
+
+      console.log(index);
     }
   },
 })

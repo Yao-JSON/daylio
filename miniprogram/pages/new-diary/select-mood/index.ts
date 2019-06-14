@@ -1,9 +1,11 @@
 import { $wuxToptips } from '../../../wux/index';
-import { globalData, getDate, dateFtt } from '../../../comon/utils/index';
+import { getDate, dateFtt } from '../../../comon/utils/index';
 import { getMoodsLists } from './../../../comon/api/index';
 import { IMoodsListItem, moodsList } from './../utils'
 
 import { IMyApp } from './../../../../interface/index'
+
+import { getPickerDay  } from './utils'
 
 const app = getApp<IMyApp>();
 
@@ -14,6 +16,8 @@ const h = 60 * m;
 interface ISelectMoodProps {
   jumpMoodEdit: () => void;
 }
+
+
 interface ISelectMoodInstance {
   data: {
     moodsList: IMoodsListItem[];
@@ -25,8 +29,26 @@ interface ISelectMoodInstance {
     datedetail: null | number;
     mood: {
       [propsName: string]: string[];
-    }
-  }
+    },
+    years: number[];
+    months: number[];
+    days: number[];
+    visible: boolean;
+    pickerValue: number[];
+  },
+  onLoad: (query) => void;
+}
+
+const years: number[] = []
+const months: number[] = []
+
+
+for (let i = 1970; i <= 2100; i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
 }
 
 
@@ -46,20 +68,46 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
       yiban: ['yiban-headache'],
       bushuang: ['bushuang-karate'],
       chaolan: ['chaolan-kulian']
-    }
+    },
+    years,
+    months,
+    days: getPickerDay(),
+    visible: false,
+    pickerValue: []
   },
   onShow() {
-    const date = globalData.get<{index: number; time: number}>('date');
-    this.setData({
-      datedetail: getDate( date && date.time || +new Date()),
-    });
-
     getMoodsLists(app.globalData.openId).then((res) => {
       console.log(res);
     })
   },
-  onHide() {
-    globalData.set('date', null);
+
+  onLoad(val) {
+    const {time, otherDay} = val;
+
+    const dateTime = parseInt(time) || +new Date();
+    const datedetail = getDate(dateTime);
+
+
+    const { days, months, years } = this.data;
+        
+    if(otherDay) {
+      const date = new Date(dateTime);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const pickerValue = [years.indexOf(year), months.indexOf(month), days.indexOf(day)]
+
+      this.setData({
+        datedetail,
+        visible: true,
+        pickerValue,
+        days: getPickerDay(year, month)
+      });
+    } else {
+      this.setData({
+        datedetail,
+      });
+    }
   },
   jumpMoodEdit() {
     wx.navigateTo({
@@ -76,15 +124,17 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
   datePickerChange(e) {
     const val = e.detail.value;
     const { time } = this.data;
-
+    
     const [hours, minutes] = time.time.split(':');
     const dete = new Date(val);
     const now = +dete + hours * h + minutes * s;
 
+    console.log(val);
+
     this.setData({
       time: {...time, date: val},
       datedetail: getDate(now),
-      diaryTime: now
+      diaryTime: now,
     })
   },
   timePickerChange(e) {
@@ -106,4 +156,42 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
       url: '/pages/new-diary/select-active/index?diaryTime='+diaryTime + '&moodKey='+ dataset.moodKey + '&moodIcon='+ dataset.moodIcon,
     })
   },
+  handlerPopupClose() {
+    this.setData({
+      visible: false
+    })
+  },
+  handlerPopupPickerChange(e) {
+    const { value } = e.detail;
+    const yearIndex = value[0];
+    const month = value[1] + 1;
+    const year = years[yearIndex];
+
+    this.setData({
+      pickerValue: value,
+      days: getPickerDay(year, month)
+    })
+  },
+  handlerPopupPickerConfirm() {
+    const { pickerValue, years, months, days, time } = this.data;
+
+    const yearIndex = pickerValue[0];
+    const monthIndex = pickerValue[1];
+    const dayIndex = pickerValue[2];
+
+    const year = years[yearIndex];
+    const month = months[monthIndex];
+    const day = days[dayIndex];
+    const [hours, minutes] = time.time.split(':');
+    const dateTime = new Date(year, month - 1, day);
+    const now = +dateTime + hours * h + minutes * s;
+    const date = year + '-' + (month < 10 ? '0' + month : month) + '-' + day;
+    
+    this.setData({
+      time: {...time, date},
+      datedetail: getDate(now),
+      diaryTime: now,
+    })
+  
+  }
 });
