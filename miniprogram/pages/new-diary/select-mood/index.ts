@@ -1,7 +1,8 @@
+import { IMoodListItem } from './../../mood/utils';
 import { $wuxToptips } from '../../../wux/index';
 import { getDate, dateFtt } from '../../../comon/utils/index';
 import { getMoodsLists } from './../../../comon/api/index';
-import { IMoodsListItem, moodsList } from './../utils'
+import { IMoodsListItem, moodsList, levelMood } from './../utils'
 
 import { IMyApp } from './../../../../interface/index'
 
@@ -52,6 +53,18 @@ for (let i = 1; i <= 12; i++) {
 }
 
 
+
+const getMoodByMoodsResult = (moodsList: IMoodListItem[]): { [propsName: string]: string[] }  => {
+  const mood: { [propsName: string]: string[] } = {};
+
+  moodsList.forEach((item) => {
+    const { level, list } = item;
+    mood[levelMood[level]] = list.map(_ => _.iconType)
+  })
+
+  return mood;
+};
+
 Page<ISelectMoodProps, ISelectMoodInstance>({
   // @ts-ignore
   data: {
@@ -75,12 +88,6 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     visible: false,
     pickerValue: []
   },
-  onShow() {
-    getMoodsLists(app.globalData.openId).then((res) => {
-      console.log(res);
-    })
-  },
-
   onLoad(val) {
     const {time, otherDay} = val;
 
@@ -108,6 +115,14 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
         datedetail,
       });
     }
+
+    getMoodsLists(app.globalData.openId).then((res) => {
+      console.log(res);
+      const mood = getMoodByMoodsResult(res);
+      this.setData({
+        mood
+      })
+    })
   },
   jumpMoodEdit() {
     wx.navigateTo({
@@ -129,7 +144,6 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     const dete = new Date(val);
     const now = +dete + hours * h + minutes * s;
 
-    console.log(val);
 
     this.setData({
       time: {...time, date: val},
@@ -186,11 +200,12 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     const dateTime = new Date(year, month - 1, day);
     const now = +dateTime + hours * h + minutes * s;
     const date = year + '-' + (month < 10 ? '0' + month : month) + '-' + day;
-    
+
     this.setData({
       time: {...time, date},
       datedetail: getDate(now),
       diaryTime: now,
+      visible: false
     })
   
   }

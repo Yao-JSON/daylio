@@ -85,3 +85,12 @@ export const moodsList = [
     text: '超烂'
   }
 ]
+
+
+export enum levelMood {
+  happy = 5,
+  kaixin = 4,
+  yiban = 3,
+  bushuang = 2,
+  chaolan =1,
+};
