@@ -1,7 +1,7 @@
-
+import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index'
-
-import { activeList, IActiveListItem } from './../utils'
+import { activeList, IActiveListItem } from './../utils';
+import { addOrUpdateEvent, IAddOrUpdateEventParams } from './../../../comon/api/index';
 
 
 interface IActiveListProps {
@@ -22,6 +22,8 @@ interface IActiveListParams {
 }
 
 
+const app = getApp<IMyApp>();
+
 Page<IActiveListProps, IActiveListParams>({
   // @ts-ignore
   data: {
@@ -34,7 +36,6 @@ Page<IActiveListProps, IActiveListParams>({
     placeName: null,
     latitude: null,
     longitude: null,
-
   },
   handlerSelectActive(e) {
     const { dataset } = e.currentTarget;
@@ -72,6 +73,25 @@ Page<IActiveListProps, IActiveListParams>({
   },
   handlerConfirmActive() {
     console.log(this.data);
+    const { activeImage, remark, moodKey, address, diaryTime, latitude = null, longitude = null, activeList } = this.data;
+    const { openId } = app.globalData;
+    const selectedActive = activeList.filter(_ => !!_.selected);
+
+    const params: IAddOrUpdateEventParams = {
+      activeList: selectedActive,
+      remark,
+      moodKey,
+      address,
+      diaryTime,
+      latitude,
+      longitude,
+      filePath: activeImage
+    };
+
+    addOrUpdateEvent(params, openId).then((res) => {
+      console.log(res);
+    })
+
   },
   chooseAddress() {
     wx.chooseLocation({
@@ -89,10 +109,10 @@ Page<IActiveListProps, IActiveListParams>({
   },
   handlerChooseImage() {
     wx.chooseImage({
-      success:(imageRes) =>{
-        const { tempFilePaths } = imageRes;
+      success:(res) =>{
+        const filePath = res.tempFilePaths[0]
         this.setData({
-          activeImage: tempFilePaths[0]
+          activeImage: filePath
         })
       }
     })

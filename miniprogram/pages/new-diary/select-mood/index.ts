@@ -207,6 +207,5 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
       diaryTime: now,
       visible: false
     })
-  
   }
 });
