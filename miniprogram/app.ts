@@ -21,8 +21,6 @@ enum moodData {
   "狂喜" = 5
 }
 
-
-
 App<IMyApp>({  
   globalData: {
     backgroundImage,
@@ -35,10 +33,12 @@ App<IMyApp>({
       traceUser: true,
       env: databaseEnv
     });
-  
     appOnLaunch(this);
     appInit(this).then((res) => {
       console.log(res);
+      if(!res) {
+
+      }
     })
   },
   onHide() {
@@ -46,6 +46,6 @@ App<IMyApp>({
     wx.setStorage({
       key: backgroundKey,
       data: backgroundImage || ''
-    })
+    });
   }
 })

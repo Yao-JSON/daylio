@@ -3,13 +3,7 @@ var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
 import { appAndOpenIdKey,  systemInfoKey, userInfoKey, isInitedKey } from './../../comon/constant/index'
 import {
-  diaryUsers,
   diaryMoods,
-  moodsBushuang,
-  moodsChaolan,
-  moodsHappy,
-  moodsYiban,
-  moodsKaixin,
   diaryActives,
   activesItem
 } from './constance';
@@ -20,6 +14,70 @@ const m = 60 * s;
 const h = 60 * m;
 const day = h * 24;
 const week = day * 7;
+
+interface IBaseMoodsItem {
+  level: number;
+  title: string;
+  remark: string;
+  iconType: string;
+}
+
+interface IBaseActivesItem {
+  title: string;
+  iconType: string;
+  remark: string;
+}
+
+const baseMoods: IBaseMoodsItem[] = [{
+  title: '狂喜',
+  level: 5,
+  remark: '系统默认',
+  iconType: 'happy-daxiao'
+}, {
+  title: '开心',
+  level: 4,
+  remark: '系统默认',
+  iconType: 'kaixin-ufo'
+},{
+  title: "一般",
+  level: 3,
+  iconType: 'yiban-headache',
+  remark: '系统默认'
+}, {
+  title: '不爽',
+  level: 2,
+  remark: '系统默认',
+  iconType: 'bushuang-karate'
+}, {
+  title: '超烂',
+  level: 1,
+  iconType: 'chaolan-kulian',
+  remark: '系统默认'
+}];
+
+
+const baseActives: IBaseActivesItem[] = [
+  {
+    title: "工作",
+    iconType: 'business-gongzuo',
+    remark: ''
+  },
+  {
+    title: "休息",
+    iconType: 'lvyou-jingdian',
+    remark: ''
+  },
+  {
+    title: "就餐",
+    iconType: 'lvyou-canyin',
+    remark: ''
+  },
+  {
+    title: "购物",
+    iconType: 'lvyou-gouwu',
+    remark: ''
+  },
+]
 
 export const appOnLaunch = (app) => {
   const now = new Date().getTime();
@@ -76,124 +134,47 @@ export const appOnLaunch = (app) => {
    }
 }
 
-
-export const initUsers = (openId) => {
+export const initMoods = async () => {
   const db = wx.cloud.database();
-  const _ = db.command
-  const diaryUserdsCol = db.collection(diaryUsers);
-  return new Promise((resolve) => {
-    diaryUserdsCol.doc(openId).get({
-      fail() {
-        diaryUserdsCol.add({
-          data: {
-            _id: openId,
-            index: _.inc(1),
-            createTime: new Date().getTime(),
-            updateTime: new Date().getTime(),
-          },
-          success() {
-            resolve();
-          }
-        })
-      },
-      success() {
-        resolve();
-      }
-    })
-  })
-}
-
-export const initMoods = async ({openId, colName, iconType, title}): Promise<(string)[]> => {
-  
-  const db = wx.cloud.database();
-  const _ = db.command
-  const col = db.collection(colName);
-  const moodsResult = await col.where({_openid: openId}).get();
-  const { data } = moodsResult;
-  
-  if(!data.length) {
-    const result = await col.add({
-      data: {
-        iconType,
-        title,
-        index: _.inc(1),
-        createTime: new Date().getTime(),
-        updateTime: new Date().getTime(),
-      }
-    })
-    // @ts-ignore
-    return [result._id]
-  } else {
-    // @ts-ignore
-    return data.filter(_ => !!_._id).map(_ => _._id)
-  }
-};
-
-export const initUserMoods = async (openId) => {
-  const db = wx.cloud.database();
-  const _ = db.command
   const diaryMoodsCol = db.collection(diaryMoods);
+  
   const now = new Date().getTime();
+  const result: Array<string | number> = [];
 
-  const diaryMoodsColResult = await diaryMoodsCol.doc(openId).get().then((res) => {
-    const { data, errMsg } = res;
-    return {
-      data,
-      errMsg
-    }
-  }).catch((err) => {
-    return {
-      errMsg: err,
-      data: null
-    }
-  });
-  const { data } = diaryMoodsColResult;
-
-  if(!data) {
-    // 初始化心情
-    const happyIds = await initMoods({openId, colName: moodsHappy, iconType: 'happy-daxiao', title: '大笑'});
-    const kaixinIds = await initMoods({openId, colName: moodsKaixin, iconType: 'kaixin-quiet', title: '开心'});
-    const yibanIds = await initMoods({openId, colName: moodsYiban, iconType: 'yiban-headache', title: '一般'});
-    const bushuangIds = await initMoods({openId, colName: moodsBushuang, iconType: 'bushuang-layer', title: '伤心'});
-    const chaolanIds = await initMoods({openId, colName: moodsChaolan, iconType: 'chaolan-kulian', title: '流泪'});
-
-    await diaryMoodsCol.add({
+  for (let i = 0; i < baseMoods.length; i ++) {
+    const item = baseMoods[i];
+    const addResult = await diaryMoodsCol.add({
       data: {
-        _id: openId,
-        index: _.inc(1),
+        ...item,
         createTime: now,
-        updateTime: now,
-        data: {
-          happy: {
-            list: happyIds,
-            level: 5,
-            label: "狂喜"
-          },
-          kaixin: {
-            list: kaixinIds,
-            level: 4,
-            label: "开心"
-          },
-          yiban: {
-            list: yibanIds,
-            level: 3,
-            label: "一般"
-          },
-          bushuang: {
-            list: bushuangIds,
-            level: 2,
-            label: "不爽"
-          },
-          chaolan: {
-            list: chaolanIds,
-            level: 1,
-            label: "超烂"
-          },
-        }
+        updateTime: now
       }
     })
+    result.push(addResult._id);
   }
+
+  return result;
 }
+
+export const initActives = async () => {
+  const db = wx.cloud.database();
+  const diaryActivesCol = db.collection(diaryActives);
+  const now = new Date().getTime();
+  const result: Array<string | number> = [];
+  for (let i = 0; i < baseActives.length; i ++) {
+    const item = baseActives[i];
+    const addResult = await diaryActivesCol.add({
+      data: {
+        ...item,
+        createTime: now,
+        updateTime: now
+      }
+    })
+    result.push(addResult._id);
+  }
+  return result;
+}
+
 export const initUserActives = async (openId) => {
   const db = wx.cloud.database();
   const diaryActivesCol = db.collection(diaryActives);
@@ -242,14 +223,19 @@ export const appInit = async (app) => {
     wx.setStorageSync(appAndOpenIdKey, {time: now, data: {openId, appId}});
   };
 
-  try {
-    const isInit = wx.getStorageSync(isInitedKey);
+  let isInit = false;
 
-    return isInit
+  try {
+    isInit = wx.getStorageSync(isInitedKey);
   } catch(e) {
     console.error('isInited', e);
-    return false;
   }
+
+  if(!isInit) {
+    const initMoodsResult = await initMoods();
+    const initActivesResult = await initActives();
+  }
+
 }
  
 
