@@ -62,8 +62,6 @@ export const appOnLaunch = (app) => {
     }
   })
 
-
-
   // 设备信息
   try {
     const systemInfo = wx.getStorageSync(systemInfoKey);
@@ -110,7 +108,6 @@ export const appOnLaunch = (app) => {
           name: 'user-login',
           data: {}
         }).then((res) => {
-          console.log(res);
           // @ts-ignore
           const { openId, appId } = res.result;
           app.globalData.openId = openId;
@@ -126,7 +123,6 @@ export const appOnLaunch = (app) => {
         });
       }
     } catch(e) {
-      console.error(e);
       reject(e);
     }
   })
