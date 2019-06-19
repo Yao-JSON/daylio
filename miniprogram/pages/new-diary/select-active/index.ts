@@ -1,5 +1,5 @@
 import { IMyApp } from './../../../../interface/app';
-import { $wuxToptips } from '../../../wux/index'
+import { $wuxToptips, $wuxToast } from '../../../wux/index'
 import { addOrUpdateEvent, IAddOrUpdateEventParams, getActiveList, IActiveListItem } from './../../../comon/api/index';
 
 
@@ -40,6 +40,7 @@ Page<IActiveListProps, IActiveListParams>({
     placeName: null,
     latitude: null,
     longitude: null,
+    isSpinning: false
   },
   handlerSelectActive(e) {
     const { dataset } = e.currentTarget;
@@ -91,11 +92,45 @@ Page<IActiveListProps, IActiveListParams>({
       filePath: activeImage
     };
 
+    if(!selectedActive.length) {
+      $wuxToast().show({
+        type: 'cancel',
+        duration: 1500,
+        color: '#fff',
+        text: '请选择活动',
+      });
+      return;
+    }
+
+    this.setData({
+      isSpinning: true
+    })
     console.log(params);
     console.log(this.data);
-    return;
-    addOrUpdateEvent(params, openId).then((res) => {
-      console.log(res);
+    addOrUpdateEvent(params, openId).then(() => {
+      this.setData({
+        isSpinning: false
+      });
+
+      $wuxToast().show({
+        type: 'success',
+        duration: 1500,
+        color: '#fff',
+        text: '创建成功',
+        success: () => {
+          wx.switchTab({
+            url: "/pages/diary/timeline/index"
+          });
+        }
+      });
+    }).catch(() => {
+      $wuxToast().show({
+        type: 'cancel',
+        duration: 1500,
+        color: '#fff',
+        text: '保存失败',
+        success: () => console.log('保存失败')
+      });
     })
 
   },
@@ -123,21 +158,22 @@ Page<IActiveListProps, IActiveListParams>({
       }
     })
   },
-  onShow() {
-    const { openId } = app.globalData;
-
-    getActiveList(openId).then((res) => {
-     console.log(res);
-     this.setData({
-       activeList: res
-     })
-    })
-  },
   onLoad(query) {
     // @ts-ignore
    const { diaryTime = new Date(), moodKey = "happy", moodIcon ="happy-wink" } = query || {};
    this.setData({
     diaryTime, moodKey, moodIcon
    });
+   this.handlerLoadingActive();
+  },
+  handlerLoadingActive() {
+    const { openId } = app.globalData;
+    getActiveList(openId).then((res) => {
+     console.log(res);
+     this.setData({
+       activeList: res
+     })
+    })
   }
+
 })

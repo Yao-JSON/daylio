@@ -83,6 +83,8 @@
     "wux-icon": "./wux/icon/index",
     "wux-toptips": "./wux/toptips/index",
     "wux-fab-button": "./wux/fab-button/index",
-    "wux-tag": "./wux/tag/index"
+    "wux-tag": "./wux/tag/index",
+    "wux-toast": "./wux/toast/index",
+    "wux-spin": "./wux/spin/index"
   }
 }

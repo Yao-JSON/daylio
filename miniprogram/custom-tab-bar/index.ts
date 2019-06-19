@@ -117,18 +117,10 @@ baseComponent<IComponentInstance, IComponentInstance>({
 
       // 昨天
       if(index === 0) {
-        // globalData.set('date', {
-        //   index,
-        //   time: lastDay
-        // })
         query += 'time=' + lastDay;
       }
       // 今天
       if(index === 1) {
-        // globalData.set('date', {
-        //   index,
-        //   time: today
-        // })
         query += 'time=' + today;
       }
       
@@ -142,8 +134,6 @@ baseComponent<IComponentInstance, IComponentInstance>({
           console.log(e);
         }
       })
-
-      console.log(index);
     }
   },
 })
