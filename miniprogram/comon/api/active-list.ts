@@ -103,7 +103,7 @@ export interface IAddOrUpdateEventParams {
   id?: number;
   // 上传图片的文件 id
   remark: string;
-  activeList: IActiveListItem[];
+  activeListIds: string[];
   moodKey: string;
   address: string | null;
   filePath: string | null;
@@ -118,7 +118,7 @@ interface IEventListItemFieldItem {
   // 上传图片的文件 id
   fileID: string | null;
   remark: string;
-  activeList: IActiveListItem[];
+  activeListIds: string[];
   moodKey: string;
   address: string | null;
   filePath: string | null;

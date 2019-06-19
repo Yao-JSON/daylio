@@ -117,7 +117,6 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     }
 
     getMoodsLists(app.globalData.openId).then((res) => {
-      console.log(res);
       const mood = getMoodByMoodsResult(res);
       this.setData({
         mood
@@ -142,7 +141,7 @@ Page<ISelectMoodProps, ISelectMoodInstance>({
     
     const [hours, minutes] = time.time.split(':');
     const dete = new Date(val);
-    const now = +dete + hours * h + minutes * s;
+    const now = +dete + (+hours) * h + (+minutes * s);
 
 
     this.setData({

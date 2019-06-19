@@ -1,7 +1,6 @@
 import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index'
-import { activeList, IActiveListItem } from './../utils';
-import { addOrUpdateEvent, IAddOrUpdateEventParams } from './../../../comon/api/index';
+import { addOrUpdateEvent, IAddOrUpdateEventParams, getActiveList, IActiveListItem } from './../../../comon/api/index';
 
 
 interface IActiveListProps {
@@ -9,9 +8,14 @@ interface IActiveListProps {
   jumpActiveList: () => void;
 }
 
+
+interface INewActiveListItem extends IActiveListItem {
+  selected?: boolean;
+}
+
 interface IActiveListParams {
   data: {
-    activeList: IActiveListItem[];
+    activeList: INewActiveListItem[];
     moodIcon: string;
     moodKey: string;
     remark: string;
@@ -30,7 +34,7 @@ Page<IActiveListProps, IActiveListParams>({
     moodIcon: 'happy-wink',
     moodKey: 'happy',
     remark: '',
-    activeList,
+    activeList: [],
     activeImage: null,
     address: null,
     placeName: null,
@@ -42,7 +46,7 @@ Page<IActiveListProps, IActiveListParams>({
     const { activeList } = this.data;
 
     const newActiveList =  activeList.map((item) => {
-      if(item.id === dataset.itemId) {
+      if(item._id === dataset.itemId) {
         item.selected = !item.selected;
         return item;
       }
@@ -72,13 +76,12 @@ Page<IActiveListProps, IActiveListParams>({
     })
   },
   handlerConfirmActive() {
-    console.log(this.data);
     const { activeImage, remark, moodKey, address, diaryTime, latitude = null, longitude = null, activeList } = this.data;
     const { openId } = app.globalData;
-    const selectedActive = activeList.filter(_ => !!_.selected);
+    const selectedActive = activeList.filter(_ => !!_.selected).map(_ => _._id);
 
     const params: IAddOrUpdateEventParams = {
-      activeList: selectedActive,
+      activeListIds: selectedActive,
       remark,
       moodKey,
       address,
@@ -88,6 +91,9 @@ Page<IActiveListProps, IActiveListParams>({
       filePath: activeImage
     };
 
+    console.log(params);
+    console.log(this.data);
+    return;
     addOrUpdateEvent(params, openId).then((res) => {
       console.log(res);
     })
@@ -117,11 +123,21 @@ Page<IActiveListProps, IActiveListParams>({
       }
     })
   },
+  onShow() {
+    const { openId } = app.globalData;
+
+    getActiveList(openId).then((res) => {
+     console.log(res);
+     this.setData({
+       activeList: res
+     })
+    })
+  },
   onLoad(query) {
     // @ts-ignore
    const { diaryTime = new Date(), moodKey = "happy", moodIcon ="happy-wink" } = query || {};
    this.setData({
     diaryTime, moodKey, moodIcon
-   })
+   });
   }
 })

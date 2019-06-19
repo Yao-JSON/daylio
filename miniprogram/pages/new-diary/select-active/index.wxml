@@ -11,9 +11,9 @@
       wx:for="{{ activeList }}"
       class="active"
       bind:tap="handlerSelectActive"
-      data-item-id="{{ item.id }}">
+      data-item-id="{{ item._id }}">
       <view class="active-icon {{ item.selected ? 'selected-active' : '' }}">
-        <active-icon type="{{ item.activeIcon }}" size="24"/>
+        <active-icon type="{{ item.iconType }}" size="24"/>
       </view>
       <text>{{ item.title }}</text>
     </view>
