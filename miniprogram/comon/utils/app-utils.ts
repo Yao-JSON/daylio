@@ -1,9 +1,7 @@
 // @ts-ignore
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
-import { userInfoKey, appAndOpenId,  systemInfoKey} from './../../comon/constant/index'
-
-
+import { appAndOpenIdKey,  systemInfoKey, userInfoKey, isInitedKey } from './../../comon/constant/index'
 import {
   diaryUsers,
   diaryMoods,
@@ -14,7 +12,8 @@ import {
   moodsKaixin,
   diaryActives,
   activesItem
-} from './constance'
+} from './constance';
+
 
 const s = 1000;
 const m = 60 * s;
@@ -24,43 +23,13 @@ const week = day * 7;
 
 export const appOnLaunch = (app) => {
   const now = new Date().getTime();
-  // 获取用户信息
+  // 查找 userInfo
   try {
     const userInfo = wx.getStorageSync(userInfoKey);
     app.globalData.userInfo = userInfo || null;
-  }catch(e) {
-    console.error(e);
+  } catch(e) {
+    console.error('获取 userInfo',e);
   }
-
-  // 查看并获取用户权限
-  wx.getSetting({
-    success(res) {
-      const { authSetting } = res;
-      // 查看用户头像
-      if(!authSetting['scope.userInfo']) {
-        wx.authorize({
-          scope: "scope.userInfo",
-          fail() {
-            wx.showToast({
-              title: "授权用户信息失败"
-            });
-          }
-        })
-      }
-      // 授权地理位置
-      if(!authSetting['scope.userLocation']) {
-        wx.authorize({
-          scope: "scope.userLocation",
-          fail() {
-            wx.showToast({
-              title: "授权地理位置失败"
-            });
-          }
-        })
-      }
-
-    }
-  })
 
   // 设备信息
   try {
@@ -91,41 +60,20 @@ export const appOnLaunch = (app) => {
       })
     }
   } catch(e) {
-    console.error(e);
+    console.error('查找设备信息',e);
   }
 
-  return new Promise((resolve, reject) => {
-    // openId
-    try {
-      const openInfo = wx.getStorageSync(appAndOpenId);
-      if(!openInfo && openInfo.time && now - openInfo.time <= week) {
-        const { openId, appId } = openInfo.data;
-        app.globalData.openId = openId;
-        app.globalData.appId = appId;
-        resolve(app.globalData)
-      } else {
-        wx.cloud.callFunction({
-          name: 'user-login',
-          data: {}
-        }).then((res) => {
-          // @ts-ignore
-          const { openId, appId } = res.result;
-          app.globalData.openId = openId;
-          app.globalData.appId = appId;
-          try {
-            wx.setStorageSync(appAndOpenId, {time: now, data: {openId, appId}});
-          } catch(e) {
-            console.error(e);
-            reject(e)
-          }
-
-          resolve(app.globalData)
-        });
-      }
-    } catch(e) {
-      reject(e);
+   // openId
+   try {
+    const openInfo = wx.getStorageSync(appAndOpenIdKey);
+    if(openInfo && openInfo.time && now - openInfo.time <= week) {
+      const { openId, appId } = openInfo.data;
+      app.globalData.openId = openId;
+      app.globalData.appId = appId;
     }
-  })
+   } catch(e) {
+    console.error('获取 opeind', e)
+   }
 }
 
 
@@ -277,4 +225,31 @@ export const initUserActives = async (openId) => {
   }
 }
 
+
+export const appInit = async (app) => {
+  const { openId } = app.globalData;
+  if(!openId) {
+    const useLogin = await wx.cloud.callFunction({
+      name: 'user-login',
+      data: {}
+    });
+
+    const now = new Date().getTime();
+    // @ts-ignore
+    const { appId, openId } = useLogin.result;
+    app.globalData.openId = openId;
+    app.globalData.appId = appId;
+    wx.setStorageSync(appAndOpenIdKey, {time: now, data: {openId, appId}});
+  };
+
+  try {
+    const isInit = wx.getStorageSync(isInitedKey);
+
+    return isInit
+  } catch(e) {
+    console.error('isInited', e);
+    return false;
+  }
+}
+ 
 

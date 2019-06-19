@@ -2,8 +2,10 @@ let backgroundImage = '';
 const backgroundKey = 'diary-global-background-image';
 
 import { IMyApp } from "./../interface"
+import { appOnLaunch, databaseEnv, appInit } from './comon/utils/index';
 
-import { appOnLaunch, databaseEnv, initUserMoods, initUserActives, initUsers } from './comon/utils/index'
+// import { userInfoKey, systemInfoKey } from './comon/constant/index'
+
 
 try {
   backgroundImage = wx.getStorageSync(backgroundKey)
@@ -26,24 +28,18 @@ App<IMyApp>({
     backgroundImage,
     moodData,
     userInfo: null,
-    phoneNumber: null
+    openId: null,
   },
   onLaunch() {
     wx.cloud.init({
       traceUser: true,
       env: databaseEnv
-    })
-    appOnLaunch(this).then((res) => {
-      console.log(res);
-      // @ts-ignore
-      const { openId } = res;
-      initUsers(openId).then(() => {
-        // 初始化心情
-        initUserMoods(openId);
-        // 初始化活动
-        initUserActives(openId);
-      })
     });
+  
+    appOnLaunch(this);
+    appInit(this).then((res) => {
+      console.log(res);
+    })
   },
   onHide() {
     const { backgroundImage } = this.globalData;
