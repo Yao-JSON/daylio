@@ -4,7 +4,7 @@ export interface IActiveIconListItem {
   icon: string[];
 }
 
-const activeIconList: IActiveIconListItem[] = [
+export const activeIconList: IActiveIconListItem[] = [
   {
     title: "狂喜",
     level: 5,
@@ -75,5 +75,43 @@ const activeIconList: IActiveIconListItem[] = [
   },
 ];
 
-
-export default activeIconList;
+export const defaultActiveIconList: string[] = [
+  "happy-daxiao",
+  "happy-wink",
+  "happy-love",
+  "happy-layer",
+  "happy-flute",
+  "happy-happy",
+  "happy-glitter-Eye",
+  "happy-money-eye",
+  "happy-big-smile",
+  "kaixin-ufo",
+  "kaixin-quiet",
+  "kaixin-shy",
+  "kaixin-smile",
+  "kaixin-wink",
+  "kaixin-angel",
+  "yiban-headache",
+  "yiban-hypnotized",
+  "yiban-wierd-left",
+  "yiban-wierd-right",
+  "yiban-wondering",
+  "yiban-big-eye",
+  "yiban-x-eye",
+  "bushuang-karate",
+  "bushuang-sweating",
+  "bushuang-layer",
+  "bushuang-zombie",
+  "bushuang-cry",
+  "bushuang-feeling-sick",
+  "bushuang-fever",
+  "bushuang-drool",
+  "chaolan-kulian",
+  "chaolan-xinsui",
+  "chaolan-kulian-one",
+  "chaolan-daku",
+  "chaolan-shibaikulianbiaoqing",
+  "chaolan-vomiting",
+  "chaolan-broken-heart",
+  "chaolan-cry-hard",
+]

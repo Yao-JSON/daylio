@@ -1,5 +1,5 @@
 import { IMyApp } from './../../../../../miniprogram-ts/miniprogram/app';
-import iconList, {IActiveIconListItem} from './icon-list'
+import  {activeIconList, defaultActiveIconList, IActiveIconListItem} from './icon-list'
 import { colorLevel, IColorLevelItem } from '../utils'
 import { addOrUpdateMoods } from './../../../comon/api/index'
 
@@ -14,10 +14,12 @@ interface IEditMoodInstance {
     id: number | null;
     iconType: string;
     title: string;
-    iconList: IActiveIconListItem[];
+    iconListOrigin: IActiveIconListItem[];
+    iconList: string[];
     moodLevel: number;
     moodLevelColorType: string;
     colorLevel: IColorLevelItem[];
+    isNewActive: boolean;
   },
   onLoad: (query:Record<string, any>) => void;
 }
@@ -28,10 +30,12 @@ Page<IEditMoodProps, IEditMoodInstance>({
     id: null,
     iconType: "happy-daxiao",
     title: '',
-    iconList,
+    iconListOrigin: activeIconList,
+    iconList: defaultActiveIconList,
     moodLevel: 5,
     moodLevelColorType: 'happy',
-    colorLevel
+    colorLevel,
+    isNewActive: true
   },
   // 编辑心情
   handlerChange(e) {
@@ -80,7 +84,20 @@ Page<IEditMoodProps, IEditMoodInstance>({
         iconType,
         title,
         moodLevel: +level,
-        moodLevelColorType: levelColorType
+        moodLevelColorType: levelColorType,
+        isNewActive: false
+      })
+    }
+  },
+  handlerLevelTap(e) {
+    console.log(e);
+    const { level } = e.target.dataset;
+
+    if(level) {
+      const levelColorType = level ? colorLevel[level-1].levelColorType : 'happy';
+      this.setData({
+        moodLevel: level,
+        moodLevelColorType: levelColorType,
       })
     }
 

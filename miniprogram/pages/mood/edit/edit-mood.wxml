@@ -1,5 +1,5 @@
 <comon-view>
-  <view class="edit-mood-container fixed">
+  <view class="edit-mood-container fixed {{ isNewActive && 'border-btttom ' }}">
     <wux-input
       value="{{ title }}"
       controlled="true"
@@ -13,32 +13,45 @@
         size="32"/>
     </wux-input>
   </view>
+  <view 
+    wx:if="{{ isNewActive }}"
+    catch:tap="handlerLevelTap"
+    class="mood-level-select-container {{ isNewActive && 'border-btttom ' }}">
+    <view class="happy" data-level="{{ 5 }}">
+      狂喜
+    </view>
+    <view class="kaixin" data-level="{{ 4 }}"> 
+      开心
+    </view>
+    <view class="yiban" data-level="{{ 3 }}"> 
+      一般
+    </view>
+    <view class="bushuang" data-level="{{ 2 }}">
+      不爽
+    </view>
+    <view class="chaolan" data-level="{{ 1 }}">
+      超烂
+    </view>
+  </view>
   <scroll-view
     scroll-y
-    class="edit-mood-scroll-container"
+    class="{{ isNewActive ? 'marginTop100' : 'marginTop50'  }}"
     scroll-with-animation="true"
     enable-back-to-top="true">
-    <wux-cell-group
-      wx:for="{{ iconList }}"
-      wx:key="index"
-      title="{{ item.title }}">
-      <wux-row>
-        <wux-col 
-          wux-class="mood-icon-container"
-          wx:for="{{ item.icon }}" 
-          wx:key="{{ iconType }}" 
-          wx:for-item="iconType"
-          data-icon-type="{{ iconType }}"
-          data-mood-level="{{ item.level }}"
-          data-mood-level-color-type="{{ colorLevel[item.level - 1].levelColorType }}"
-          bind:tap="handlerSelectIcon"
-          span="2">
-          <mood-icon
-            size="32"
-            wux-class="mood-color-{{ colorLevel[item.level].levelColorType }}"
-            type="{{ iconType }}"/>
-        </wux-col>
-      </wux-row>
-    </wux-cell-group>
+    <wux-row>
+      <wux-col 
+        wux-class="mood-icon-container"
+        wx:for="{{ iconList }}" 
+        wx:key="index" 
+        wx:for-item="iconType"
+        data-icon-type="{{ iconType }}"
+        bind:tap="handlerSelectIcon"
+        span="2">
+        <mood-icon
+          size="32"
+          wux-class="mood-color"
+          type="{{ iconType }}"/>
+      </wux-col>
+    </wux-row>
   </scroll-view>
 </comon-view>  

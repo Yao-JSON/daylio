@@ -50,7 +50,6 @@ Page<IMoodListProps, IMoodListInstance>({
     moodListOrigin: moodsListResult ? moodsListResult.data : []
   },
   handlerDeleteActive(e){
-    console.log(e);
     const { groupMoodId  } = e.currentTarget.dataset;
     const { moodListOrigin } = this.data;
     deleteMoodsAndCache(groupMoodId, app.globalData.openId).then(() => {
