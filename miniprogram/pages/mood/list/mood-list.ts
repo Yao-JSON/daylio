@@ -1,7 +1,9 @@
 import { IMyApp } from '../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
-import { colorLevel, IColorLevelItem, IMoodListItem } from '../utils';
-import { getMoodsLists } from '../../../comon/api/mood-api';
+import { colorLevel, IColorLevelItem, IMoodListItem, calcMoodsList } from '../utils';
+// import { getMoodsLists } from '../../../comon/api/mood-api';
+
+import { userMoodsKey } from './../../../comon/constant/index'
 
 const app = getApp<IMyApp>();
 
@@ -18,7 +20,15 @@ interface IMoodListInstance {
   }
 }
 
+const moodsListResult = wx.getStorageSync(userMoodsKey);
 
+console.log(moodsListResult);
+
+
+
+const moodsListInit = moodsListResult ? calcMoodsList(moodsListResult.data, app.globalData.moodData) : [];
+
+console.log(moodsListInit);
 
 Page<IMoodListProps, IMoodListInstance>({
   // @ts-ignore
@@ -35,8 +45,7 @@ Page<IMoodListProps, IMoodListInstance>({
       }
     ],
     colorLevel,
-    // @ts-ignore
-    moodList: []
+    moodList: moodsListInit
   },
   handlerDeleteActive(e){
     const { index, groupMoodIndex } = e.currentTarget.dataset;
@@ -68,10 +77,14 @@ Page<IMoodListProps, IMoodListInstance>({
     })
   },
   onShow() {
-    getMoodsLists(app.globalData.openId).then((res) => {
+    const currentMoodsListResult = wx.getStorageSync(userMoodsKey);
+
+    if(currentMoodsListResult.time !== moodsListResult.time) {
+      const newMoodList = calcMoodsList(currentMoodsListResult.data, app.globalData.moodData);
       this.setData({
-        moodList: res
+        moodList: newMoodList
       })
-    })
+    }
+
   }
 });

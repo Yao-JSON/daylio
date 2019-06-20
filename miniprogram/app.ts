@@ -35,7 +35,6 @@ App<IMyApp>({
     });
     appOnLaunch(this);
     appInit(this).then((res) => {
-      console.log(res);
       if(!res) {
 
       }

@@ -31,7 +31,8 @@ export interface IMoodListItemListItem {
   iconType: string;
   title: string;
   remark?: string;
-  _id: number;
+  level: number;
+  _id: number | string;
   [propsName: string]: any; 
 }
 
@@ -150,3 +151,41 @@ export const defaultMoodList = [
     ]
   },
 ]
+
+export const calcMoodsList = (moodsList: IMoodListItemListItem[], moodData): IMoodListItem[] => {
+
+  const result: IMoodListItem[] = [];
+
+  moodsList.forEach(item => {
+    const { level, iconType, title, _id, remark } = item;
+
+    let moodsListItem = result[level - 1];
+
+    if(moodsListItem) {
+      moodsListItem.list.push({
+        level,
+        iconType,
+        title,
+        _id,
+        remark
+      })
+    } else {
+      moodsListItem = {
+        label: moodData[level],
+        level,
+        list: [{
+          level,
+          iconType,
+          title,
+          _id,
+          remark
+        }]
+      }
+    }
+
+    result[level - 1] = moodsListItem;
+  });
+
+  return result.reverse();
+}
+
