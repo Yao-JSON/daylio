@@ -33,7 +33,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "2.7.1",
 	"appid": "wxe0c29764c0b1552f",
 	"projectname": "结绳记事",
 	"debugOptions": {

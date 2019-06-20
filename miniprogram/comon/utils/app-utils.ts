@@ -8,6 +8,7 @@ import {
   activesItem
 } from './constance';
 
+import { userMoodsKey, userActivesKey } from './../constant/index'
 
 const s = 1000;
 const m = 60 * s;
@@ -207,6 +208,28 @@ export const initUserActives = async (openId) => {
 }
 
 
+export const searchAndCacheMoods = async (openId) => {
+  const db = wx.cloud.database();
+  const diaryMoodsCol = db.collection(diaryMoods);
+  const now = new Date().getTime();
+  const moodsResult = await diaryMoodsCol.where({
+    _openid: openId
+  }).get();
+
+  wx.setStorageSync(userMoodsKey, {time: now, data: moodsResult.data})
+
+}
+
+export const searchAndCacheActives = async (openId) => {
+  const db = wx.cloud.database();
+  const diaryMoodsCol = db.collection(diaryActives);
+  const now = new Date().getTime();
+  const activesResult = await diaryMoodsCol.where({
+    _openid: openId
+  }).get();
+  wx.setStorageSync(userActivesKey, {time: now, data: activesResult.data})
+}
+
 export const appInit = async (app) => {
   const { openId } = app.globalData;
   if(!openId) {
@@ -230,12 +253,15 @@ export const appInit = async (app) => {
   } catch(e) {
     console.error('isInited', e);
   }
-
+  // 没有初始化
   if(!isInit) {
-    const initMoodsResult = await initMoods();
-    const initActivesResult = await initActives();
+    await Promise.all([initMoods(), initActives()]);
+    // 查找并缓存
+    await Promise.all([searchAndCacheMoods(openId), searchAndCacheActives(openId)]);
+    wx.setStorageSync(isInitedKey, true);
   }
 
+  return true;
 }
  
 
