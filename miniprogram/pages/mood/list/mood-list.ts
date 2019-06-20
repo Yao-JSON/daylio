@@ -1,7 +1,7 @@
 import { IMyApp } from '../../../../interface/app';
 import { $wuxToptips } from '../../../wux/index';
-import { colorLevel, IColorLevelItem, IMoodListItem, calcMoodsList } from '../utils';
-// import { getMoodsLists } from '../../../comon/api/mood-api';
+import { colorLevel, IColorLevelItem, IMoodListItem, calcMoodsList, IMoodListItemListItem } from '../utils';
+import { deleteMoodsAndCache } from '../../../comon/api/mood-api';
 
 import { userMoodsKey } from './../../../comon/constant/index'
 
@@ -16,7 +16,8 @@ interface IMoodListInstance {
     url: string;
     right: any;
     colorLevel: IColorLevelItem[];
-    moodList: IMoodListItem[]
+    moodList: IMoodListItem[],
+    moodListOrigin: IMoodListItemListItem[]
   }
 }
 
@@ -45,24 +46,29 @@ Page<IMoodListProps, IMoodListInstance>({
       }
     ],
     colorLevel,
-    moodList: moodsListInit
+    moodList: moodsListInit,
+    moodListOrigin: moodsListResult ? moodsListResult.data : []
   },
   handlerDeleteActive(e){
-    const { index, groupMoodIndex } = e.currentTarget.dataset;
-    const { moodList } = this.data;
+    console.log(e);
+    const { groupMoodId  } = e.currentTarget.dataset;
+    const { moodListOrigin } = this.data;
+    deleteMoodsAndCache(groupMoodId, app.globalData.openId).then(() => {
+      const newMoodListOrigin = moodListOrigin.filter((item) => {
+        return item._id !== groupMoodId;
+      });
 
-    const newMoodList = [...moodList];
+      const newMoodList = calcMoodsList(newMoodListOrigin, app.globalData.moodData);
 
-    const moodItem = newMoodList[groupMoodIndex];
-    moodItem.list.splice(index, 1);
-   
-    // @ts-ignore
-    this.setData({
-      moodList: newMoodList
-    });
-   
+      console.log(newMoodList, newMoodListOrigin);
+
+      this.setData({
+        moodListOrigin: newMoodListOrigin,
+        newMoodList
+      })
+    })   
   },
-  // 新建活动
+  // 新建心情
   handlerAddActive() {
     const { url } = this.data;
     wx.navigateTo({
@@ -82,7 +88,8 @@ Page<IMoodListProps, IMoodListInstance>({
     if(currentMoodsListResult.time !== moodsListResult.time) {
       const newMoodList = calcMoodsList(currentMoodsListResult.data, app.globalData.moodData);
       this.setData({
-        moodList: newMoodList
+        moodList: newMoodList,
+        moodListOrigin: currentMoodsListResult.data
       })
     }
 

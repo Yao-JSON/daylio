@@ -8,6 +8,7 @@ import { moodsBushuang,
   moodsColLevel,
   moodsLevelType
 } from '../../comon/utils/index';
+import { searchAndCacheMoods } from './../../comon/utils/index'
 // @ts-ignore
 var regeneratorRuntime = require('../../lib/regenerator/runtime-module.js')
 
@@ -127,3 +128,14 @@ export const addOrUpdateMoods = async(params: IMoodsListItemPrams, openId): Prom
   }
 }
 
+export const deleteMoodsAndCache = async (id, openId) => {
+  const db = wx.cloud.database();
+  const diaryMoodsCol = db.collection(diaryMoods);
+  const result = await diaryMoodsCol.doc(id).remove();
+
+  console.log(result);
+
+  await searchAndCacheMoods(openId);
+
+  return result;
+}

@@ -12,7 +12,7 @@
         autoClose 
         right="{{ right }}"
         bind:click="handlerDeleteActive"
-        data-group-mood-index="{{ index }}"
+        data-group-mood-id="{{ moodInfo._id }}"
         data-index="{{ idx }}">
         <wux-cell 
           title="{{ moodInfo.title }}"
