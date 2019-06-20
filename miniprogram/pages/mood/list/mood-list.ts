@@ -57,14 +57,11 @@ Page<IMoodListProps, IMoodListInstance>({
       const newMoodListOrigin = moodListOrigin.filter((item) => {
         return item._id !== groupMoodId;
       });
-
       const newMoodList = calcMoodsList(newMoodListOrigin, app.globalData.moodData);
-
-      console.log(newMoodList, newMoodListOrigin);
-
+      
       this.setData({
         moodListOrigin: newMoodListOrigin,
-        newMoodList
+        moodList: newMoodList
       })
     })   
   },
@@ -84,7 +81,6 @@ Page<IMoodListProps, IMoodListInstance>({
   },
   onShow() {
     const currentMoodsListResult = wx.getStorageSync(userMoodsKey);
-
     if(currentMoodsListResult.time !== moodsListResult.time) {
       const newMoodList = calcMoodsList(currentMoodsListResult.data, app.globalData.moodData);
       this.setData({
@@ -92,6 +88,5 @@ Page<IMoodListProps, IMoodListInstance>({
         moodListOrigin: currentMoodsListResult.data
       })
     }
-
   }
 });
