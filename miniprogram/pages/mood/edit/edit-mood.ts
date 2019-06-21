@@ -57,6 +57,10 @@ Page<IEditMoodProps, IEditMoodInstance>({
   handlerConfirm() {
     const { id, iconType, title, moodLevel } = this.data;
 
+    console.log(this.data)
+
+    return;
+
     addOrUpdateMoods({
       id,
       iconType,

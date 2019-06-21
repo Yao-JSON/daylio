@@ -6,7 +6,7 @@ import { moodsBushuang,
   moodsYiban,
   diaryMoods,
   moodsColLevel,
-  moodsLevelType
+  moodsLevelType,
 } from '../../comon/utils/index';
 import { searchAndCacheMoods } from './../../comon/utils/index'
 // @ts-ignore
@@ -128,12 +128,52 @@ export const addOrUpdateMoods = async(params: IMoodsListItemPrams, openId): Prom
   }
 }
 
+
+interface IAddOrUpdateMoodsParams {
+  iconType: string;
+  title: string;
+  level: number;
+  id?: string;
+}
+
+export const addOrUpdateMoods1 = async (params: IAddOrUpdateMoodsParams, openId) => {
+  const { id, level, iconType, title } = params;
+  const db = wx.cloud.database();
+  const diaryMoodsCol = db.collection(diaryMoods);
+  const now = new Date().getTime();
+  
+  let result: any = null;
+
+  if(id) {
+    result = await diaryMoodsCol.doc(id).update({
+      data: {
+        iconType,
+        title,
+        level,
+        updateTime: now
+      }
+    })
+  } else {
+    result = await diaryMoodsCol.add({
+      data: {
+        iconType,
+        title,
+        level,
+        updateTime: now,
+        createTime: now
+      }
+    })
+  }
+
+  await searchAndCacheMoods(openId);
+
+  return result;
+}
+
 export const deleteMoodsAndCache = async (id, openId) => {
   const db = wx.cloud.database();
   const diaryMoodsCol = db.collection(diaryMoods);
   const result = await diaryMoodsCol.doc(id).remove();
-
-  console.log(result);
 
   await searchAndCacheMoods(openId);
 
