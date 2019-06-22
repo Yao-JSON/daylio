@@ -19,7 +19,6 @@ interface IEditMoodInstance {
     moodLevel: number;
     moodLevelColorType: string;
     colorLevel: IColorLevelItem[];
-    isNewActive: boolean;
   },
   onLoad: (query:Record<string, any>) => void;
 }
@@ -35,7 +34,6 @@ Page<IEditMoodProps, IEditMoodInstance>({
     moodLevel: 5,
     moodLevelColorType: 'happy',
     colorLevel,
-    isNewActive: true
   },
   // 编辑心情
   handlerChange(e) {
@@ -61,12 +59,10 @@ Page<IEditMoodProps, IEditMoodInstance>({
       iconType,
       title,
       level: moodLevel
-    }, app.globalData.openId).then((res) => {
-      if(res._id) {
-          wx.navigateBack({
-            delta: 1
-          });
-      }
+    }, app.globalData.openId).then(() => {
+      wx.navigateBack({
+        delta: 1
+      });
     })
 
   },
@@ -84,14 +80,11 @@ Page<IEditMoodProps, IEditMoodInstance>({
         title,
         moodLevel: +level,
         moodLevelColorType: levelColorType,
-        isNewActive: false
       })
     }
   },
   handlerLevelTap(e) {
-    console.log(e);
     const { level } = e.target.dataset;
-
     if(level) {
       const levelColorType = level ? colorLevel[level-1].levelColorType : 'happy';
       this.setData({

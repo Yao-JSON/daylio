@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/mood/edit/edit-mood",
     "pages/diary/timeline/index",
+    "pages/mood/edit/edit-mood",
     "pages/new-diary/select-mood/index",
     "pages/about/about",
     "pages/active/list/active-list",

@@ -1,5 +1,5 @@
 <comon-view>
-  <view class="edit-mood-container fixed {{ isNewActive && 'border-btttom ' }}">
+  <view class="edit-mood-container fixed border-btttom ">
     <wux-input
       value="{{ title }}"
       controlled="true"
@@ -14,9 +14,8 @@
     </wux-input>
   </view>
   <view 
-    wx:if="{{ isNewActive }}"
     catch:tap="handlerLevelTap"
-    class="mood-level-select-container {{ isNewActive && 'border-btttom ' }}">
+    class="mood-level-select-container border-btttom ">
     <view class="happy" data-level="{{ 5 }}">
       狂喜
     </view>
@@ -35,7 +34,7 @@
   </view>
   <scroll-view
     scroll-y
-    class="{{ isNewActive ? 'marginTop100' : 'marginTop50'  }}"
+    class="marginTop100"
     scroll-with-animation="true"
     enable-back-to-top="true">
     <wux-row>

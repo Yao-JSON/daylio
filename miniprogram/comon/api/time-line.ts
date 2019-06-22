@@ -40,8 +40,5 @@ export const getTimeLineList = async (openId) => {
     delete eventList[i].activeListIds;
   })
   
-
-  console.log(eventList);
-
   return eventList;
 }
