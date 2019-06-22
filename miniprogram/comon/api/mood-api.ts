@@ -82,7 +82,7 @@ interface IMoodsListItemPrams {
   id?: string;
 }
 
-export const addOrUpdateMoods = async(params: IMoodsListItemPrams, openId): Promise<any> => {
+export const addOrUpdateMoods1 = async(params: IMoodsListItemPrams, openId): Promise<any> => {
   const { id, level, iconType, title } = params;
   const db = wx.cloud.database();
   const moodsColName = moodsColLevel[level];
@@ -136,7 +136,7 @@ interface IAddOrUpdateMoodsParams {
   id?: string;
 }
 
-export const addOrUpdateMoods1 = async (params: IAddOrUpdateMoodsParams, openId) => {
+export const addOrUpdateMoods = async (params: IAddOrUpdateMoodsParams, openId) => {
   const { id, level, iconType, title } = params;
   const db = wx.cloud.database();
   const diaryMoodsCol = db.collection(diaryMoods);
@@ -150,7 +150,7 @@ export const addOrUpdateMoods1 = async (params: IAddOrUpdateMoodsParams, openId)
         iconType,
         title,
         level,
-        updateTime: now
+        updateTime: now,
       }
     })
   } else {
@@ -160,7 +160,8 @@ export const addOrUpdateMoods1 = async (params: IAddOrUpdateMoodsParams, openId)
         title,
         level,
         updateTime: now,
-        createTime: now
+        createTime: now,
+        remark: ''
       }
     })
   }

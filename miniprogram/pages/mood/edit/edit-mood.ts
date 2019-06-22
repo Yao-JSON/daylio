@@ -56,18 +56,13 @@ Page<IEditMoodProps, IEditMoodInstance>({
   // 确定
   handlerConfirm() {
     const { id, iconType, title, moodLevel } = this.data;
-
-    console.log(this.data)
-
-    return;
-
     addOrUpdateMoods({
       id,
       iconType,
       title,
       level: moodLevel
     }, app.globalData.openId).then((res) => {
-      if(res.stats) {
+      if(res._id) {
           wx.navigateBack({
             delta: 1
           });
