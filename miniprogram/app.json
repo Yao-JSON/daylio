@@ -1,16 +1,16 @@
 {
   "pages": [
+    "pages/active/edit/edit-active",
+    "pages/active/list/active-list",
     "pages/diary/timeline/index",
     "pages/mood/edit/edit-mood",
     "pages/new-diary/select-mood/index",
     "pages/about/about",
-    "pages/active/list/active-list",
     "pages/mood/list/mood-list",
     "pages/calendar/calendar",
     "pages/chart/chart",
     "pages/new-diary/select-active/index",
-    "pages/diary/list/diary",
-    "pages/active/edit/edit-active"
+    "pages/diary/list/diary"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",

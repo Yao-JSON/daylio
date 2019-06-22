@@ -1,20 +1,14 @@
-import { IMyApp } from './../../../../../miniprogram-ts/miniprogram/app';
-import { $wuxToptips } from '../../../wux/index'
-import { getActiveList } from './../../../comon/api/index'
+import { $wuxToptips } from '../../../wux/index';
+import { userActivesKey } from './../../../comon/constant/index';
+import { IActiveListItem } from './../../../comon/api/index'
 
-const app = getApp<IMyApp>();
 
 interface IReghtItem {
   text: string;
   style: string;
 }
 
-interface IActiveListItem {
-  _id: string;
-  iconType: string;
-  title: string;
-  remark?: string;
-}
+
 
 interface IActiveListProps {
   handlerDeleteActive: (e) => void;
@@ -28,6 +22,8 @@ interface IActiveListInstance {
     activeList: IActiveListItem[];
   }
 }
+
+const activeListResult = wx.getStorageSync(userActivesKey);
 
 Page<IActiveListProps, IActiveListInstance>({
   // @ts-ignore
@@ -43,7 +39,15 @@ Page<IActiveListProps, IActiveListInstance>({
         style: 'background-color: #F4333C; color: white',
       }
     ],
-    activeList: []
+    activeList: activeListResult ? activeListResult.data : []
+  },
+  onShow() {
+    const currentActiveListResult = wx.getStorageSync(userActivesKey);
+    if(activeListResult && currentActiveListResult && currentActiveListResult.time !== activeListResult.time ) {
+      this.setData({
+        activeList: currentActiveListResult.data
+      });
+    }
   },
   handlerDeleteActive(e){
     const { detail, target } = e;
@@ -69,13 +73,6 @@ Page<IActiveListProps, IActiveListInstance>({
           duration: 3000,
         })
       }
-    })
-  },
-  onShow() {
-    getActiveList(app.globalData.openId).then((res) => {
-      this.setData({
-        activeList: res
-      })
     })
   }
 })

@@ -23,13 +23,8 @@ interface IMoodListInstance {
 
 const moodsListResult = wx.getStorageSync(userMoodsKey);
 
-console.log(moodsListResult);
-
-
-
 const moodsListInit = moodsListResult ? calcMoodsList(moodsListResult.data, app.globalData.moodData) : [];
 
-console.log(moodsListInit);
 
 Page<IMoodListProps, IMoodListInstance>({
   // @ts-ignore
@@ -80,7 +75,7 @@ Page<IMoodListProps, IMoodListInstance>({
   },
   onShow() {
     const currentMoodsListResult = wx.getStorageSync(userMoodsKey);
-    if(currentMoodsListResult.time !== moodsListResult.time) {
+    if(currentMoodsListResult &&  moodsListResult && currentMoodsListResult.time !== moodsListResult.time) {
       const newMoodList = calcMoodsList(currentMoodsListResult.data, app.globalData.moodData);
       this.setData({
         moodList: newMoodList,
