@@ -1,7 +1,8 @@
 import { IMyApp } from './../../../../interface/app';
 import { $wuxToptips, $wuxToast } from '../../../wux/index'
-import { addOrUpdateEvent, IAddOrUpdateEventParams, getActiveList, IActiveListItem } from './../../../comon/api/index';
+import { addOrUpdateEvent, IAddOrUpdateEventParams, IActiveListItem } from './../../../comon/api/index';
 
+import { userActivesKey } from './../../../comon/constant/index'
 
 interface IActiveListProps {
   handlerSelectActive: (e) => void;
@@ -28,13 +29,15 @@ interface IActiveListParams {
 
 const app = getApp<IMyApp>();
 
+const activeListResult = wx.getStorageSync(userActivesKey);
+
 Page<IActiveListProps, IActiveListParams>({
   // @ts-ignore
   data: {
     moodIcon: 'happy-wink',
     moodKey: 'happy',
     remark: '',
-    activeList: [],
+    activeList: activeListResult ? activeListResult.data : [],
     activeImage: null,
     address: null,
     placeName: null,
@@ -159,21 +162,17 @@ Page<IActiveListProps, IActiveListParams>({
     })
   },
   onLoad(query) {
-    // @ts-ignore
    const { diaryTime = new Date(), moodKey = "happy", moodIcon ="happy-wink" } = query || {};
    this.setData({
     diaryTime, moodKey, moodIcon
    });
-   this.handlerLoadingActive();
   },
-  handlerLoadingActive() {
-    const { openId } = app.globalData;
-    getActiveList(openId).then((res) => {
-     console.log(res);
-     this.setData({
-       activeList: res
-     })
-    })
+  onShow() {
+    const currentActiveListResult = wx.getStorageSync(userActivesKey);
+    if(activeListResult && currentActiveListResult && currentActiveListResult.time !== activeListResult.time ) {
+      this.setData({
+        activeList: currentActiveListResult.data
+      });
+    }
   }
-
 })
